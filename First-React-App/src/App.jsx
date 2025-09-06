@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import PayoffFixed from './components/PayoffFixed.jsx'
+import PayoffMinimum from './components/PayoffMinimum.jsx'
 
 
 function Name({name}) {
@@ -23,6 +25,9 @@ function App() {
 
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+
+  let options = ["", <PayoffFixed />, <PayoffMinimum />];
+  const [place, setPlace] = useState(0);
 
   useEffect(() => {
     let timer;
@@ -95,28 +100,32 @@ function App() {
       </p> */}
       <Name name="Michael" />
       <Name name="Mia" />
-      <div className="container">
-        <ul>
-          {/* <button onClick={() => setCount((count) => count + 1)}> */}
-            {/* Caluclate payoff amount */}
-          {/* </button> */}
-          <h2>
-            Count is {count}
-          </h2>
-          <button onClick={() => addOneCount()}>
-            Add One
-          </button>
-          <button onClick={() => subtractOneCount()}>
-            Subtract One
-          </button>
-          <button onClick={() => addRandomCount()}>
-            Add Random
-          </button>
-        </ul>
-      </div>
+      <menu>
+        <h2>
+          Count is {count}
+        </h2>
+        <button onClick={() => addOneCount()}>
+          Add One
+        </button>
+        <button onClick={() => subtractOneCount()}>
+          Subtract One
+        </button>
+        <button onClick={() => addRandomCount()}>
+          Add Random
+        </button>
+      </menu>
       <h2>
         {sentence}
       </h2>
+      <menu>
+        <button onClick={() => setPlace((place) => place = 1)}>
+          Total Payoff Amount
+        </button>
+        <button onClick={() => setPlace((place) => place = 2)}>
+          Minimum to payoff loan in x time
+        </button>
+      </menu>
+      {options[place]}
     </>
   )
 }
