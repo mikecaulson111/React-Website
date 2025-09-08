@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import PayoffFixed from './components/PayoffFixed.jsx'
 import PayoffMinimum from './components/PayoffMinimum.jsx'
+import WorstTaxes from './components/WorstTaxes.jsx'
 
 
 function Name({name}) {
@@ -26,7 +27,7 @@ function App() {
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
-  let options = ["", <PayoffFixed />, <PayoffMinimum />];
+  let options = ["", <PayoffFixed />, <PayoffMinimum />, <WorstTaxes />];
   const [place, setPlace] = useState(0);
 
   useEffect(() => {
@@ -123,6 +124,9 @@ function App() {
         </button>
         <button onClick={() => setPlace((place) => place = 2)}>
           Minimum to payoff loan in x time
+        </button>
+        <button onClick={() => setPlace((place) => place = 3)}>
+          Worst case taxes
         </button>
       </menu>
       {options[place]}
