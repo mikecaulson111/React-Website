@@ -2,3 +2,54 @@ label {
   display: block;
   margin-bottom: 1rem; /* spacing between fields */
 }
+
+.redColor {
+  color: red;
+}
+
+/* .submitButton {
+  background: linear-gradient(90deg, #ea00ff, #ea00ff, #03d5ff, #03d5ff);
+} */
+
+.submitButton {
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 8px;
+  color: white;
+  background-color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+@keyframes colorCycle {
+  0% { background-color: #ea00ff}
+  50% { background-color: #03d5ff}
+  100% { background-color: #ea00ff}
+}
+
+.submitButton:hover {
+  animation: colorCycle 2s linear infinite;
+}
+
+@keyframes textCycle {
+  0% {color: red}
+  25% {color: rgb(223, 19, 172)}
+  50% {color: blue}
+  75% {color: rgb(223, 19, 172)}
+  100% {color: red}
+}
+
+.funColors {
+  animation: textCycle 4s linear infinite;
+}
+
+@keyframes alertCycle {
+  0% {color: red}
+  25% {color: white}
+  50% {color: red}
+  100% {color: red}
+}
+
+.alertColors {
+  animation: alertCycle 2s linear infinite;
+}

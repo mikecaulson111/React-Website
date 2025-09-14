@@ -12,16 +12,23 @@ export default function PayoffFixed() {
     // Below are for calculating at the end
     const [months, setMonths] = useState(0);
     const [totalInterest, setTotalInterest] = useState(0);
+    const [cantCompute, setCantCompute] = useState("");
+
+    // Other variables
+    const [interestColor, setInterestColor] = useState("");
 
     const handleLoanAmtChange = (e) => {
+        setCantCompute("");
         setCurrLoanAmt(e.target.value);
     }
 
     const handleInterestChange = (e) => {
+        setCantCompute("");
         setInterest(e.target.value);
     }
 
     const handleAmtPerMonthChange = (e) => {
+        setCantCompute("");
         setAmtPerMonth(e.target.value);
     }
 
@@ -36,6 +43,12 @@ export default function PayoffFixed() {
         var currAmt = parseFloat(currLoanAmt);
         var totInterest = 0;
         var month = 0;
+
+        if ((currAmt - amtPerMonth) * ((interestHere / 100.0) / 12) > amtPerMonth) {
+            console.error("CAN NEVER PAY THIS OFF");
+            setCantCompute("YOU WILL NEVER BE ABLE TO PAY OFF THIS LOAN WITH THESE MONTHLY PAYMENTS");
+            return;
+        }
 
         while (currAmt > 0) {
             var holdingAmt = currAmt;
@@ -53,6 +66,9 @@ export default function PayoffFixed() {
         }
 
         setTotalInterest(totInterest);
+        if (totInterest > 0) {
+            setInterestColor("funColors");
+        }
         setMonths(month);
     }
 
@@ -86,11 +102,12 @@ export default function PayoffFixed() {
                                 onChange={handleAmtPerMonthChange}
                             />
                         </label>
-                    <button type="submit">Calculate</button>
+                    <button className="submitButton" type="submit">Calculate</button>
                 </form>
             </div>
 
-            <h3>Total Payoff Amount: ${currLoanAmt} will be paid off in {months} months, and you will pay ${totalInterest.toFixed(2)} in interest</h3>
+            <h3 className="alertColors">{cantCompute}</h3>
+            <h3>Total Payoff Amount: ${currLoanAmt} will be paid off in {months} months, and you will pay $<span className={interestColor}>{totalInterest.toFixed(2)}</span> in interest</h3>
         </>
     );
 }

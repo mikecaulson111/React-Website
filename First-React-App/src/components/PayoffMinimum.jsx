@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./PayoffMinimum.css"
 
 export default function PayoffMinimum() {
     // These are to be entered by the user
@@ -43,7 +44,7 @@ export default function PayoffMinimum() {
                     />
                 </label>
                 <label>
-                    Interest on loan %
+                    Interest on loan (i.e. 8.49)%
                     <input
                         type="number"
                         value={interest}
@@ -58,7 +59,7 @@ export default function PayoffMinimum() {
                         onChange={handleMonthsChange}
                     />
                 </label>
-                <button type="submit">Calculate</button>
+                <button className="submitButton2" type="submit">Calculate</button>
             </form>
 
             <h3>Minimum monthly payments to pay off ${loanAmt} at {interest}% in {months} months is: ${payoffAmt.toFixed(2)}</h3>

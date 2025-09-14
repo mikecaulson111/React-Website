@@ -26,6 +26,7 @@ function App() {
 
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [thisClassName, setThisClassName] = useState(["myButton","myButton","myButton"]);
 
   let options = ["", <PayoffFixed />, <PayoffMinimum />, <WorstTaxes />];
   const [place, setPlace] = useState(0);
@@ -75,6 +76,12 @@ function App() {
     setSentence((sentence) => sentence = "Added " + num + " to count");
     startTimer();
   }
+
+  // TODO: Cant get this to work correctly 
+  function buttonClicked(tempPlace) {
+    setPlace(tempPlace);
+    setThisClassName((thisClassName) => thisClassName.map((item, i) => (i === tempPlace -1 ? "myButtonSelected" : "myButton")));
+  } 
   
 
   return (
@@ -114,21 +121,24 @@ function App() {
         <button onClick={() => addRandomCount()}>
           Add Random
         </button>
+        <button onClick={() => setThisClassName("hello")}>
+          change class
+        </button>
       </menu>
       <h2>
         {sentence}
       </h2>
-      <menu>
-        <button onClick={() => setPlace((place) => place = 1)}>
+      <div className="button-menu">
+        <button className={thisClassName[0]} onClick={() => buttonClicked(1)}>
           Total Payoff Amount
         </button>
-        <button onClick={() => setPlace((place) => place = 2)}>
+        <button className={thisClassName[1]} onClick={() => buttonClicked(2)}>
           Minimum to payoff loan in x time
         </button>
-        <button onClick={() => setPlace((place) => place = 3)}>
+        <button className={thisClassName[2]} onClick={() => buttonClicked(3)}>
           Worst case taxes
         </button>
-      </menu>
+      </div>
       {options[place]}
     </>
   )

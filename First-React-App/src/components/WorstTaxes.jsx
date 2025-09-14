@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./WorstTaxes.css"
 
 const taxValues = [
     [0, 11925, 10],
@@ -10,9 +11,9 @@ const taxValues = [
     [626350, 10000000000, 37]
 ];
 
-const standardDeductionSingle = 14600;
-const standardDeductionJoint  = 29200;
-const standardDeductionHoH    = 21900;
+const standardDeductionSingle = 15750;
+const standardDeductionJoint  = 31500;
+const standardDeductionHoH    = 23625;
 const numberBrackets = 7;
 
 export default function WorstTaxes() {
@@ -106,7 +107,7 @@ export default function WorstTaxes() {
                     onChange={(e) => setFilingStatus(e.target.value)}
                 />
             </label>
-            <button type="submit">Calculate</button>
+            <button className="submitButton3" type="submit">Calculate</button>
         </form>
 
         <h3>Total taxes (worst case) with annual income of ${income} filing as status: {filingStatus} comes out to: ${taxesTotal}</h3>
