@@ -19,16 +19,19 @@ export default function PayoffFixed() {
 
     const handleLoanAmtChange = (e) => {
         setCantCompute("");
+        setInterestColor("");
         setCurrLoanAmt(e.target.value);
     }
 
     const handleInterestChange = (e) => {
         setCantCompute("");
+        setInterestColor("");
         setInterest(e.target.value);
     }
 
     const handleAmtPerMonthChange = (e) => {
         setCantCompute("");
+        setInterestColor("");
         setAmtPerMonth(e.target.value);
     }
 
