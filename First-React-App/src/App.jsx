@@ -40,8 +40,13 @@ function App() {
   
   return (
     <>
-      <Name name="Michael" />
-      <Name name="Mia" />
+      <Name name="Michael Caulson" />
+      {/* <Name name="Mia" /> */}
+      <p className="personal-paragraph">
+        Hi! I'm Michael, or Mike, I am a software engineer with a strong understanding of C and JavaScript 
+        and am growing my knowledge with React! I currently work with embedded systems with a focus on the frontend/UI
+        for a large codebase that gets deployed to millions of users. In this environment I focus on clean 
+      </p>
 
       <div className="button-menu">
         <button className={classNames[0]} onClick={() => secondButtonClicked(1)}>

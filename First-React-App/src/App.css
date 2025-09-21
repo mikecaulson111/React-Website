@@ -77,3 +77,10 @@ html {
   border: 2px black;
   border-radius: 8px;
 }
+
+.personal-paragraph {
+  max-width: 75ch;
+  margin: 0 auto;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
