@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+html {
+  /* background: radial-gradient(blue, antiquewhite); */
+  background: #efebe0;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -41,42 +46,34 @@
   color: #888;
 }
 
-.myButton {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 20px;
-  border: 2px solid black;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  padding-right: 20px;
-  padding-left: 20px;
-}
-
-.myButton:hover {
-  background-color: #2d6930;
-}
-
-.myButtonSelected {
-  background-color: navy;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  padding-right: 20px;
-  padding-left: 20px;
-}
-
 .menu {
   gap: 20px;
 }
 
 .button-menu button {
   margin-right: 15px;
+  margin-bottom: 15px;
 }
 
 .button-menu button:last-child {
   margin-right: 0;
+  margin-bottom: 15px;
+}
+
+.click-button {
+  margin-bottom: 15px;
+}
+
+.top-button {
+  background-color: antiquewhite;
+}
+
+.top-button:hover {
+  background-color: rgb(250, 250, 220);
+}
+
+.top-button-selected {
+  background-color: aqua;
+  border: 2px black;
+  border-radius: 8px;
 }

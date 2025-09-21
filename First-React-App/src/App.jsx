@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
-import PayoffFixed from './components/PayoffFixed.jsx'
-import PayoffMinimum from './components/PayoffMinimum.jsx'
-import WorstTaxes from './components/WorstTaxes.jsx'
-import AddCount from "./components/AddCount.jsx"
+
+import AddCount from "./components/AddCount/AddCount.jsx"
+import Finances from "./components/Finances/Finances.jsx"
 
 
 function Name({name}) {
@@ -16,30 +15,27 @@ function Name({name}) {
 
 function App() {
   
-  const [thisClassName, setThisClassName] = useState(["myButton","myButton","myButton"]);
-
-  let options = ["", <PayoffFixed />, <PayoffMinimum />, <WorstTaxes />];
-  let options2 = ["", <AddCount />];
-  const [place, setPlace] = useState(0);
+  let options2 = ["", <AddCount />, <Finances />];
+  const [classNames, setClassNames] = useState(["top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
-  const [buttonName, setButtonName] = useState("Press to open count thingy")
+  // const [buttonName, setButtonName] = useState("Press to open count thingy")
 
   
 
-  // TODO: Cant get this to work correctly 
-  function buttonClicked(tempPlace) {
-    setPlace(tempPlace);
-    setThisClassName((thisClassName) => thisClassName.map((item, i) => (i === tempPlace -1 ? "myButtonSelected" : "myButton")));
-  }
+  
 
-  function secondButtonClicked() {
-    if (place2) {
-      setPlace2(0);
-      setButtonName("Press to open count thingy");
-    } else {
-      setPlace2(1);
-      setButtonName("Press to get rid of button thingy");
+  function secondButtonClicked(place) {
+    if (place === 1) {
+      if (place2 === 1) {
+        setPlace2(0)
+      } else {
+        setPlace2(1)
+      }
+    } else if (place === 2) {
+      setPlace2(2);
     }
+    
+    setClassNames((classNames) => classNames.map((item, i) => (i === place - 1 ? "top-button-selected" : "top-button")));
   }
   
   return (
@@ -47,23 +43,15 @@ function App() {
       <Name name="Michael" />
       <Name name="Mia" />
 
-      <button onClick={() => secondButtonClicked()}>
-       {buttonName} 
-      </button>
-      {options2[place2]}
-      
       <div className="button-menu">
-        <button className={thisClassName[0]} onClick={() => buttonClicked(1)}>
-          Total Payoff Amount
+        <button className={classNames[0]} onClick={() => secondButtonClicked(1)}>
+         Fun Counter 
         </button>
-        <button className={thisClassName[1]} onClick={() => buttonClicked(2)}>
-          Minimum to payoff loan in x time
-        </button>
-        <button className={thisClassName[2]} onClick={() => buttonClicked(3)}>
-          Worst case taxes
+        <button className={classNames[1]} onClick={() => secondButtonClicked(2)}>
+          Finance Tools
         </button>
       </div>
-      {options[place]}
+      {options2[place2]}
     </>
   )
 }

@@ -61,7 +61,7 @@ function addRandomCount() {
 }
     return (
         <>
-        <menu>
+        <div className="button-menu">
             <h2>
               Count is {count}
             </h2>
@@ -74,10 +74,7 @@ function addRandomCount() {
             <button onClick={() => addRandomCount()}>
               Add Random
             </button>
-            <button onClick={() => setThisClassName("hello")}>
-              change class
-            </button>
-        </menu>
+        </div>
         <h2>
           {sentence}
         </h2>

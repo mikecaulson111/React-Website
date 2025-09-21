@@ -107,7 +107,7 @@ export default function WorstTaxes() {
                     onChange={(e) => setFilingStatus(e.target.value)}
                 />
             </label>
-            <button className="submitButton3" type="submit">Calculate</button>
+            <button className="submitButton" type="submit">Calculate</button>
         </form>
 
         <h3>Total taxes (worst case) with annual income of ${income} filing as status: {filingStatus} comes out to: ${taxesTotal}</h3>

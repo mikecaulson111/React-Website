@@ -59,7 +59,7 @@ export default function PayoffMinimum() {
                         onChange={handleMonthsChange}
                     />
                 </label>
-                <button className="submitButton2" type="submit">Calculate</button>
+                <button className="submitButton" type="submit">Calculate</button>
             </form>
 
             <h3>Minimum monthly payments to pay off ${loanAmt} at {interest}% in {months} months is: ${payoffAmt.toFixed(2)}</h3>
