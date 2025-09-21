@@ -5,6 +5,7 @@ import './App.css'
 import PayoffFixed from './components/PayoffFixed.jsx'
 import PayoffMinimum from './components/PayoffMinimum.jsx'
 import WorstTaxes from './components/WorstTaxes.jsx'
+import AddCount from "./components/AddCount.jsx"
 
 
 function Name({name}) {
@@ -13,121 +14,44 @@ function Name({name}) {
   );
 }
 
-function randomNum(max) {
-  return Math.floor(Math.random() * max) - (max/2);
-}
-
-
-
 function App() {
-  const [count, setCount] = useState(0)
-
-  const [sentence, setSentence] = useState("")
-
-  const [seconds, setSeconds] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  
   const [thisClassName, setThisClassName] = useState(["myButton","myButton","myButton"]);
 
   let options = ["", <PayoffFixed />, <PayoffMinimum />, <WorstTaxes />];
+  let options2 = ["", <AddCount />];
   const [place, setPlace] = useState(0);
+  const [place2, setPlace2] = useState(0);
+  const [buttonName, setButtonName] = useState("Press to open count thingy")
 
-  useEffect(() => {
-    let timer;
-
-    if (isRunning && seconds > 0) {
-      timer = setInterval(() => {
-        setSeconds((prevSeconds) => prevSeconds - 1);
-      }, 1000);
-    } else if (seconds <= 0) {
-      clearInterval(timer);
-      setIsRunning(false);
-      setSentence("");
-    }
-
-    return () => clearInterval(timer);
-  }, [isRunning, seconds]);
-
-  function startTimer() {
-    setSeconds(5);
-    if (!isRunning) {
-      setIsRunning(true);
-    }
-  }
-
-  function stopTimer() {
-    setIsRunning(false);
-  }
-
-  function addOneCount() {
-    setCount((count) => count + 1);
-    setSentence((sentence) => sentence = "Added 1 to count");
-    startTimer();
-  }
-
-  function subtractOneCount() {
-    setCount((count) => count - 1);
-    setSentence((sentence) => sentence = "Subtracted 1 from count");
-    startTimer();
-  }
   
-  function addRandomCount() {
-    var num = randomNum(10);
-    setCount((count) => count + num);
-    setSentence((sentence) => sentence = "Added " + num + " to count");
-    startTimer();
-  }
 
   // TODO: Cant get this to work correctly 
   function buttonClicked(tempPlace) {
     setPlace(tempPlace);
     setThisClassName((thisClassName) => thisClassName.map((item, i) => (i === tempPlace -1 ? "myButtonSelected" : "myButton")));
-  } 
-  
+  }
 
+  function secondButtonClicked() {
+    if (place2) {
+      setPlace2(0);
+      setButtonName("Press to open count thingy");
+    } else {
+      setPlace2(1);
+      setButtonName("Press to get rid of button thingy");
+    }
+  }
+  
   return (
     <>
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
       <Name name="Michael" />
       <Name name="Mia" />
-      <menu>
-        <h2>
-          Count is {count}
-        </h2>
-        <button onClick={() => addOneCount()}>
-          Add One
-        </button>
-        <button onClick={() => subtractOneCount()}>
-          Subtract One
-        </button>
-        <button onClick={() => addRandomCount()}>
-          Add Random
-        </button>
-        <button onClick={() => setThisClassName("hello")}>
-          change class
-        </button>
-      </menu>
-      <h2>
-        {sentence}
-      </h2>
+
+      <button onClick={() => secondButtonClicked()}>
+       {buttonName} 
+      </button>
+      {options2[place2]}
+      
       <div className="button-menu">
         <button className={thisClassName[0]} onClick={() => buttonClicked(1)}>
           Total Payoff Amount
