@@ -6,6 +6,7 @@ import './App.css'
 import AddCount from "./components/AddCount/AddCount.jsx"
 import Finances from "./components/Finances/Finances.jsx"
 import SocialLinks from "./components/SocialLinks/SocialLinks.jsx"
+import Markdown from "./components/Markdown/Makdown.jsx";
 
 
 function Name({name}) {
@@ -16,8 +17,8 @@ function Name({name}) {
 
 function App() {
   
-  let options2 = ["", <AddCount />, <Finances />];
-  const [classNames, setClassNames] = useState(["top-button", "top-button"]);
+  let options2 = ["", <AddCount />, <Finances />, <Markdown />];
+  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
   // const [buttonName, setButtonName] = useState("Press to open count thingy")
 
@@ -40,6 +41,13 @@ function App() {
         setClass = false;
       } else {
         setPlace2(2);
+      }
+    } else if (place === 3) {
+      if (place2 === 3) {
+        setPlace2(0);
+        setClass = false;
+      } else {
+        setPlace2(3);
       }
     }
     
@@ -77,6 +85,9 @@ function App() {
         </button>
         <button className={classNames[1]} onClick={() => secondButtonClicked(2)}>
           Finance Tools
+        </button>
+        <button className={classNames[2]} onClick={() => secondButtonClicked(3)}>
+          Markdown Preview
         </button>
       </div>
       {options2[place2]}
