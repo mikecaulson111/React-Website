@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactMarkdown from 'react-markdown';
+import "./Markdown.css"
 
 
 export default function Markdown() {
@@ -10,7 +11,11 @@ export default function Markdown() {
             <h3>
                 Type in Markdown in text box below and see it come to life!
             </h3>
-            <textarea value={markdownText} onChange={(e) => setMarkdownText(e.target.value)} />
+            <textarea
+                className="markdown-textarea"
+                value={markdownText}
+                onChange={(e) => setMarkdownText(e.target.value)}
+            />
             <ReactMarkdown>
                 {markdownText}
             </ReactMarkdown>
