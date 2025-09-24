@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 function randomNum(max) {
-  return Math.floor(Math.random() * max) - (max/2);
+  return Math.floor(Math.random() * (max + 1)) - (max/2);
 }
 
 
