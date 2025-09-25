@@ -74,7 +74,7 @@ function App() {
       </h2>
 
       <p className="note-paragraph">
-        I have only added 2 projects below, the first one is just testing functionality in React, the second created
+        I have only added 3 projects below, the first one is just testing functionality in React, the second created
         to help me do some financial calculations that were needed at the time and continue to be helpful today. I am still working
         on adding other projects to this portfolio and will update as time goes on.
       </p>

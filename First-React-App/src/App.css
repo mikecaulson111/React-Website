@@ -78,6 +78,20 @@ html {
   border-radius: 8px;
 }
 
+@media (prefers-color-scheme: dark) {
+  .top-button {
+    background-color: rgb(100, 85, 65);
+  }
+
+  .top-button:hover {
+    background-color: rgb(120, 105, 85);
+  }
+
+  .top-button-selected {
+    background-color: rgb(60, 45, 25);
+  }
+}
+
 .personal-paragraph {
   max-width: 90ch;
   margin: 0 auto;
