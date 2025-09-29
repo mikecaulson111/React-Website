@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import "./AddCount.css"
 
 function randomNum(max) {
   return Math.floor(Math.random() * (max + 1)) - (max/2);
@@ -65,13 +66,13 @@ function addRandomCount() {
             <h2>
               Count is {count}
             </h2>
-            <button onClick={() => addOneCount()}>
+            <button className="count-button" onClick={() => addOneCount()}>
               Add One
             </button>
-            <button onClick={() => subtractOneCount()}>
+            <button className="count-button" onClick={() => subtractOneCount()}>
               Subtract One
             </button>
-            <button onClick={() => addRandomCount()}>
+            <button className="count-button" onClick={() => addRandomCount()}>
               Add Random
             </button>
         </div>
