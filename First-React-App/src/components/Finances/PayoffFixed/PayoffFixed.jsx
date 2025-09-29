@@ -37,9 +37,6 @@ export default function PayoffFixed() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log("Total: " + currLoanAmt);
-        // console.log("Interest: " + interest);
-        // console.log("Amount per month: " + amtPerMonth);
 
         // Local variables needed
         let interestHere = parseFloat(interest);

@@ -98,3 +98,20 @@
   line-height: 1.6;
   margin-bottom: 30px;
 }
+
+.my-link {
+  margin-top: 50px;
+  background: none;
+  border: none;
+}
+
+.my-link:focus {
+  outline: none;
+  border: none;
+}
+
+.my-link-small {
+  margin-top: 25px;
+  background: none;
+  border: none;
+}

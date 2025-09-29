@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './Home.css'
 
 import AddCount from "../components/AddCount/AddCount.jsx"
@@ -9,7 +7,6 @@ import SocialLinks from "../components/SocialLinks/SocialLinks.jsx"
 import Markdown from "../components/Markdown/Makdown.jsx"
 
 import { useNavigate } from "react-router-dom"
-import HelpPage from "./HelpPage.jsx"
 
 
 function Name({name}) {
@@ -23,15 +20,12 @@ function Home() {
   let options2 = ["", <AddCount />, <Finances />, <Markdown />];
   const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
-  // const [buttonName, setButtonName] = useState("Press to open count thingy")
 
   const navigate = useNavigate();
 
   const handleGoToHelp = () => {
     navigate('/help');
   }
-
-  
 
   function secondButtonClicked(place) {
     let setClass = true;
@@ -98,7 +92,7 @@ function Home() {
         </button>
       </div>
       {options2[place2]}
-      <button onClick={handleGoToHelp}>Help</button>
+      <button className="my-link" onClick={handleGoToHelp}>Help</button>
     </>
   )
 }

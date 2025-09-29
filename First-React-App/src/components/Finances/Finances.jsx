@@ -12,8 +12,6 @@ export default function() {
 
     let options = ["", <PayoffFixed />, <PayoffMinimum />, <WorstTaxes />];
 
-
-    // TODO: Cant get this to work correctly 
     function buttonClicked(tempPlace) {
       setPlace(tempPlace);
       setThisClassName((thisClassName) => thisClassName.map((item, i) => (i === tempPlace -1 ? "myButtonSelected" : "myButton")));

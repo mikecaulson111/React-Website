@@ -9,7 +9,7 @@ export default function HelpPage() {
     return (
         <>
             <h3>BAM</h3>
-            <button onClick={() => goToHome("/")}>Click</button>
+            <button className="my-link" onClick={() => goToHome("/")}>Home</button>
         </>
     );
 }
