@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import './Home.css'
 
+import Image from "../assets/new_logo.png"
+
 import AddCount from "../components/AddCount/AddCount.jsx"
 import Finances from "../components/Finances/Finances.jsx"
 import SocialLinks from "../components/SocialLinks/SocialLinks.jsx"
@@ -93,6 +95,9 @@ function Home() {
       </div>
       {options2[place2]}
       <button className="my-link" onClick={handleGoToHelp}>Help</button>
+      {/* <button onClick={handleGoToHelp}>
+        <img src={Image} />
+      </button> */}
     </>
   )
 }
