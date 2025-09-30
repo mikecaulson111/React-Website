@@ -1,6 +1,6 @@
 import "./App.css"
 
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import HomePage from "./pages/HomePage.jsx"
 import HelpPage from "./pages/HelpPage.jsx"
 import CornerImage from "./components/CornerImage/CornerImage.jsx"

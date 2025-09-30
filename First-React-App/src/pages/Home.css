@@ -101,8 +101,13 @@
 
 .my-link {
   margin-top: 50px;
+  text-decoration: underline;
   background: none;
   border: none;
+}
+
+.my-link:hover {
+  font-style: italic;
 }
 
 .my-link:focus {

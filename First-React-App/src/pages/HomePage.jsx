@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './Home.css'
-
-import Image from "../assets/new_logo.png"
 
 import AddCount from "../components/AddCount/AddCount.jsx"
 import Finances from "../components/Finances/Finances.jsx"
