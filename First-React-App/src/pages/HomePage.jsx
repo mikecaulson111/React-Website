@@ -11,11 +11,7 @@ import Markdown from "../components/Markdown/Makdown.jsx"
 import { useNavigate } from "react-router-dom"
 
 
-function Name({name}) {
-  return (
-    <h1>{name}</h1>
-  );
-}
+
 
 function Home() {
   
@@ -59,7 +55,6 @@ function Home() {
   
   return (
     <>
-      <Name name="Michael Caulson" />
       {/* <Name name="Mia" /> */}
       <p className="personal-paragraph">
         Hi! I'm Michael, a software engineer who loves creating clean, user-centric interfaces. My background is

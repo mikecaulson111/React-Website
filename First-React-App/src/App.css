@@ -9,3 +9,16 @@ html {
   /* background: radial-gradient(blue, antiquewhite); */
   background: #efebe0;
 }
+
+.corner-image {
+  position: absolute;
+  z-index: 1000;
+  width: 75px;
+  height: auto;
+}
+
+.top-right {
+  top: 0;
+  left: 0;
+  margin: 10px;
+}
