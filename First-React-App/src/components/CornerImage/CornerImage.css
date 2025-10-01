@@ -1,0 +1,9 @@
+.corner-button {
+    background: none;
+    border: none;
+}
+
+.corner-button:focus {
+    outline: none;
+    border: none;
+}

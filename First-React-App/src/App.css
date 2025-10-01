@@ -10,103 +10,15 @@ html {
   background: #efebe0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.corner-image {
+  position: absolute;
+  z-index: 1000;
+  width: 75px;
+  height: auto;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.menu {
-  gap: 20px;
-}
-
-.button-menu button {
-  margin-right: 15px;
-  margin-bottom: 15px;
-}
-
-.button-menu button:last-child {
-  margin-right: 0;
-  margin-bottom: 15px;
-}
-
-.click-button {
-  margin-bottom: 15px;
-}
-
-.top-button {
-  background-color: antiquewhite;
-}
-
-.top-button:hover {
-  background-color: rgb(250, 250, 220);
-}
-
-.top-button-selected {
-  background-color: rgb(210, 195, 175);
-  border: 2px black;
-  border-radius: 8px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .top-button {
-    background-color: rgb(100, 85, 65);
-  }
-
-  .top-button:hover {
-    background-color: rgb(120, 105, 85);
-  }
-
-  .top-button-selected {
-    background-color: rgb(60, 45, 25);
-  }
-}
-
-.personal-paragraph {
-  max-width: 90ch;
-  margin: 0 auto;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-.intro-h2 {
-  margin-bottom: 30px;
-  margin-top: 100px;
-}
-
-.note-paragraph {
-  max-width: 75ch;
-  margin: 0 auto;
-  line-height: 1.6;
-  margin-bottom: 30px;
+.top-right {
+  top: 0;
+  left: 0;
+  margin: 10px;
 }
