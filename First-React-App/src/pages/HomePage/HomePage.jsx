@@ -1,27 +1,17 @@
 import { useState } from 'react'
 import './Home.css'
 
-import AddCount from "../components/AddCount/AddCount.jsx"
-import Finances from "../components/Finances/Finances.jsx"
-import SocialLinks from "../components/SocialLinks/SocialLinks.jsx"
-import Markdown from "../components/Markdown/Makdown.jsx"
-
-import { useNavigate } from "react-router-dom"
-
-
-
+import AddCount from "../../components/AddCount/AddCount.jsx"
+import Finances from "../../components/Finances/Finances.jsx"
+import SocialLinks from "../../components/SocialLinks/SocialLinks.jsx"
+import Markdown from "../../components/Markdown/Makdown.jsx"
+import Links from "../../components/Links/Links.jsx"
 
 function Home() {
   
   let options2 = ["", <AddCount />, <Finances />, <Markdown />];
   const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
-
-  const navigate = useNavigate();
-
-  const handleGoToHelp = () => {
-    navigate('/help');
-  }
 
   function secondButtonClicked(place) {
     let setClass = true;
@@ -87,10 +77,7 @@ function Home() {
         </button>
       </div>
       {options2[place2]}
-      <button className="my-link" onClick={handleGoToHelp}>Help</button>
-      {/* <button onClick={handleGoToHelp}>
-        <img src={Image} />
-      </button> */}
+      <Links pageName="Home" />
     </>
   )
 }

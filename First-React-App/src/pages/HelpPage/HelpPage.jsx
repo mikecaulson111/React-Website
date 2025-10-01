@@ -1,13 +1,9 @@
-import { useNavigate } from "react-router-dom"
+import Links from "../../components/Links/Links.jsx"
 
 import "./Help.css"
 
 export default function HelpPage() {
-    const navigate = useNavigate();
 
-    const goToHome = () => {
-        navigate("/");
-    }
     return (
         <>
             <h2>Help Page</h2>
@@ -18,7 +14,7 @@ export default function HelpPage() {
                 coded. They range from very simple to more mathematically complex currently.
                 Feel free to go back to the home page and mess around with them.
             </p>
-            <button className="my-link" onClick={() => goToHome("/")}>Home</button>
+            <Links pageName="Help" />
         </>
     );
 }

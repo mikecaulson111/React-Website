@@ -1,8 +1,9 @@
 import "./App.css"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import HomePage from "./pages/HomePage.jsx"
-import HelpPage from "./pages/HelpPage.jsx"
+import HomePage from "./pages/HomePage/HomePage.jsx"
+import HelpPage from "./pages/HelpPage/HelpPage.jsx"
+import AboutMePage from "./pages/AboutMe/AboutMe.jsx"
 import CornerImage from "./components/CornerImage/CornerImage.jsx"
 
 function Name({name}) {
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/help" element={<HelpPage />} />
+          <Route path="/about-me" element={<AboutMePage />} />
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>
       </Router>
