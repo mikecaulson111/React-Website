@@ -25,6 +25,7 @@ export default function AboutMe() {
                 playing video games with my friends. I also love visiting new places with my girlfriend
                 around the US and the world.
             </p>
+            <h3>Thanks again for visiting my page!</h3>
             <Links pageName="About Me" />
         </>
     );

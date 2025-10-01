@@ -14,6 +14,9 @@ export default function HelpPage() {
                 coded. They range from very simple to more mathematically complex currently.
                 Feel free to go back to the home page and mess around with them.
             </p>
+            <p className="help-p">
+                You can also click on the "About Me" link below to get to know me a little better!
+            </p>
             <Links pageName="Help" />
         </>
     );
