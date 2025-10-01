@@ -9,7 +9,8 @@ export default function AboutMe() {
             <p>
                 Hi I'm Mike, I currently work as a software engineer on an embedded system
                 in both C/C++ and Java. I consider this position to be full stack as I have
-                tasks where I have to work from the UI(Qt) to the back-end and ensure they talk.
+                tasks where I have to work from the UI(Qt) to the back-end and ensure they work
+                together for a great user experience.
                 I have also taken a interest in React and found that it is really enjoyable and
                 something I really like coding with. I am continually working on this website
                 and other personal projects which are generally tracked in my github account
