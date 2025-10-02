@@ -1,9 +1,14 @@
 import "./App.css"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+
+// Pages:
 import HomePage from "./pages/HomePage/HomePage.jsx"
 import HelpPage from "./pages/HelpPage/HelpPage.jsx"
 import AboutMePage from "./pages/AboutMe/AboutMe.jsx"
+import MiaAndMe from "./pages/MiaAndMe/MiaAndMe.jsx"
+
+// Images:
 import CornerImage from "./components/CornerImage/CornerImage.jsx"
 
 function Name({name}) {
@@ -25,6 +30,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/about-me" element={<AboutMePage />} />
+          <Route path="/mia-and-me" element={<MiaAndMe />} />
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>
       </Router>
