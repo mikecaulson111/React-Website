@@ -2,3 +2,15 @@
     width: 375px;
     height: auto;
 }
+
+@keyframes nuggetsCycle {
+    0%   { color: rgb(139, 35, 50)  }
+    25%  { color: rgb(13, 34, 64)   }
+    50%  { color: rgb(255, 198, 39) }
+    75%  { color: rgb(13, 34, 64)   }
+    100% { color: rgb(139, 35, 50)  }
+}
+
+.nuggets-class:hover {
+    animation: nuggetsCycle 3s linear infinite;
+}
