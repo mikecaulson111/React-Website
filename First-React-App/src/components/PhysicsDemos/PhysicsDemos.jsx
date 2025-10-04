@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom"
 
+import "./PhysicsDemos.css"
+
 export default function PhysicsDemos() {
     const navigate = useNavigate();
 
@@ -13,8 +15,8 @@ export default function PhysicsDemos() {
 
     return (
         <div className="button-menu">
-            <button onClick={handleStandingWaves}>Standing Waves</button>
-            <button onClick={handleBouncingBlocks}>Bouncing Blocks</button>
+            <button className="physics-button" onClick={handleStandingWaves}>Standing Waves</button>
+            <button className="physics-button" onClick={handleBouncingBlocks}>Bouncing Blocks</button>
         </div>
     );
 }
