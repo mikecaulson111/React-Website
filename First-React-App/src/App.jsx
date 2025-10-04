@@ -7,8 +7,8 @@ import HomePage from "./pages/HomePage/HomePage.jsx"
 import HelpPage from "./pages/HelpPage/HelpPage.jsx"
 import AboutMePage from "./pages/AboutMe/AboutMe.jsx"
 import MiaAndMe from "./pages/MiaAndMe/MiaAndMe.jsx"
-import BouncingBlock from "./pages/BouncingBlock/BouncingBlock.jsx"
-import StandingWaves from "./pages/BouncingBlock/StandingWaves.jsx"
+import BouncingBlock from "./pages/PhysicsDemos/BouncingBlock.jsx"
+import StandingWaves from "./pages/PhysicsDemos/StandingWaves.jsx"
 
 // Images:
 import CornerImage from "./components/CornerImage/CornerImage.jsx"
@@ -33,7 +33,7 @@ function App() {
           <Route path="/help" element={<HelpPage />} />
           <Route path="/about-me" element={<AboutMePage />} />
           <Route path="/mia-and-me" element={<MiaAndMe />} />
-          <Route path="/bouncing-block" element={<BouncingBlock />} />
+          <Route path="/bouncing-blocks" element={<BouncingBlock />} />
           <Route path="/standing-waves" element={<StandingWaves />} />
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>

@@ -1,5 +1,7 @@
-import React from "react"
+import { useState } from "react"
 import Sketch from "react-p5"
+
+import Links from "../../components/Links/Links.jsx"
 
 let width = 400;
 let height = 400;
@@ -29,6 +31,8 @@ class Block {
       
     }
   }
+
+  // TODO: need to update so that there is also acceleration in the x direction so that it slows down
   
   update() {
     this.velocity.add(this.acceleration);
@@ -48,14 +52,14 @@ class Block {
       this.position.y = height-20;
     }
     
-    
-    
-    
-    
-    
-    //Some dampening on y velocity:
+    //Some dampening on x and y velocities:
     this.velocity.y *= 0.995;
-    //console.log(this.velocity.y);
+    if (Math.abs(this.velocity.x) > 0.01)
+    {
+      this.velocity.x *= 0.99;
+    } else {
+      this.velocity.x = 0;
+    }
   }
   
   jump(value) {
@@ -72,7 +76,6 @@ class Block {
   }
   
   show(p5) {
-    //(8);
     p5.stroke(255);
     p5.fill(this.color[0], this.color[1], this.color[2]);
     p5.rect(this.position.x, this.position.y, 20, 20);
@@ -83,14 +86,26 @@ export default function BouncingBlock() {
     let blocks = [];
     let n = 10;
 
+    const [blocksBounce, setBlocksBounce] = useState(false);
+
+    function makeAllBounce() {
+      for(let i =0; i < n; i++) {
+        blocks[i].jump(Math.floor(Math.random(10,30)));
+      }
+
+      if (blocksBounce) {
+        setBlocksBounce(false);
+      } else {
+        setBlocksBounce(true);
+      }
+    }
+
 
     const setup = (p5, canvasParentRef) => {
       p5.createCanvas(400, 400).parent(canvasParentRef);
       for(let i = 0; i < n; i++) {
-        //blocks[i] = new Block();
         blocks.push(new Block(p5));
       }
-      //frameRate(1);
     }
 
     function keyPressed() {
@@ -106,11 +121,6 @@ export default function BouncingBlock() {
           blocks[i].incx(10);
         }
       }
-      // if(key === ' ') {
-      //   for(let i; i < n; i++) {
-      //     blocks[i].jump();
-      //   }
-      // }
     }
 
     function keyTyped() {
@@ -143,5 +153,11 @@ export default function BouncingBlock() {
       }
     }
 
-    return <Sketch setup={setup} draw={draw} />
+    return (
+      <>
+        <Sketch setup={setup} draw={draw} />
+        {/* <button onClick={() =>makeAllBounce()}>Make blocks bounce</button> */}
+        <Links />
+      </>
+    );
 }
