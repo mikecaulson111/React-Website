@@ -1,0 +1,8 @@
+.trip-list {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.trip-item {
+    display: list-item;
+}

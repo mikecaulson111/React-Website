@@ -1,8 +1,12 @@
+// import { useState } from "react"
+
 import myImage from "../../assets/me_2.jpg"
 import Links from "../../components/Links/Links.jsx"
 import "./AboutMe.css"
 
 export default function AboutMe() {
+
+    // const [nuggetsClass, setNuggetsClass] = useState("");
 
     return (
         <>
@@ -21,7 +25,7 @@ export default function AboutMe() {
             <p>
                 I live in denver and have lived in the denver region my entire life. I went to school
                 at CU Boulder and graduated in 2022 with a bachelor's in Physics with a minor in Computer
-                Science. I enjoy both playing and watching basketball (strongly a Nuggets fan) as well as
+                Science. I enjoy both playing and watching basketball (<span className="nuggets-class">Go Nuggets!</span>) as well as
                 playing video games with my friends. I also love visiting new places with my girlfriend
                 around the US and the world.
             </p>
