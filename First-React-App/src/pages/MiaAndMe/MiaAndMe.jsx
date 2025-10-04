@@ -23,6 +23,7 @@ function OurInfo() {
                 <li>Cruise 2 (California/Mexico) - Nov/Dec 2024</li>
                 <img src={cruise2} className="me-image" />
                 <li>Italy - Oct 2025</li>
+                <h2> YAY </h2>
             </ul>
         </>
     )
