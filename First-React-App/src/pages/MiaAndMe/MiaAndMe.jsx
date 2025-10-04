@@ -24,8 +24,6 @@ function OurInfo() {
                 <img src={cruise2} className="me-image" />
                 <li>Italy - Oct 2025</li>
             </ul>
-
-            <h2>YAY</h2>
         </>
     )
 }
