@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import Links from "../../components/Links/Links.jsx"
+
 import hawaiiImage from "../../assets/hawaiiImage.jpg"
 import cruise1 from "../../assets/cruise1.jpg"
 import mexico from "../../assets/mexico.jpg"
@@ -45,6 +47,7 @@ export default function MiaAndMe() {
             {/* I was thinking about putting in some images here */}
             <button onClick={toggleInfo}>Toggle Info</button>
             {displayInfo ? <OurInfo /> : ""}
+            <Links pageName="MiaAndMe" />
         </>
     )
 }
