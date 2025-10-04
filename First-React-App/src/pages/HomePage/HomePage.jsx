@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import './Home.css'
 
 import AddCount from "../../components/AddCount/AddCount.jsx"
@@ -14,7 +14,7 @@ function Home() {
   const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
 
-  const navigate = () => useNavigate();
+  // const navigate = () => useNavigate();
 
   function secondButtonClicked(place) {
     let setClass = true;
@@ -81,7 +81,7 @@ function Home() {
       </div>
       {options2[place2]}
       <Links pageName="Home" />
-      <button onClick={() => navigate("/mia-and-me")}>mia and me</button>
+      {/* <button onClick={() => navigate("/mia-and-me")}>mia and me</button> */}
     </>
   )
 }
