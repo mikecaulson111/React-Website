@@ -5,12 +5,13 @@ import AddCount from "../../components/AddCount/AddCount.jsx"
 import Finances from "../../components/Finances/Finances.jsx"
 import SocialLinks from "../../components/SocialLinks/SocialLinks.jsx"
 import Markdown from "../../components/Markdown/Makdown.jsx"
+import PhysicsDemos from "../../components/PhysicsDemos/PhysicsDemos.jsx"
 import Links from "../../components/Links/Links.jsx"
 
 function Home() {
   
-  let options2 = ["", <AddCount />, <Finances />, <Markdown />];
-  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button"]);
+  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />];
+  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
 
   function secondButtonClicked(place) {
@@ -35,6 +36,13 @@ function Home() {
         setClass = false;
       } else {
         setPlace2(3);
+      }
+    } else if (place === 4) {
+      if (place2 === 4) {
+        setPlace2(0);
+        setClass = false;
+      } else {
+        setPlace2(4);
       }
     }
     
@@ -74,6 +82,9 @@ function Home() {
         </button>
         <button className={classNames[2]} onClick={() => secondButtonClicked(3)}>
           Markdown Preview
+        </button>
+        <button className={classNames[3]} onClick={() => secondButtonClicked(4)}>
+          Physics Demos
         </button>
       </div>
       {options2[place2]}
