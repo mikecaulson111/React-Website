@@ -23,7 +23,7 @@ export default function AboutMe() {
             <h2>More about my personal life</h2>
             <img src={myImage} className="me-image" />
             <p>
-                I live in denver and have lived in the denver region my entire life. I went to school
+                I live in Denver and have lived in the Denver region my entire life. I went to school
                 at CU Boulder and graduated in 2022 with a bachelor's in Physics with a minor in Computer
                 Science. I enjoy both playing and watching basketball (<span className="nuggets-class">Go Nuggets!</span>) as well as
                 playing video games with my friends. I also love visiting new places with my girlfriend
