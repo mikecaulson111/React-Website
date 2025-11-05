@@ -1,10 +1,5 @@
 import { useState } from "react"
 
-// import { gasp } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// 
-// gsap.registerPlugin(ScrollTrigger);
-
 import Links from "../../components/Links/Links.jsx"
 
 import hawaiiImage from "../../assets/hawaiiImage.jpg"
