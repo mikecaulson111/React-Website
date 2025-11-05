@@ -1,11 +1,19 @@
 import { useState } from "react"
 
+// import { gasp } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// 
+// gsap.registerPlugin(ScrollTrigger);
+
 import Links from "../../components/Links/Links.jsx"
 
 import hawaiiImage from "../../assets/hawaiiImage.jpg"
 import cruise1 from "../../assets/cruise1.jpg"
 import mexico from "../../assets/mexico.jpg"
 import cruise2 from "../../assets/cruise2.jpg"
+import proposal from "../../assets/Proposal.jpg"
+import kissing from "../../assets/Kissing.jpg"
+import boatItaly from "../../assets/Boat.jpg"
 
 import "./MiaAndMe.css"
 
@@ -17,14 +25,17 @@ function OurInfo() {
             <h2>All of our trips</h2>
             <ul className="trip-list">
                 <li className="trip-item">Hawaii - Aug 2022</li>
-                <img src={hawaiiImage} className="me-image" />
+                <img src={hawaiiImage} className="me-image vertical-image" />
                 <li>Cruise 1 (Bahamas) - Oct 2023</li>
-                <img src={cruise1} className="me-image" />
+                <img src={cruise1} className="me-image vertical-image" />
                 <li>Mexico all inclusive - May 2023</li>
-                <img src={mexico} className="me-image" />
+                <img src={mexico} className="me-image vertical-image" />
                 <li>Cruise 2 (California/Mexico) - Nov/Dec 2024</li>
-                <img src={cruise2} className="me-image" />
+                <img src={cruise2} className="me-image vertical-image" />
                 <li>Italy - Oct 2025</li>
+                <img src={proposal} className="me-image vertical-image" />
+                <img src={kissing} className="me-image vertical-image" />
+                <img src={boatItaly} className="me-image vertical-image" />
             </ul>
         </>
     )

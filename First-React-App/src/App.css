@@ -5,9 +5,16 @@
   text-align: center;
 }
 
-html {
-  /* background: radial-gradient(blue, antiquewhite); */
-  background: #efebe0;
+/* Setting background color */
+body {
+  /* background-color: #efebe0; */
+  background-color: rgb(255, 251, 240);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #424242;
+  }
 }
 
 .corner-image {

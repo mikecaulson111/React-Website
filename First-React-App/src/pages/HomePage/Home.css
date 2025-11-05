@@ -53,15 +53,15 @@
 }
 
 .top-button {
-  background-color: antiquewhite;
+  background-color: #ded5be;
 }
 
 .top-button:hover {
-  background-color: rgb(250, 250, 220);
+  background-color: rgb(202, 193, 170);
 }
 
 .top-button-selected {
-  background-color: rgb(210, 195, 175);
+  background-color: rgb(182, 173, 150);
   border: 2px black;
   border-radius: 8px;
 }

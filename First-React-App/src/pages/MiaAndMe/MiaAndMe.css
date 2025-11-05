@@ -6,3 +6,8 @@
 .trip-item {
     display: list-item;
 }
+
+.vertical-image {
+    display: block;
+    margin-bottom: 10px;
+}
