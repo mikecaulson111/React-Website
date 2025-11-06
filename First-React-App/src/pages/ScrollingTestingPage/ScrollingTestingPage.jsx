@@ -1,6 +1,11 @@
+
+/* NOTE: much of this code is derectly taken from AI to help me understand what is happening and how to use scrollTrigger/gsap */
+
 import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import Links from "../../components/Links/Links.jsx";
 
 // Register the plugin globally (do this once in your app)
 gsap.registerPlugin(ScrollTrigger);
@@ -42,46 +47,49 @@ export default function ScrollingTestingPage() {
 
   // 5. Render the elements
     return (
-    <div>
-      {/* Spacer to push content down and show the starting state */}
-      <div style={{ height: '100vh', background: '#e0e0e0', display: 'grid', placeContent: 'center' }}>
-        <h2>Start Scrolling Down!</h2>
-      </div>
-
-      {/* The Section that is Pinned and Contains the Animation */}
-      <section 
-        ref={sectionRef} 
-        className="pinned-section"
-        style={{ height: '100vh', background: '#f5f5f7', position: 'relative' }} // Height must be sufficient for pin
-        // style={{ height: '1500px', background: '#2727acff', position: 'relative' }} // Height must be sufficient for pin
-      >
-        <div 
-          ref={animatedBoxRef} 
-          style={{ 
-            position: 'absolute', 
-            top: '50%', 
-            left: '50%', 
-            transform: 'translate(-50%, -50%)',
-            width: '200px', 
-            height: '200px', 
-            background: 'linear-gradient(135deg, #007aff, #5ac8fa)', // Apple-esque gradient
-            borderRadius: '25px', 
-            display: 'grid', 
-            placeContent: 'center', 
-            color: 'white',
-            fontSize: '1.5rem',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
-          }}
-        >
-          {/* Invite to Mike and Mia */}
-          Animated Box
+    <>
+      <div>
+        {/* Spacer to push content down and show the starting state */}
+        <div style={{ height: '100vh', background: '#e0e0e0', display: 'grid', placeContent: 'center' }}>
+          <h2>Start Scrolling Down!</h2>
         </div>
-      </section>
-      
-      {/* Content after the pinned section */}
-      <div style={{ height: '100vh', background: '#cccccc', display: 'grid', placeContent: 'center' }}>
-        <h2>Animation Complete!</h2>
+
+        {/* The Section that is Pinned and Contains the Animation */}
+        <section 
+          ref={sectionRef} 
+          className="pinned-section"
+          style={{ height: '100vh', background: '#f5f5f7', position: 'relative' }} // Height must be sufficient for pin
+          // style={{ height: '1500px', background: '#2727acff', position: 'relative' }} // Height must be sufficient for pin
+        >
+          <div 
+            ref={animatedBoxRef} 
+            style={{ 
+              position: 'absolute', 
+              top: '50%', 
+              left: '50%', 
+              transform: 'translate(-50%, -50%)',
+              width: '200px', 
+              height: '200px', 
+              background: 'linear-gradient(135deg, #007aff, #5ac8fa)', // Apple-esque gradient
+              borderRadius: '25px', 
+              display: 'grid', 
+              placeContent: 'center', 
+              color: 'white',
+              fontSize: '1.5rem',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
+            }}
+          >
+            {/* Invite to Mike and Mia */}
+            Animated Box
+          </div>
+        </section>
+          
+        {/* Content after the pinned section */}
+        <div style={{ height: '100vh', background: '#cccccc', display: 'grid', placeContent: 'center' }}>
+          <h2>Animation Complete!</h2>
+        </div>
       </div>
-    </div>
+      <Links />
+    </>
   );
 }
