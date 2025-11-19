@@ -23,7 +23,7 @@ function OurInfo() {
                 <img src={hawaiiImage} className="me-image vertical-image" />
                 <li>Cruise 1 (Bahamas) - Oct 2023</li>
                 <img src={cruise1} className="me-image vertical-image" />
-                <li>Mexico all inclusive - May 2023</li>
+                <li>Mexico all inclusive - May 2024</li>
                 <img src={mexico} className="me-image vertical-image" />
                 <li>Cruise 2 (California/Mexico) - Nov/Dec 2024</li>
                 <img src={cruise2} className="me-image vertical-image" />

@@ -47,9 +47,10 @@ function Home() {
       </h2>
 
       <p className="note-paragraph">
-        I have only added 3 projects below, the first one is just testing functionality in React, the second created
-        to help me do some financial calculations that were needed at the time and continue to be helpful today. I am still working
-        on adding other projects to this portfolio and will update as time goes on.
+        I have only added 4 projects below, the first one is just testing functionality in React, the second created
+        to help me do some financial calculations that were needed at the time and continue to be helpful today. The third
+        is a markdown editor/creator, and the last is some of the javascript/p5JS physics projects that I have worked on.
+        I am still working on adding other projects to this portfolio and will update as time goes on.
       </p>
 
       <div className="button-menu">
