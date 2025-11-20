@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Sketch from "react-p5"
 
 import Links from "../../components/Links/Links.jsx"
@@ -83,32 +83,37 @@ class Block {
 }
 
 export default function BouncingBlock() {
-    let blocks = [];
     let n = 10;
 
     const [blocksBounce, setBlocksBounce] = useState(false);
+    const blocksRef = useRef([]);
+
+    function mapUp(val, newMin, newMax) {
+      return (val * (newMax - newMin)) + newMin;
+    }
 
     function makeAllBounce() {
+      const blocks = blocksRef.current;
+
+      if (blocks.length === 0) {
+        console.warn("Blocks are not ready yet (uninitialized)");
+        return;
+      }
       for(let i =0; i < n; i++) {
-        // blocks[i].jump(Math.floor(Math.random(10,30)));
-        blocks[i].velocity.y= Math.floor(Math.random(10,30));
-        console.log("hello: " + i);
+        blocks[i].jump(Math.floor(mapUp(Math.random(), 10, 30)));
       }
 
-      // if (blocksBounce) {
-      //   setBlocksBounce(false);
-      // } else {
-      //   setBlocksBounce(true);
-      // }
       setBlocksBounce(true);
     }
 
 
     const setup = (p5, canvasParentRef) => {
       p5.createCanvas(400, 400).parent(canvasParentRef);
+      const blocks = [];
       for(let i = 0; i < n; i++) {
         blocks.push(new Block(p5));
       }
+      blocksRef.current = blocks;
     }
 
     function keyPressed() {
@@ -143,22 +148,13 @@ export default function BouncingBlock() {
     }
 
     function allJump() {
-      for (var i =0; i < blocks.length; i++) {
-        // blocks[i].jump(Math.floor(Math.random(10,30)));
-        // blocks[i].velocity.y += Math.floor(Math.random(10,30));
-        makeAllBounce();
-      }
+      makeAllBounce();
     }
 
     const draw = (p5) => {
+      const blocks = blocksRef.current;
       p5.background(0);
       for(let i = 0; i < blocks.length; i++) {
-        //This to calculate if bounce off each other
-        // for(let j = 0; j < blocks.length; j++) {
-        //   if(j != i) {
-        //     blocks[i].bounceEachother(blocks[j]);
-        //   }
-        // }
         blocks[i].update();
         blocks[i].show(p5);
       }
@@ -168,7 +164,6 @@ export default function BouncingBlock() {
       <>
         <Sketch setup={setup} draw={draw} />
         <button onClick={allJump}>Jump</button>
-        {/* <button onClick={() =>makeAllBounce()}>Make blocks bounce</button> */}
         <Links />
       </>
     );
