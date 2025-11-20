@@ -90,14 +90,17 @@ export default function BouncingBlock() {
 
     function makeAllBounce() {
       for(let i =0; i < n; i++) {
-        blocks[i].jump(Math.floor(Math.random(10,30)));
+        // blocks[i].jump(Math.floor(Math.random(10,30)));
+        blocks[i].velocity.y= Math.floor(Math.random(10,30));
+        console.log("hello: " + i);
       }
 
-      if (blocksBounce) {
-        setBlocksBounce(false);
-      } else {
-        setBlocksBounce(true);
-      }
+      // if (blocksBounce) {
+      //   setBlocksBounce(false);
+      // } else {
+      //   setBlocksBounce(true);
+      // }
+      setBlocksBounce(true);
     }
 
 
@@ -139,6 +142,14 @@ export default function BouncingBlock() {
       }
     }
 
+    function allJump() {
+      for (var i =0; i < blocks.length; i++) {
+        // blocks[i].jump(Math.floor(Math.random(10,30)));
+        // blocks[i].velocity.y += Math.floor(Math.random(10,30));
+        makeAllBounce();
+      }
+    }
+
     const draw = (p5) => {
       p5.background(0);
       for(let i = 0; i < blocks.length; i++) {
@@ -156,6 +167,7 @@ export default function BouncingBlock() {
     return (
       <>
         <Sketch setup={setup} draw={draw} />
+        <button onClick={allJump}>Jump</button>
         {/* <button onClick={() =>makeAllBounce()}>Make blocks bounce</button> */}
         <Links />
       </>
