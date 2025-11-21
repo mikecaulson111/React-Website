@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 import Sketch from "react-p5"
 
 import Links from "../../components/Links/Links.jsx"
+import "./PhysicsDemos.css";
 
 let width = 400;
 let height = 400;
@@ -85,27 +86,11 @@ class Block {
 export default function BouncingBlock() {
     let n = 10;
 
-    const [blocksBounce, setBlocksBounce] = useState(false);
     const blocksRef = useRef([]);
 
     function mapUp(val, newMin, newMax) {
       return (val * (newMax - newMin)) + newMin;
     }
-
-    function makeAllBounce() {
-      const blocks = blocksRef.current;
-
-      if (blocks.length === 0) {
-        console.warn("Blocks are not ready yet (uninitialized)");
-        return;
-      }
-      for(let i =0; i < n; i++) {
-        blocks[i].jump(Math.floor(mapUp(Math.random(), 10, 30)));
-      }
-
-      setBlocksBounce(true);
-    }
-
 
     const setup = (p5, canvasParentRef) => {
       p5.createCanvas(400, 400).parent(canvasParentRef);
@@ -148,7 +133,31 @@ export default function BouncingBlock() {
     }
 
     function allJump() {
-      makeAllBounce();
+      const blocks = blocksRef.current;
+
+      if (blocks.length === 0) {
+        console.warn("Blocks are not ready yet (uninitialized)");
+        return;
+      }
+      for(let i =0; i < n; i++) {
+        blocks[i].jump(Math.floor(mapUp(Math.random(), 10, 30)));
+      }
+    }
+
+    function allStop() {
+      const blocks = blocksRef.current;
+      for (var i = 0; i < n; i++) {
+        blocks[i].velocity.x = 0;
+        blocks[i].velocity.y = 0;
+      }
+    }
+
+    function allRainbow() {
+      const blocks = blocksRef.current;
+      for(let i =0; i < n; i++) {
+        blocks[i].jump(Math.floor(mapUp(Math.random(), 10, 30)));
+        blocks[i].velocity.x = Math.floor(mapUp(Math.random(), -8, 8));
+      }
     }
 
     const draw = (p5) => {
@@ -163,7 +172,9 @@ export default function BouncingBlock() {
     return (
       <>
         <Sketch setup={setup} draw={draw} />
-        <button onClick={allJump}>Jump</button>
+        <button className="blocks-button" onClick={allJump}>Jump</button>
+        <button className="blocks-button" onClick={allStop}>Stop them all</button>
+        <button className="blocks-button" onClick={allRainbow}>Random Jump</button>
         <Links />
       </>
     );

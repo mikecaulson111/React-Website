@@ -38,7 +38,6 @@ export default function ConvertFromRomanNumerals() {
     const handleSubmit = (e) => {
         e.preventDefault();
         var calculatedVal = 0;
-        // var errorCalculating = "";
 
         for (var i = numberToConvert.length - 1; i >= 0; i--) {
             console.log(numberToConvert[i], calculatedVal);

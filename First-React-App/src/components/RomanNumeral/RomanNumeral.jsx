@@ -21,8 +21,6 @@ export default function RomanNumeral() {
 
     return (
         <>
-            {/* <p>{convertingToNumerals}</p> */}
-            {/* will want to have radio button here for which type of conversion */}
             <h2>Roman Numeral Converter</h2>
             <p className="description-paragraph">
                 Here is a roman numeral converter, you can choose to convert from integer
