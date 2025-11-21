@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "../RomanNumerals.css";
+
 export default function ConvertFromRomanNumerals() {
     const romanLetters = ['I', 'V', 'X', 'L', 'C', 'D', 'M'];
     const romanVals    = [ 1,   5,   10,  50,  100, 500, 1000];
@@ -66,10 +68,12 @@ export default function ConvertFromRomanNumerals() {
 
     return (
         <>
-            <h2>Converting to roman numerals</h2>
+            <h2 className="section-name-roman">Converting from roman numerals</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Number to convert to Roman Numerals: 
+                    <p>
+                        Roman Numerals to convert back to integer: 
+                    </p>
                     <input
                         type="text"
                         value={numberToConvert}

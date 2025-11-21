@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "./RomanNumerals.css";
+
 import ConvertToRomanNumerals from "./ConvertToRomanNumerals/ConvertToRomanNumerals.jsx";
 import ConvertFromRomanNumerals from "./ConvertFromRomanNumerals/ConvertFromRomanNumerals.jsx";
 
@@ -21,6 +23,13 @@ export default function RomanNumeral() {
         <>
             {/* <p>{convertingToNumerals}</p> */}
             {/* will want to have radio button here for which type of conversion */}
+            <h2>Roman Numeral Converter</h2>
+            <p className="description-paragraph">
+                Here is a roman numeral converter, you can choose to convert from integer
+                to roman numerals or vice versa. Currently if you are converting to roman
+                numerals it will only be accurate up to 3,999. Also there is no validation
+                that the roman numerals you pass in are valid roman numerals.
+            </p>
             <label>
                 Converting to Roman Numerals
                 <input
