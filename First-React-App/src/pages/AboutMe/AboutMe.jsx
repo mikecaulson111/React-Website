@@ -1,6 +1,6 @@
 // import { useState } from "react"
 
-import myImage from "../../assets/me_2.jpg"
+import myImage from "../../assets/me_2.webp"
 import Links from "../../components/Links/Links.jsx"
 import "./AboutMe.css"
 
