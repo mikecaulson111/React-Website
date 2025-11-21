@@ -6,44 +6,23 @@ import Finances from "../../components/Finances/Finances.jsx"
 import SocialLinks from "../../components/SocialLinks/SocialLinks.jsx"
 import Markdown from "../../components/Markdown/Makdown.jsx"
 import PhysicsDemos from "../../components/PhysicsDemos/PhysicsDemos.jsx"
+import RomanNumeral from "../../components/RomanNumeral/RomanNumeral.jsx"
 import Links from "../../components/Links/Links.jsx"
 
 function Home() {
   
-  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />];
-  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button"]);
+  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />];
+  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
 
   function secondButtonClicked(place) {
     let setClass = true;
-    if (place === 1) {
-      if (place2 === 1) {
-        setPlace2(0)
-        setClass = false;
-      } else {
-        setPlace2(1)
-      }
-    } else if (place === 2) {
-      if (place2 === 2) {
-        setPlace2(0);
-        setClass = false;
-      } else {
-        setPlace2(2);
-      }
-    } else if (place === 3) {
-      if (place2 === 3) {
-        setPlace2(0);
-        setClass = false;
-      } else {
-        setPlace2(3);
-      }
-    } else if (place === 4) {
-      if (place2 === 4) {
-        setPlace2(0);
-        setClass = false;
-      } else {
-        setPlace2(4);
-      }
+
+    if (place2 === place) {
+      setPlace2(0);
+      setClass = false;
+    } else {
+      setPlace2(place);
     }
     
     setClassNames((classNames) => classNames.map((item, i) => (setClass && i === place - 1 ? "top-button-selected" : "top-button")));
@@ -68,9 +47,11 @@ function Home() {
       </h2>
 
       <p className="note-paragraph">
-        I have only added 3 projects below, the first one is just testing functionality in React, the second created
-        to help me do some financial calculations that were needed at the time and continue to be helpful today. I am still working
-        on adding other projects to this portfolio and will update as time goes on.
+        I have only added a couple projects below, the first one is just testing functionality in React, the second created
+        to help me do some financial calculations that were needed at the time and continue to be helpful today. The third
+        is a markdown editor/creator, and the next is some of the javascript/p5JS physics projects that I have worked on.
+        After that is a converter for roman numberals.
+        I am still working on adding other projects to this portfolio and will update as time goes on.
       </p>
 
       <div className="button-menu">
@@ -85,6 +66,9 @@ function Home() {
         </button>
         <button className={classNames[3]} onClick={() => secondButtonClicked(4)}>
           Physics Demos
+        </button>
+        <button className={classNames[4]} onClick={() => secondButtonClicked(5)}>
+          Roman Numeral converter
         </button>
       </div>
       {options2[place2]}

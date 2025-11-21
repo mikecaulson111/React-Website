@@ -23,6 +23,13 @@ export default function WorstTaxes() {
 
     const handleIncomeChange = (e) => {
         setIncome(e.target.value);
+        // const rawValue = e.target.value;
+        // const numericVal = rawValue.replace(/[$,]/g, '');
+        // if (!isNaN(numericVal) && numericVal !== '') {
+        //     setIncome(parseFloat(numericVal));
+        // } else if (numericVal === '') {
+        //     setIncome(0);
+        // }
     }
 
     const handleSubmit = (e) => {
@@ -61,6 +68,14 @@ export default function WorstTaxes() {
         setTaxesTotal(totalTaxes);
     }
 
+    const formatCurrency = (value) => {
+        return new Intl.NumberFormat('en-US', {
+            style: "currency",
+            currency: "USD",
+            minimumFractionDigits: 2,
+        }).format(value);
+    };
+
     return (
     <>
         <h3>This is to calculate worst case tax scenario (with only standard deduction)</h3>
@@ -70,8 +85,10 @@ export default function WorstTaxes() {
                 Yearly Income $
                 <input
                     type="number"
+                    // value={formatCurrency(income)}
                     value={income}
                     onChange={handleIncomeChange}
+                    // placeholder="$0.00"
                 />
             </label>
 
