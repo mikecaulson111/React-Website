@@ -9,6 +9,7 @@ import AboutMePage from "./pages/AboutMe/AboutMe.jsx"
 import MiaAndMe from "./pages/MiaAndMe/MiaAndMe.jsx"
 import BouncingBlock from "./pages/PhysicsDemos/BouncingBlock.jsx"
 import StandingWaves from "./pages/PhysicsDemos/StandingWaves.jsx"
+import SpringWave from "./pages/PhysicsDemos/SpringWave.jsx"
 import ScrollingTestingPage from "./pages/ScrollingTestingPage/ScrollingTestingPage.jsx"
 
 // Images:
@@ -36,6 +37,7 @@ function App() {
           <Route path="/mia-and-me" element={<MiaAndMe />} />
           <Route path="/bouncing-blocks" element={<BouncingBlock />} />
           <Route path="/standing-waves" element={<StandingWaves />} />
+          <Route path="/spring-wave" element={<SpringWave />} />
           <Route path="/scrolling-testing" element={<ScrollingTestingPage />} />
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>
