@@ -125,11 +125,15 @@ export default function SpringWave() {
     const [globalPosition, setGlobalPosition] = useState( {x: 0, y: 0} );
     
     const isMobile = useIsMobile();
+    if (isMobile) {
+        width = 350;
+        height = 350;
+    }
 
     const size = isMobile ? 350 : 400;
 
     const setup = (p5, canvasParentRef) => {
-      p5.createCanvas(400, 400).parent(canvasParentRef);
+      p5.createCanvas(size, size).parent(canvasParentRef);
       let divisor = width / n;
 
       if (!dots[1]) {
