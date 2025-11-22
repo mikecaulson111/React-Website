@@ -125,7 +125,8 @@ export default function SpringWave() {
     const [globalPosition, setGlobalPosition] = useState( {x: 0, y: 0} );
     
     const isMobile = useIsMobile();
-    console.log(isMobile);
+
+    const size = isMobile ? 350 : 400;
 
     const setup = (p5, canvasParentRef) => {
       p5.createCanvas(400, 400).parent(canvasParentRef);
@@ -250,7 +251,6 @@ export default function SpringWave() {
             />
             <button className="blocks-button" onClick={handleButtonClick}>{buttonTexts[buttonText]}</button>
             <p>Move slider above to change number of waves</p>
-            {isMobile ? <h3>MOBILE</h3> : <h3>DESKTOP</h3>}
             <Links />
         </>
     )
