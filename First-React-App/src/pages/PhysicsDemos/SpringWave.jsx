@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sketch from "react-p5";
 
 import Links from "../../components/Links/Links.jsx";
@@ -45,7 +45,7 @@ class Dot {
   }
   
   
-  update1(offset, timeinc, p5) {
+  update1(offset, timeinc, posy, p5) {
     // this.acc = -1 * y_diff * k;
     // this.velocity += this.acc;
     // this.y += this.velocity;
@@ -54,7 +54,8 @@ class Dot {
       //this.y = mouseY+offset;
       this.y = height/2 + 200*p5.sin(time)+offset;
     } else {
-      this.y = mouseY + offset;
+    //   this.y = mouseY + offset;
+        this.y = posy - offset;
     }
     
     time += timeinc;
@@ -102,24 +103,53 @@ export default function SpringWave() {
 
     const [position, setPosition] = useState(3);
     const [buttonText, setButtonText] = useState(0);
+    const [globalPosition, setGlobalPosition] = useState( {x: 0, y: 0} );
 
     const setup = (p5, canvasParentRef) => {
       p5.createCanvas(400, 400).parent(canvasParentRef);
       let divisor = width / n;
-      // slider = createSlider(0, 10, 5);
-      // button = createButton('click me');
-      // button.mousePressed(changeEnd)
-    
-      for(let i = 0; i < n; i++) {
-        dots.push(new Dot(i*divisor + (divisor/2), height/2, p5));
+
+      if (!dots[1]) {
+        for(let i = 0; i < n; i++) {
+            dots.push(new Dot(i*divisor + (divisor/2), height/2, p5));
+        } 
       }
     }
 
     function keyTyped() {
-      if(key === 's') {
         dots[0].change();
-      }
     }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 's') {
+            keyTyped();
+        }
+    }
+
+    const handleGlobalMouseMove = (event) => {
+        setGlobalPosition(
+            {
+                x: event.clientX,
+                y: event.clientY
+            }
+        );
+    }
+
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener('mousemove', handleGlobalMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleGlobalMouseMove);
+        };
+    }, []);
 
     function changeEnd() {
       if(changeEND) {
@@ -131,12 +161,11 @@ export default function SpringWave() {
 
     const draw = (p5) => {
       p5.background(220);
-    //   var timeinc = p5.map(slider.value(), 0, 10, 0.01,0.1);
       var timeinc = p5.map(position, 0, 10, 0.01,0.1);
       for(let i = 0; i < dots.length-1; i++) {
 
         if(i == 0) {
-          dots[i].update1(0,timeinc,p5);
+          dots[i].update1(0,timeinc,globalPosition.y,p5);
         
         
           //Difference between next dot's y and current's y 
@@ -166,10 +195,30 @@ export default function SpringWave() {
         setButtonText(buttonText === 0 ? 1 : 0);
     }
 
+    const handleMouseMove = (event) => {
+        setGlobalPosition({
+            x: event.clientX,
+            y: event.clientY
+        });
+    }
+
     return (
         <>
             <h2>Here is the Spring Wave example:</h2>
+            {/* <div
+              onMouseMove={handleMouseMove} // Apply the handler to the element
+              style={{ 
+                width: '400px', 
+                height: '200px', 
+                backgroundColor: '#f0f0f0', 
+                border: '1px solid #ccc',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            > */}
             <Sketch setup={setup} draw={draw} />
+            {/* </div> */}
             <input 
                 type="range"
                 min="0"
