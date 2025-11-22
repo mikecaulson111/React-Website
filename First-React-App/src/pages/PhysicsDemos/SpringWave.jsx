@@ -98,12 +98,34 @@ var height = 400;
 
 const buttonTexts = ["Press to hold last ball", "Press to release last ball"];
 
+function useIsMobile() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+            return;
+        }
+
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        const isMobileDevice = /android|webOS|iPhone|iPad|iPod|blackberry|IEMobile|Opera Mini/i.test(userAgent);
+
+        setIsMobile(isMobileDevice);
+
+    }, []);
+
+    return isMobile;
+}
+
 
 export default function SpringWave() {
 
     const [position, setPosition] = useState(3);
     const [buttonText, setButtonText] = useState(0);
     const [globalPosition, setGlobalPosition] = useState( {x: 0, y: 0} );
+    
+    const isMobile = useIsMobile();
+    console.log(isMobile);
 
     const setup = (p5, canvasParentRef) => {
       p5.createCanvas(400, 400).parent(canvasParentRef);
@@ -228,6 +250,7 @@ export default function SpringWave() {
             />
             <button className="blocks-button" onClick={handleButtonClick}>{buttonTexts[buttonText]}</button>
             <p>Move slider above to change number of waves</p>
+            {isMobile ? <h3>MOBILE</h3> : <h3>DESKTOP</h3>}
             <Links />
         </>
     )
