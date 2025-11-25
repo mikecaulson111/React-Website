@@ -9,6 +9,10 @@ import cruise2 from "../../assets/cruise2.jpg"
 import proposal from "../../assets/Proposal.jpg"
 import kissing from "../../assets/Kissing.jpg"
 import boatItaly from "../../assets/Boat.jpg"
+import margaritaville1 from "../../assets/Margaritaville1.jpg"
+import margaritaville2 from "../../assets/Margaritaville2.jpg"
+import californiaWedding from "../../assets/CaliforniaWedding.jpg"
+
 
 import "./MiaAndMe.css"
 
@@ -19,18 +23,50 @@ function OurInfo() {
             <p>06/25/2020</p>
             <h2>All of our trips</h2>
             <ul className="trip-list">
-                <li className="trip-item">Hawaii - Aug 2022</li>
-                <img src={hawaiiImage} className="me-image vertical-image" />
-                <li>Cruise 1 (Bahamas) - Oct 2023</li>
-                <img src={cruise1} className="me-image vertical-image" />
-                <li>Mexico all inclusive - May 2024</li>
-                <img src={mexico} className="me-image vertical-image" />
-                <li>Cruise 2 (California/Mexico) - Nov/Dec 2024</li>
-                <img src={cruise2} className="me-image vertical-image" />
-                <li>Italy - Oct 2025</li>
-                <img src={proposal} className="me-image vertical-image" />
-                <img src={kissing} className="me-image vertical-image" />
-                <img src={boatItaly} className="me-image vertical-image" />
+                <li className="trip-item">
+                    <p className="trip-title">Hawaii - Aug 2022</p>
+                    <div className="image-gallery">
+                        {/* <img src={hawaiiImage} className="me-image vertical-image" /> */}
+                        <img src={hawaiiImage} className="new-me-image" />
+                    </div>
+                </li>
+                <li className="trip-item">
+                    <p className="trip-title">Cruise 1 (Bahamas) - Oct 2023</p></li>
+                    <div className="image-gallery">
+                        <img src={cruise1} className="new-me-image" />
+                    </div>
+                <li className="trip-item">
+                    <p className="trip-title">Mexico all inclusive - May 2024</p>
+                    <div className="image-gallery">
+                        <img src={mexico} className="new-me-image" />
+                    </div>
+                </li>
+                <li className="trip-item">
+                    <p className="trip-title">Cruise3 (Margaritaville/Bahamas stay trip)(Mike KP wedding) Jul/Aug 2024</p>
+                    <div className="image-gallery">
+                        <img src={margaritaville1} className="new-me-image" />
+                        <img src={margaritaville2} className="new-me-image" />
+                        <img src={californiaWedding} className="new-me-image" />
+                    </div>
+                </li>
+                <li className="trip-item">
+                    <p className="trip-title">Cruise 2 (California/Mexico) - Nov/Dec 2024</p>
+                    <div className="image-gallery">
+                        <img src={cruise2} className="new-me-image" />
+                    </div>
+                </li>
+                <li className="trip-item">
+                    <p className="trip-title">Italy - Oct 2025</p>
+                    <div className="image-gallery">
+
+                        <img src={proposal} className="new-me-image" />
+                        <img src={kissing} className="new-me-image" />
+                        <img src={boatItaly} className="new-me-image" />
+                    </div>
+                </li>
+                <li className="trip-item">
+                    <p className="trip-title">Cruise 4 back to the bahamas</p>
+                </li>
             </ul>
         </>
     )

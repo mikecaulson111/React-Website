@@ -13,10 +13,15 @@ export default function PhysicsDemos() {
         navigate("/bouncing-blocks");
     }
 
+    const handleSpringWave = () => {
+        navigate("/spring-wave");
+    }
+
     return (
         <div className="button-menu">
             <button className="physics-button" onClick={handleStandingWaves}>Standing Waves</button>
             <button className="physics-button" onClick={handleBouncingBlocks}>Bouncing Blocks</button>
+            <button className="physics-button" onClick={handleSpringWave}>Spring Wave</button>
         </div>
     );
 }
