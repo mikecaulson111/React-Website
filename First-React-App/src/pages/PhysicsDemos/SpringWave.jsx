@@ -278,20 +278,7 @@ export default function SpringWave() {
     return (
         <>
             <h2>Here is the Spring Wave example:</h2>
-            {/* <div
-              onMouseMove={handleMouseMove} // Apply the handler to the element
-              style={{ 
-                width: '400px', 
-                height: '200px', 
-                backgroundColor: '#f0f0f0', 
-                border: '1px solid #ccc',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            > */}
             <Sketch setup={setup} draw={draw} />
-            {/* </div> */}
             <input 
                 type="range"
                 min="0"
