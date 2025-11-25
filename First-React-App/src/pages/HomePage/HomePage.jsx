@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import './Home.css'
 
 import AddCount from "../../components/AddCount/AddCount.jsx"
@@ -14,6 +15,8 @@ function Home() {
   let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />];
   const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
+  const navigate = useNavigate();
+  var lastThreeKeys = "";
 
   function secondButtonClicked(place) {
     let setClass = true;
@@ -27,6 +30,28 @@ function Home() {
     
     setClassNames((classNames) => classNames.map((item, i) => (setClass && i === place - 1 ? "top-button-selected" : "top-button")));
   }
+
+  const handleKeyDown = (event) => {
+    if ( /^[a-zA-Z]$/.test(event.key) ) {
+      if (lastThreeKeys.length === 3) {
+        lastThreeKeys = lastThreeKeys.slice(1) + event.key;
+
+      } else {
+        lastThreeKeys = lastThreeKeys + event.key;
+      }
+    }
+    if (lastThreeKeys.length === 3 && lastThreeKeys.toLowerCase() === "mia") {
+      navigate("/mia-and-me");
+    }
+  }
+
+  useEffect(() => {
+      window.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+          window.removeEventListener('keydown', handleKeyDown);
+      };
+  }, []);
   
   return (
     <>
