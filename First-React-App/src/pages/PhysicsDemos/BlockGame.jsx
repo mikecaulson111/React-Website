@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import Sketch from "react-p5";
 
-import Links from "../../components/Links/Links.jsx"
+import Links from "../../components/Links/Links.jsx";
+import "./PhysicsDemos.css";
 
 let width = 400;
 let height = 400;
@@ -10,12 +11,19 @@ var xVelocity = 0;
 var xRightPress = false;
 var xLeftPress = false;
 var xChange = 3;
+var consecutiveJumps = 0;
 
-let n = 2;
+let n = 4;
 var blocks = [];
 
+const Types = {
+    NONE: "NONE",
+    WALL: "WALL",
+    COLLECTABLE: "COLLECTABLE",
+};
+
 class Block {
-    constructor(p5, x, y, widthBlock, heightBlock, wall) {
+    constructor(p5, x, y, widthBlock, heightBlock, type) {
         this.position = p5.createVector(x, y);
         this.velocity = p5.createVector(0, 0);
         this.acceleration = p5.createVector(0, 1);
@@ -26,11 +34,19 @@ class Block {
         this.prevY = this.position.y + this.height;
         this.prevX = this.position.x;
 
-        this.wall = wall;
+        // this.wall = wall;
+        this.type = type;
+        this.showable = true;
 
         this.color = [];
-        for (var i = 0; i < 3; i++) {
-            this.color.push(p5.floor(p5.random(0, 255)));
+        if (type !== Types.COLLECTABLE) {
+            for (var i = 0; i < 3; i++) {
+                this.color.push(p5.floor(p5.random(0, 255)));
+            }
+        } else {
+            this.color.push(255);
+            this.color.push(255);
+            this.color.push(0);
         }
     }
 
@@ -41,25 +57,48 @@ class Block {
             let otherHeight = blocks[i].getHeight();
             let yPos = this.position.y + this.height;
             let xPos = this.position.x + this.width;
-            let wall = blocks[i].getWall();
-
+            // let wall = blocks[i].getWall();
+            let type = blocks[i].getType();
+            
             if (yPos > otherPosition.y && (this.position.x < otherPosition.x + otherWidth && xPos > otherPosition.x)) {
                if (this.prevY <= otherPosition.y) {
-                this.position.y = otherPosition.y - this.height;
-                this.velocity.y = 0;
-               }
+                    if (type !== Types.COLLECTABLE) {
+                        this.position.y = otherPosition.y - this.height;
+                        this.velocity.y = 0;
+                        consecutiveJumps = 0;
+                    } else {
+                        if (blocks[i].showable) {
+                            blocks[i].setShowable(false);
+                            console.log("Collected");
+                        }
+                    }
+                }
             }
 
-            if (wall) {
+            if (type === Types.WALL || type === Types.COLLECTABLE) {
                 if (this.prevX + this.width <= otherPosition.x && xPos > otherPosition.x) {
                     if (this.position.y < otherPosition.y + otherHeight && yPos > otherPosition.y) {
                         // hitting left wall
-                        this.position.x = otherPosition.x - this.width;
+                        if (type === Types.WALL) {
+                            this.position.x = otherPosition.x - this.width;
+                        } else {
+                            if (blocks[i].showable) {
+                                blocks[i].setShowable(false);
+                                console.log("Collected!");
+                            }
+                        }
                     }
                 } else if (this.prevX >= otherPosition.x + otherWidth && this.position.x < otherPosition.x + otherWidth) {
                     if (this.position.y < otherPosition.y + otherHeight && yPos > otherPosition.y) {
                         // hitting right wall
-                        this.position.x = otherPosition.x + otherWidth;
+                        if (type === Types.WALL) {
+                            this.position.x = otherPosition.x + otherWidth;
+                        } else {
+                            if (blocks[i].showable) {
+                                blocks[i].setShowable(false);
+                                console.log("Collected");
+                            }
+                        }
                     }
                 }
             }
@@ -81,6 +120,7 @@ class Block {
         if (this.position.y > height - 20) {
             this.velocity.y = 0;
             this.position.y = height - 20;
+            consecutiveJumps = 0;
         }
 
         this.checkBlockCollision();
@@ -120,6 +160,14 @@ class Block {
         return this.wall;
     }
 
+    getType() {
+        return this.type;
+    }
+
+    setShowable(val) {
+        this.showable = val;
+    }
+
     kindaUpdate(block) {
         this.velocity.x = -1;
         this.position.add(this.velocity);
@@ -131,8 +179,12 @@ export default function BlockGame() {
     var block;
 
     const handleKeyDown = (event) => {
-        if (event.key === ' ') {
-            block.jump(20);
+        if (event.key === ' ' || event.key === 'j') {
+            // block.jump(20);
+            if (consecutiveJumps < 2) {
+                block.jump(14);
+            }
+            consecutiveJumps += 1;
         } else if (event.key === 'a') {
             if (!xLeftPress) {
                 xLeftPress = true;
@@ -179,9 +231,11 @@ export default function BlockGame() {
 
     const setup = (p5, canvasParentRef) => {
         p5.createCanvas(width, height).parent(canvasParentRef);
-        block = new Block(p5, width/2, height/2, 20, 20, false);
-        blocks.push(new Block(p5, width - 30, height/2, 30, height/2, true));
-        blocks.push(new Block(p5, width - 60, height - 200, 10, 20, false));
+        block = new Block(p5, width/2, height/2, 20, 20, Types.NONE);
+        blocks.push(new Block(p5, width - 30, 50, 30, 40, Types.WALL));
+        blocks.push(new Block(p5, width - 60, height - 200, 10, 20, Types.NONE));
+        blocks.push(new Block(p5, width/4, height - 175, 40, 175, Types.WALL));
+        blocks.push(new Block(p5, width - 20, 20, 10, 10, Types.COLLECTABLE));
     }
 
     const draw = (p5) => {
@@ -190,7 +244,9 @@ export default function BlockGame() {
         block.show(p5);
         for (var i = 0; i < n; i++) {
             // blocks[i].kindaUpdate(block);
-            blocks[i].show(p5);
+            if (blocks[i].showable) {
+                blocks[i].show(p5);
+            }
         }
     }
 
@@ -198,7 +254,20 @@ export default function BlockGame() {
         <>
             <h2>Mini Block Game</h2>
             <Sketch setup={setup} draw={draw} />
+            <h3 className="block-game-description">
+                Here is a mini block game that I have created, it is nothing crazy and is super simple at the moment.
+                It allows you to jump and move left and right, there are a couple different types of blocks, the user block,
+                a regular block which only has top collision (like its a floor), and a wall which has collision both on top
+                as well as the sides.
+            </h3>
             <p>This will only work for people in pc browser, not mobile since it requires keyboard inputs</p>
+            <h3>List of controls:</h3>
+            <ul className="block-game-list">
+                <li><p>Space Bar - Jump</p></li>
+                <li><p>'j' key - Jump</p></li>
+                <li><p>'a' key - move left</p></li>
+                <li><p>'d' key - move right</p></li>
+            </ul>
             <Links />
         </>
     )
