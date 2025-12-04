@@ -12,15 +12,30 @@ var xRightPress = false;
 var xLeftPress = false;
 var xChange = 3;
 var consecutiveJumps = 0;
+var collectedNum = 0;
 
-let n = 4;
+// Total number of blocks
+let n = 7;
 var blocks = [];
 
 const Types = {
     NONE: "NONE",
     WALL: "WALL",
     COLLECTABLE: "COLLECTABLE",
+    RESTART: "RESTART",
 };
+
+const resetAllCollectables = () => {
+    for (var i = 0; i < n; i++) {
+        if (blocks[i].getType() === Types.COLLECTABLE) {
+            if (!blocks[i].getShowable()) {
+                blocks[i].setShowable(true);
+                collectedNum--;
+            }
+        }
+    }
+};
+
 
 class Block {
     constructor(p5, x, y, widthBlock, heightBlock, type) {
@@ -34,9 +49,12 @@ class Block {
         this.prevY = this.position.y + this.height;
         this.prevX = this.position.x;
 
-        // this.wall = wall;
         this.type = type;
-        this.showable = true;
+        if (type === Types.RESTART) {
+            this.showable = false;
+        } else {
+            this.showable = true;
+        }
 
         this.color = [];
         if (type !== Types.COLLECTABLE) {
@@ -63,13 +81,33 @@ class Block {
             if (yPos > otherPosition.y && (this.position.x < otherPosition.x + otherWidth && xPos > otherPosition.x)) {
                if (this.prevY <= otherPosition.y) {
                     if (type !== Types.COLLECTABLE) {
-                        this.position.y = otherPosition.y - this.height;
-                        this.velocity.y = 0;
-                        consecutiveJumps = 0;
+                        if (type === Types.RESTART) {
+                            resetAllCollectables();
+                        } else {
+                            this.position.y = otherPosition.y - this.height;
+                            this.velocity.y = 0;
+                            consecutiveJumps = 0;
+                        }
                     } else {
                         if (blocks[i].showable) {
                             blocks[i].setShowable(false);
                             console.log("Collected");
+                            collectedNum++;
+                        }
+                    }
+                }
+            }
+
+            if (this.position.y < (otherPosition.y + otherHeight) && (this.position.x < otherPosition.x + otherWidth && xPos > otherPosition.x)) {
+                if (this.prevY - this.height >= otherPosition.y + otherHeight) {
+                    if (type === Types.WALL) {
+                        this.position.y = otherPosition.y + otherHeight;
+                        this.velocity.y = 0;
+                    } else if (type === Types.COLLECTABLE) {
+                        if (blocks[i].showable) {
+                            blocks[i].setShowable(false);
+                            console.log("Collected!");
+                            collectedNum++;
                         }
                     }
                 }
@@ -85,6 +123,7 @@ class Block {
                             if (blocks[i].showable) {
                                 blocks[i].setShowable(false);
                                 console.log("Collected!");
+                                collectedNum++;
                             }
                         }
                     }
@@ -97,6 +136,7 @@ class Block {
                             if (blocks[i].showable) {
                                 blocks[i].setShowable(false);
                                 console.log("Collected");
+                                collectedNum++;
                             }
                         }
                     }
@@ -168,6 +208,10 @@ class Block {
         this.showable = val;
     }
 
+    getShowable() {
+        return this.showable;
+    }
+
     kindaUpdate(block) {
         this.velocity.x = -1;
         this.position.add(this.velocity);
@@ -231,11 +275,25 @@ export default function BlockGame() {
 
     const setup = (p5, canvasParentRef) => {
         p5.createCanvas(width, height).parent(canvasParentRef);
+
+        // Player
         block = new Block(p5, width/2, height/2, 20, 20, Types.NONE);
+
+        // WALLS
         blocks.push(new Block(p5, width - 30, 50, 30, 40, Types.WALL));
-        blocks.push(new Block(p5, width - 60, height - 200, 10, 20, Types.NONE));
         blocks.push(new Block(p5, width/4, height - 175, 40, 175, Types.WALL));
+
+        // Non Wall platforms
+        blocks.push(new Block(p5, width - 60, height - 200, 10, 20, Types.NONE));
+
+        // COLLECTABLES
         blocks.push(new Block(p5, width - 20, 20, 10, 10, Types.COLLECTABLE));
+        blocks.push(new Block(p5, 20, height - 20, 10, 10, Types.COLLECTABLE));
+        blocks.push(new Block(p5, 40, 60, 10, 10, Types.COLLECTABLE));
+
+
+        // BLOCKS MAX - RESTART (Do not add more below this)
+        blocks.push(new Block(p5, 0, 0, 20, 20, Types.RESTART));
     }
 
     const draw = (p5) => {
@@ -248,6 +306,12 @@ export default function BlockGame() {
                 blocks[i].show(p5);
             }
         }
+
+        p5.fill(255,255,255);
+
+        p5.textSize(16);
+        p5.textAlign(p5.CENTER);
+        p5.text("Collected: " + collectedNum, 50, 30);
     }
 
     return (
