@@ -57,7 +57,11 @@ class Block {
         }
 
         this.color = [];
-        if (type !== Types.COLLECTABLE) {
+        if (type === Types.WALL) {
+            this.color.push(200);
+            this.color.push(150);
+            this.color.push(102);
+        } else if (type !== Types.COLLECTABLE) {
             for (var i = 0; i < 3; i++) {
                 this.color.push(p5.floor(p5.random(0, 255)));
             }
@@ -179,7 +183,7 @@ class Block {
     }
 
     show(p5) {
-        p5.stroke(255);
+        p5.noStroke();
         p5.fill(this.color[0], this.color[1], this.color[2]);
         p5.rect(this.position.x, this.position.y, this.width, this.height);
     }
@@ -297,7 +301,8 @@ export default function BlockGame() {
     }
 
     const draw = (p5) => {
-        p5.background(0);
+        // p5.background(0);
+        p5.background(18,52,59);
         block.update();
         block.show(p5);
         for (var i = 0; i < n; i++) {
