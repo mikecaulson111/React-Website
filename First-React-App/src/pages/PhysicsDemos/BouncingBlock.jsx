@@ -77,7 +77,8 @@ class Block {
   }
   
   show(p5) {
-    p5.stroke(255);
+    // p5.stroke(255);
+    p5.noStroke();
     p5.fill(this.color[0], this.color[1], this.color[2]);
     p5.rect(this.position.x, this.position.y, 20, 20);
   }
