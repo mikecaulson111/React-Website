@@ -26,7 +26,7 @@ export default function AboutMe() {
                 I live in Denver and have lived in the Denver region my entire life. I went to school
                 at CU Boulder and graduated in 2022 with a bachelor's in Physics with a minor in Computer
                 Science. I enjoy both playing and watching basketball (<span className="nuggets-class">Go Nuggets!</span>) as well as
-                playing video games with my friends. I also love visiting new places with my girlfriend
+                playing video games with my friends. I also love visiting new places with my fiancee
                 around the US and the world.
             </p>
             <h3>Thanks again for visiting my page!</h3>

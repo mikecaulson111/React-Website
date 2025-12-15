@@ -42,17 +42,17 @@ function OurInfo() {
                     </div>
                 </li>
                 <li className="trip-item">
-                    <p className="trip-title">Cruise3 (Margaritaville/Bahamas stay trip)(Mike KP wedding) Jul/Aug 2024</p>
+                    <p className="trip-title">Cruise3 (Margaritaville/Bahamas stay trip) Jul/Aug 2024</p>
                     <div className="image-gallery">
                         <img src={margaritaville1} className="new-me-image" />
                         <img src={margaritaville2} className="new-me-image" />
-                        <img src={californiaWedding} className="new-me-image" />
                     </div>
                 </li>
                 <li className="trip-item">
-                    <p className="trip-title">Cruise 2 (California/Mexico) - Nov/Dec 2024</p>
+                    <p className="trip-title">Cruise 2 (California/Mexico)(Mike KP wedding) - Nov/Dec 2024</p>
                     <div className="image-gallery">
                         <img src={cruise2} className="new-me-image" />
+                        <img src={californiaWedding} className="new-me-image" />
                     </div>
                 </li>
                 <li className="trip-item">
@@ -63,9 +63,11 @@ function OurInfo() {
                         <img src={kissing} className="new-me-image" />
                         <img src={boatItaly} className="new-me-image" />
                     </div>
+                    <p>I may have broken my Maui Jimmies here by hitting my freaking head on a door frame in ITALY 2X</p>
                 </li>
                 <li className="trip-item">
-                    <p className="trip-title">Cruise 4 back to the bahamas</p>
+                    <p className="trip-title">Cruise 4 back to the bahamas (THIS WAS SHIT WE BOTH GOT THE FLU)(Quarantined)</p>
+                    <p>Also the boat kinda sucked, no cruise director, no shows in the theater, sinking ship testing!!!</p>
                 </li>
             </ul>
         </>
