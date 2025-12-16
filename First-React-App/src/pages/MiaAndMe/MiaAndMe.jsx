@@ -12,6 +12,8 @@ import boatItaly from "../../assets/Boat.jpg"
 import margaritaville1 from "../../assets/Margaritaville1.jpg"
 import margaritaville2 from "../../assets/Margaritaville2.jpg"
 import californiaWedding from "../../assets/CaliforniaWedding.jpg"
+import cruise4 from "../../assets/cruise4.jpeg"
+import fluCruise from "../../assets/with_the_flu.jpeg"
 
 
 import "./MiaAndMe.css"
@@ -68,6 +70,10 @@ function OurInfo() {
                 <li className="trip-item">
                     <p className="trip-title">Cruise 4 back to the bahamas (THIS WAS SHIT WE BOTH GOT THE FLU)(Quarantined)</p>
                     <p>Also the boat kinda sucked, no cruise director, no shows in the theater, sinking ship testing!!!</p>
+                    <div className="image-gallery">
+                        <img src={cruise4} className="new-me-image" />
+                        <img src={fluCruise} className="new-me-image" />
+                    </div>
                 </li>
             </ul>
         </>
