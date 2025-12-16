@@ -17,13 +17,13 @@ export default function AboutMe() {
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             gsap.to(imageRef.current, {
-                x: "50%",
+                x: "-50%",
                 rotateZ: 360,
-                opacity: 1,
+                opacity: 0,
 
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    start: "top 300px",
+                    start: "50px 350px",
                     end: "top 125px",
                     scrub: 0,
                     pin: false,
@@ -53,7 +53,7 @@ export default function AboutMe() {
                 // style={{height: "240px", background: '#3f3f3f'}}
                 style={{height: "240px"}}
             >
-                <div ref={imageRef} style={{transform: "translate(-50%, 0%)", opacity: 0}}>
+                <div ref={imageRef} style={{transform: "translate(0%, 0%)", opacity: 1}}>
                     <img src={myImage} className="me-image" />
                 </div>
             </section>
