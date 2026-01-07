@@ -12,7 +12,7 @@ export default function BlurUpImage({tinySrc, largeSrc, alt = "", myClassName = 
                     style={{
                         filter: 'blur(30px)',
                         opacity: isLoaded ? 0 : 1,
-                        transition: 'opacity 0.5s ease-out',
+                        transition: 'opacity 0.3s ease-out',
                         position: 'absolute',
                     }}
                 />
@@ -23,7 +23,7 @@ export default function BlurUpImage({tinySrc, largeSrc, alt = "", myClassName = 
                     className={myClassName}
                     style={{
                         opacity: isLoaded ? 1 : 0,
-                        transition: 'opacity 0.5s ease-in',
+                        transition: 'opacity 0.3s ease-in',
                     }}
                 />
             </div>

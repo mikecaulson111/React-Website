@@ -31,7 +31,6 @@ function App() {
       <Router>
         <ScrollToTop />
         <main>
-          {/* <img src={catImage} className="corner-image top-right" /> */}
           <CornerImage />
           <Name name="Michael Caulson" />
         </main>

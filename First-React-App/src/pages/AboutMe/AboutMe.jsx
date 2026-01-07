@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import myImage from "../../assets/me_2.webp";
-import myImageCompressed from "../../assets/me_2_compressed.webp";
+import myImageCompressed from "../../assets/Compressed/me_2_compressed.webp";
 import Links from "../../components/Links/Links.jsx";
 import BlurUpImage from "../../components/BlurUpImage/BlurUpImage.jsx";
 import "./AboutMe.css";
@@ -30,7 +30,7 @@ export default function AboutMe() {
                     scrub: 0,
                     pin: false,
                     // toggleActions: "play none none none",
-                    markers: true,
+                    markers: false,
                 },
             });
         }, sectionRef);
@@ -55,7 +55,6 @@ export default function AboutMe() {
                 style={{height: "240px"}}
             >
                 <div ref={imageRef} style={{transform: "translate(0%, 0%)", opacity: 1}}>
-                    {/* <img src={myImage} className="me-image" /> */}
                     <BlurUpImage tinySrc={myImageCompressed} largeSrc={myImage} alt={"Image of me in Denver"} myClassName="me-image"/>
                 </div>
             </section>
