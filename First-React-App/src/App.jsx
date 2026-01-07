@@ -16,6 +16,9 @@ import BlockGamePage from "./pages/PhysicsDemos/BlockGame.jsx"
 // Images:
 import CornerImage from "./components/CornerImage/CornerImage.jsx"
 
+// Components:
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx"
+
 function Name({name}) {
   return (
     <h1>{name}</h1>
@@ -26,6 +29,7 @@ function App() {
   return (
     <>
       <Router>
+        <ScrollToTop />
         <main>
           {/* <img src={catImage} className="corner-image top-right" /> */}
           <CornerImage />
