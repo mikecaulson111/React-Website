@@ -1,12 +1,41 @@
-// import { useState } from "react"
+import { useRef, useLayoutEffect } from "react"
 
-import myImage from "../../assets/me_2.webp"
-import Links from "../../components/Links/Links.jsx"
-import "./AboutMe.css"
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import myImage from "../../assets/me_2.webp";
+import myImageCompressed from "../../assets/Compressed/me_2_compressed.webp";
+import Links from "../../components/Links/Links.jsx";
+import BlurUpImage from "../../components/BlurUpImage/BlurUpImage.jsx";
+import "./AboutMe.css";
 
 export default function AboutMe() {
 
     // const [nuggetsClass, setNuggetsClass] = useState("");
+
+    const sectionRef = useRef(null);
+    const imageRef   = useRef(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.to(imageRef.current, {
+                x: "-50%",
+                rotateZ: 180,
+                opacity: 0,
+
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "50px 350px",
+                    end: "50% 125px",
+                    scrub: 0,
+                    pin: false,
+                    // toggleActions: "play none none none",
+                    markers: false,
+                },
+            });
+        }, sectionRef);
+        return () => ctx.revert();
+    }, []);
 
     return (
         <>
@@ -21,16 +50,24 @@ export default function AboutMe() {
                 that can be access from the home page.
             </p>
             <h2>More about my personal life</h2>
-            <img src={myImage} className="me-image" />
+            <section
+                ref={sectionRef}
+                style={{height: "240px"}}
+            >
+                <div ref={imageRef} style={{transform: "translate(0%, 0%)", opacity: 1}}>
+                    <BlurUpImage tinySrc={myImageCompressed} largeSrc={myImage} alt={"Image of me in Denver"} myClassName="me-image"/>
+                </div>
+            </section>
             <p>
                 I live in Denver and have lived in the Denver region my entire life. I went to school
                 at CU Boulder and graduated in 2022 with a bachelor's in Physics with a minor in Computer
                 Science. I enjoy both playing and watching basketball (<span className="nuggets-class">Go Nuggets!</span>) as well as
-                playing video games with my friends. I also love visiting new places with my girlfriend
+                playing video games with my friends. I also love visiting new places with my fiancée
                 around the US and the world.
             </p>
             <h3>Thanks again for visiting my page!</h3>
             <Links pageName="About Me" />
+            <section style={{height: "45vh"}} />
         </>
     );
 }
