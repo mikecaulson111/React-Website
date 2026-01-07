@@ -3,9 +3,11 @@ import { useRef, useLayoutEffect } from "react"
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import myImage from "../../assets/me_2.webp"
-import Links from "../../components/Links/Links.jsx"
-import "./AboutMe.css"
+import myImage from "../../assets/me_2.webp";
+import myImageCompressed from "../../assets/me_2_compressed.webp";
+import Links from "../../components/Links/Links.jsx";
+import BlurUpImage from "../../components/BlurUpImage/BlurUpImage.jsx";
+import "./AboutMe.css";
 
 export default function AboutMe() {
 
@@ -18,13 +20,13 @@ export default function AboutMe() {
         const ctx = gsap.context(() => {
             gsap.to(imageRef.current, {
                 x: "-50%",
-                rotateZ: 360,
+                rotateZ: 180,
                 opacity: 0,
 
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "50px 350px",
-                    end: "top 125px",
+                    end: "50% 125px",
                     scrub: 0,
                     pin: false,
                     // toggleActions: "play none none none",
@@ -50,11 +52,11 @@ export default function AboutMe() {
             <h2>More about my personal life</h2>
             <section
                 ref={sectionRef}
-                // style={{height: "240px", background: '#3f3f3f'}}
                 style={{height: "240px"}}
             >
                 <div ref={imageRef} style={{transform: "translate(0%, 0%)", opacity: 1}}>
-                    <img src={myImage} className="me-image" />
+                    {/* <img src={myImage} className="me-image" /> */}
+                    <BlurUpImage tinySrc={myImageCompressed} largeSrc={myImage} alt={"Image of me in Denver"} myClassName="me-image"/>
                 </div>
             </section>
             <p>

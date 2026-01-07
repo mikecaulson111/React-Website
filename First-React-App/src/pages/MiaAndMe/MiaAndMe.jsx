@@ -44,14 +44,14 @@ function OurInfo() {
                     </div>
                 </li>
                 <li className="trip-item">
-                    <p className="trip-title">Cruise3 (Margaritaville/Bahamas stay trip) Jul/Aug 2024</p>
+                    <p className="trip-title">Cruise 2 (Margaritaville/Bahamas stay trip) Jul/Aug 2024</p>
                     <div className="image-gallery">
                         <img src={margaritaville1} className="new-me-image" />
                         <img src={margaritaville2} className="new-me-image" />
                     </div>
                 </li>
                 <li className="trip-item">
-                    <p className="trip-title">Cruise 2 (California/Mexico)(Mike KP wedding) - Nov/Dec 2024</p>
+                    <p className="trip-title">Cruise 3 (California/Mexico)(Mike KP wedding) - Nov/Dec 2024</p>
                     <div className="image-gallery">
                         <img src={cruise2} className="new-me-image" />
                         <img src={californiaWedding} className="new-me-image" />
