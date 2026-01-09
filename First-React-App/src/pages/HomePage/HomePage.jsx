@@ -9,11 +9,12 @@ import Markdown from "../../components/Markdown/Makdown.jsx"
 import PhysicsDemos from "../../components/PhysicsDemos/PhysicsDemos.jsx"
 import RomanNumeral from "../../components/RomanNumeral/RomanNumeral.jsx"
 import Links from "../../components/Links/Links.jsx"
+import Weather from "../../components/Weather/Weather.jsx"
 
 function Home() {
   
-  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />];
-  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button"]);
+  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />, <Weather />];
+  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
   const navigate = useNavigate();
   var lastThreeKeys = "";
@@ -95,9 +96,14 @@ function Home() {
         <button className={classNames[4]} onClick={() => secondButtonClicked(5)}>
           Roman Numeral converter
         </button>
+        {/* TODO: change the below button to be "other" and redirect to another page */}
+        <button className={classNames[5]} onClick={() => secondButtonClicked(6)}>
+          Weather
+        </button>
       </div>
       {options2[place2]}
       <Links pageName="Home" />
+      <div style={{height: "25px"}} />
     </>
   )
 }
