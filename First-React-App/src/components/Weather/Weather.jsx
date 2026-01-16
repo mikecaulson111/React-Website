@@ -30,7 +30,7 @@ export default function Weather() {
 
             const data = await response.json();
             setWeather(data);
-            // console.log(JSON.stringify(data));
+            console.log(JSON.stringify(data));
         } catch (error) {
             console.error("Error getting weather:", error);
         } finally {
@@ -49,7 +49,10 @@ export default function Weather() {
                 <input
                     type="text"
                     placeholder="Enter your city..."
-                    onChange={(e) => setCity(e.target.value)}
+                    onChange={(e) => {
+                        setCity(e.target.value);
+                        setWeather({});
+                    }}
                     style={{marginRight: "10px"}}
                     className="weather-input"
                 />
@@ -96,6 +99,9 @@ export default function Weather() {
                     <p>Temperature: {weather.main.temp}{unitsDegrees[unit]}</p>
                     <p>Condition: {weather.weather[0].description}</p>
                   </div>
+                )}
+                {weather && weather.message === "city not found" && (
+                    <h3>City <span style={{color: "rgb(255,0,0)", textDecoration: "underline"}}>{city}</span> was not found, please check spelling or try a different city</h3>
                 )}
             </div>
         </>

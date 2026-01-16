@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "./PayoffFixed.css"
+import Schedule from "./Schedule.jsx"
 
 
 // This is for calculating total payoff when you pay a fixed amount each montho
@@ -16,6 +17,21 @@ export default function PayoffFixed() {
 
     // Other variables
     const [interestColor, setInterestColor] = useState("");
+    const [schedule, setSchedule] = useState("");
+    const [allMonths, setAllMonths] = useState([]);
+    const [allBalances, setAllBalances] = useState([]);
+    const [allAccruedInterest, setAllAccruedInterest] = useState([]);
+    var monthy = [];
+    var balance = [];
+    var accruedInterest = [];
+
+    const showSchedule = () => {
+        if (schedule) {
+            setSchedule("");
+        } else {
+            setSchedule(<Schedule months={allMonths} balances={allBalances} interest={allAccruedInterest} monthlyPayments={amtPerMonth} />);
+        }
+    }
 
     const handleLoanAmtChange = (e) => {
         setCantCompute("");
@@ -44,6 +60,10 @@ export default function PayoffFixed() {
         var totInterest = 0;
         var month = 0;
 
+        monthy = [];
+        balance = [];
+        accruedInterest = [];
+
         if ((currAmt - amtPerMonth) * ((interestHere / 100.0) / 12) > amtPerMonth) {
             console.error("CAN NEVER PAY THIS OFF");
             setCantCompute("YOU WILL NEVER BE ABLE TO PAY OFF THIS LOAN WITH THESE MONTHLY PAYMENTS");
@@ -59,11 +79,22 @@ export default function PayoffFixed() {
             totInterest += accumulatedInterest;
             currAmt = currAmt + accumulatedInterest - amtPerMonth;
 
+
             if (currAmt < 0) {
                 currAmt = 0;
             }
             month += 1;
+
+
+            // console.log("Month:", month, "Balance:", currAmt, "Interest Accrued:", totInterest, "Paid:", (currAmt+accumulatedInterest > amtPerMonth) ? currAmt+accumulatedInterest : holdingAmt);
+            monthy.push(month);
+            balance.push(currAmt);
+            accruedInterest.push(totInterest);
         }
+
+        setAllMonths(monthy);
+        setAllBalances(balance);
+        setAllAccruedInterest(accruedInterest);
 
         setTotalInterest(totInterest);
         if (totInterest > 0) {
@@ -108,6 +139,12 @@ export default function PayoffFixed() {
 
             <h3 className="alertColors">{cantCompute}</h3>
             <h3>Total Payoff Amount: ${currLoanAmt} will be paid off in {months} months, and you will pay $<span className={interestColor}>{totalInterest.toFixed(2)}</span> in interest</h3>
+            {months > 0 && (
+                <>
+                    <button onClick={showSchedule} className="amortization-button">{schedule ? "Hide Amortization Schedule" : "Show Amortization Schedule"}</button>
+                    {schedule}
+                </>
+            )}
         </>
     );
 }

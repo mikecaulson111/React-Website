@@ -53,3 +53,7 @@ label {
 .alertColors {
   animation: alertCycle 2s linear infinite;
 }
+
+.amortization-button {
+  background-color: #84b287
+}
