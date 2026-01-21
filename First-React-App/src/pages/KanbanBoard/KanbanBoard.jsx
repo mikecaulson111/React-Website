@@ -4,16 +4,16 @@ import KanbanAddItem from "./KanbanAddItem.jsx";
 
 export default function KanbanBoard() {
     const [inProgress, setInProgress] = useState([
-        {title: "Changes to signal protector Popups", description: "", id: 1},
-        {title: "Parental controls bug fix", description: "fix parental controls bug", id: 2},
+        // {title: "Changes to signal protector Popups", description: "", id: 1},
+        // {title: "Parental controls bug fix", description: "fix parental controls bug", id: 2},
     ]);
     const [codeReview, setCodeReview] = useState([
-        {title: "Follow up for 015 rework", description: "", id: 3},
+        // {title: "Follow up for 015 rework", description: "", id: 3},
     ]);
     const [done, setDone] = useState([
-        {title: "investigate implementing popup changes", description: "", id: 4},
-        {title: "NATV popup changes", description: "popup changes for NATV", id: 5},
-        {title: "get categories working properly", description: "", id: 6},
+        // {title: "investigate implementing popup changes", description: "", id: 4},
+        // {title: "NATV popup changes", description: "popup changes for NATV", id: 5},
+        // {title: "get categories working properly", description: "", id: 6},
     ]);
 
     const [maxId, setMaxId] = useState(7);
