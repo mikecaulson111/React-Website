@@ -1,6 +1,7 @@
 import { useState } from "react";
 import KanbanBox from "../../components/KanbanBox/KanbanBox.jsx";
 import KanbanAddItem from "./KanbanAddItem.jsx";
+import Links from "../../components/Links/Links.jsx";
 
 export default function KanbanBoard() {
     const [inProgress, setInProgress] = useState([
@@ -217,6 +218,7 @@ export default function KanbanBoard() {
     return (
         <>
             <KanbanAddItem callback={callbackAddItem} />
+            <p>Note tasks can only be dropped on the name of the categories, not in them (i.e. has to be dragged and dropped on "In Progress")</p>
             <div style={{
                 display: "flex",
                 justifyContent: "center",
@@ -326,6 +328,7 @@ export default function KanbanBoard() {
                     </tbody>
                 </table>
             </div>
+            <Links />
         </>
     );
 }

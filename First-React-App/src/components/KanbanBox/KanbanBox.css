@@ -1,6 +1,7 @@
 
 .kanban-box {
-    width: 100%;
+    /* width: 100%; */
+    width: 360px;
     background-color: #8a7b7b;
     border-radius: 20px;
     padding: 20px;

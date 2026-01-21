@@ -14,7 +14,7 @@ import Weather from "../../components/Weather/Weather.jsx"
 function Home() {
   
   let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />, <Weather />];
-  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
+  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
   const navigate = useNavigate();
   var lastThreeKeys = "";
@@ -99,6 +99,9 @@ function Home() {
         {/* TODO: change the below button to be "other" and redirect to another page */}
         <button className={classNames[5]} onClick={() => secondButtonClicked(6)}>
           Weather
+        </button>
+        <button className={classNames[6]} onClick={() => navigate("/kanban-board")}>
+          Kanban Board
         </button>
       </div>
       {options2[place2]}
