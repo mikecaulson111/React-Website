@@ -1,0 +1,15 @@
+.weather-button {
+    background-color: #d8bfd8;
+    border: none;
+}
+
+.weather-button:focus {
+    /* outline: blue; */
+    outline: 2px solid lightblue;
+}
+
+.weather-input:focus {
+    /* outline: 1px solid black; */
+    outline: auto;
+    border: none;
+}

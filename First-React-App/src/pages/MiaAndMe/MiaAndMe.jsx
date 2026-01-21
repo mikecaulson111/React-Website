@@ -112,7 +112,7 @@ export default function MiaAndMe() {
         <>
             <h2> Me and Mia </h2>
             {/* I was thinking about putting in some images here */}
-            <button onClick={toggleInfo}>Toggle Info</button>
+            <button onClick={toggleInfo} className="mia-button">Toggle Info</button>
             {displayInfo ? <OurInfo /> : ""}
             <Links pageName="MiaAndMe" />
         </>
