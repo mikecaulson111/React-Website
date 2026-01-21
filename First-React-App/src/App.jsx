@@ -12,6 +12,7 @@ import StandingWaves from "./pages/PhysicsDemos/StandingWaves.jsx"
 import SpringWave from "./pages/PhysicsDemos/SpringWave.jsx"
 import ScrollingTestingPage from "./pages/ScrollingTestingPage/ScrollingTestingPage.jsx"
 import BlockGamePage from "./pages/PhysicsDemos/BlockGame.jsx"
+import KanbanBoard from "./pages/KanbanBoard/KanbanBoard.jsx"
 
 // Images:
 import CornerImage from "./components/CornerImage/CornerImage.jsx"
@@ -44,6 +45,7 @@ function App() {
           <Route path="/block-game" element={<BlockGamePage />} />
           <Route path="/spring-wave" element={<SpringWave />} />
           <Route path="/scrolling-testing" element={<ScrollingTestingPage />} />
+          <Route path="/kanban-board" element={<KanbanBoard />} />
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>
       </Router>
