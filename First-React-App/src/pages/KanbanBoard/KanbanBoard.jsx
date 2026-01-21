@@ -1,5 +1,6 @@
 import { useState } from "react";
-import KanbanBox from "../../components/KanbanBox/KanbanBox";
+import KanbanBox from "../../components/KanbanBox/KanbanBox.jsx";
+import KanbanAddItem from "./KanbanAddItem.jsx";
 
 export default function KanbanBoard() {
     const [inProgress, setInProgress] = useState([
@@ -15,22 +16,43 @@ export default function KanbanBoard() {
         {title: "get categories working properly", description: "", id: 6},
     ]);
 
-    // this attempt will try with items that are objects that contain the place it should be (in progress, done, etc) as well as the description
-    const [allItems, setAllItems] = useState([]);
+    const [maxId, setMaxId] = useState(7);
+
+    const [showDescriptions, setShowDescriptions] = useState(true);
+    const [addNewItem, setAddNewItem] = useState(false);
+
     const [activeItem, setActiveItem] = useState(null);
 
     const [isOverProgress, setIsOverProgress] = useState(false);
     const [isOverCode, setIsOverCode] = useState(false);
     const [isOverDone, setIsOverDone] = useState(false);
 
+    function callbackAddItem(object, listToAddTo) {
+        if (listToAddTo === -1) {
+            return;
+        }
+
+        object.id = maxId;
+        setMaxId(maxId + 1);
+        if (listToAddTo === "0") {
+            setInProgress([...inProgress, object]);
+        } else if (listToAddTo === "1") {
+            setCodeReview([...codeReview, object]);
+        } else {
+            setDone([...done, object]);
+        }
+    } 
+
+    function handleToggle() {
+        setShowDescriptions(!showDescriptions);
+    }
+
     function commonCallbackFunctionSet(id) {
         setActiveItem(id);
-        console.log("Setting:", id);
     }
 
     function commonCallbackFunctionUnset() {
         setActiveItem(null);
-        console.log("Unsetting");
     }
 
     const handleDragEnterP = (e) => {
@@ -67,14 +89,12 @@ export default function KanbanBoard() {
 
     const handleDropP = (e) => {
         e.preventDefault();
-        console.error("Dropped in progress:", activeItem);
         var tempInProgress = [...inProgress];
         var tempCodeReview = [...codeReview];
         var tempDone = [...done];
         setIsOverProgress(false);
         for (var i = 0; i < tempCodeReview.length; i++) {
             if (tempCodeReview[i].id === activeItem) {
-                console.log("Dropped from code review");
                 tempInProgress.push(tempCodeReview[i]);
                 tempCodeReview.splice(i, 1);
                 setCodeReview(tempCodeReview);
@@ -84,7 +104,6 @@ export default function KanbanBoard() {
         }
         for (var i = 0; i < tempDone.length; i++) {
             if (tempDone[i].id === activeItem) {
-                console.log("dropped from done");
                 tempInProgress.push(tempDone[i]);
                 tempDone.splice(i, 1);
                 setDone(tempDone);
@@ -166,10 +185,58 @@ export default function KanbanBoard() {
         backgroundColor: "#f2f2f2",
     }
 
+    const containerStyle = {
+        position: 'relative',
+        display: 'inline-block',
+        width: '50px',
+        height: '25px',
+        cursor: 'pointer'
+    };
 
+    const sliderStyle = (isOn) => ({
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundColor: isOn ? '#4CAF50' : '#ccc', // Green when on, grey when off
+        borderRadius: '25px',
+        transition: '0.4s'
+    });
+
+    const circleStyle = (isOn) => ({
+        position: 'absolute',
+        height: '19px',
+        width: '19px',
+        left: '3px',
+        bottom: '3px',
+        backgroundColor: 'white',
+        borderRadius: '50%',
+        transition: '0.4s',
+        // Move the circle to the right when "on"
+        transform: isOn ? 'translateX(25px)' : 'translateX(0)'
+    });
     
     return (
         <>
+            <KanbanAddItem callback={callbackAddItem} />
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+                paddingTop: "20px"
+            }}>
+            <div style={{display: "flex", alignItems: "center", gap: "10px"}}>
+                <span>{showDescriptions ? "Showing Descriptions" : "Not Showing Descriptions"}</span>
+                <label style={containerStyle}>
+                    <input
+                        type="checkbox"
+                        checked={showDescriptions}
+                        onChange={handleToggle}
+                        style={{display: "none"}}
+                    />
+                    <span style={sliderStyle(showDescriptions)}>
+                        <span style={circleStyle(showDescriptions)} />
+                    </span>
+                </label>
+            </div>
+            </div>
             <div style={{
                 display: "flex",
                 justifyContent: "center",
@@ -209,7 +276,7 @@ export default function KanbanBoard() {
                                                         onDragStart={() => commonCallbackFunctionSet(item.id)}
                                                         onDragEnd={commonCallbackFunctionUnset}
                                                     >
-                                                        <KanbanBox title={item.title} description={item.description} />
+                                                        <KanbanBox title={item.title} description={showDescriptions ? item.description : ""} />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -228,7 +295,7 @@ export default function KanbanBoard() {
                                                         onDragStart={() => commonCallbackFunctionSet(item.id)}
                                                         onDragEnd={commonCallbackFunctionUnset}
                                                     >
-                                                        <KanbanBox title={item.title} description={item.description} />
+                                                        <KanbanBox title={item.title} description={showDescriptions ? item.description : ""} />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -247,7 +314,7 @@ export default function KanbanBoard() {
                                                         onDragStart={() => commonCallbackFunctionSet(item.id)}
                                                         onDragEnd={commonCallbackFunctionUnset}
                                                     >
-                                                        <KanbanBox title={item.title} description={item.description} />
+                                                        <KanbanBox title={item.title} description={showDescriptions ? item.description : ""} />
                                                     </div>
                                                 </td>
                                             </tr>
