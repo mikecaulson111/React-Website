@@ -12,7 +12,7 @@ export default function Weather() {
     const [city, setCity] = useState("");
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [unit, setUnit] = useState(0);
+    const [unit, setUnit] = useState(1);
 
     const weatherApiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
@@ -30,7 +30,6 @@ export default function Weather() {
 
             const data = await response.json();
             setWeather(data);
-            console.log(JSON.stringify(data));
         } catch (error) {
             console.error("Error getting weather:", error);
         } finally {

@@ -30,6 +30,14 @@ export default function PayoffMinimum() {
         setMonths(e.target.value);
     }
 
+    const formatCurrency = (value) => {
+        return new Intl.NumberFormat('en-US', {
+            style: "currency",
+            currency: "USD",
+            minimumFractionDigits: 2,
+        }).format(value);
+    };
+
     return (
         <>
             <h3>This is for calculating minimum needed to pay off loan in x months</h3>
@@ -62,7 +70,7 @@ export default function PayoffMinimum() {
                 <button className="submitButton" type="submit">Calculate</button>
             </form>
 
-            <h3>Minimum monthly payments to pay off ${loanAmt} at {interest}% in {months} months is: ${payoffAmt.toFixed(2)}</h3>
+            <h3>Minimum monthly payments to pay off {formatCurrency(loanAmt)} at {interest}% in {months} months is: {formatCurrency(payoffAmt)}</h3>
         </>
     )
 }

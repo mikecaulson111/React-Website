@@ -95,7 +95,6 @@ class Block {
                     } else {
                         if (blocks[i].showable) {
                             blocks[i].setShowable(false);
-                            console.log("Collected");
                             collectedNum++;
                         }
                     }
@@ -110,7 +109,6 @@ class Block {
                     } else if (type === Types.COLLECTABLE) {
                         if (blocks[i].showable) {
                             blocks[i].setShowable(false);
-                            console.log("Collected!");
                             collectedNum++;
                         }
                     }
@@ -126,7 +124,6 @@ class Block {
                         } else {
                             if (blocks[i].showable) {
                                 blocks[i].setShowable(false);
-                                console.log("Collected!");
                                 collectedNum++;
                             }
                         }
@@ -139,7 +136,6 @@ class Block {
                         } else {
                             if (blocks[i].showable) {
                                 blocks[i].setShowable(false);
-                                console.log("Collected");
                                 collectedNum++;
                             }
                         }

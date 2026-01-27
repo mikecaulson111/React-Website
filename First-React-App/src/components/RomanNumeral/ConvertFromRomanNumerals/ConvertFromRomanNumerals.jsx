@@ -18,17 +18,6 @@ export default function ConvertFromRomanNumerals() {
         nextChar = nextChar.toUpperCase();
         for(var j = 0; j < romanLetters.length; j++) {
             if (romanLetters[j] === character) {
-                // if (nextChar !== 'B') {
-                //     for (var k = 0; k < romanLetters.length; k++) {
-                //         if (nextChar === romanLetters[k]) {
-                //             if (k > j+1) {
-                //                 console.error("HERE: ", character, nextChar);
-                //                 return -2;
-                //             }
-                //             break;
-                //         }
-                //     }
-                // }
                 return romanVals[j];
             }
         }
@@ -40,7 +29,6 @@ export default function ConvertFromRomanNumerals() {
         var calculatedVal = 0;
 
         for (var i = numberToConvert.length - 1; i >= 0; i--) {
-            console.log(numberToConvert[i], calculatedVal);
             var currVal = getVal(numberToConvert[i]);
             if (currVal === -1) {
                 setConvertedNumber("Error Character not allowed: " + numberToConvert[i]);
