@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactMarkdown from 'react-markdown';
+import remarkEmoji from 'remark-emoji';
 import "./Markdown.css"
 
 
@@ -16,7 +17,7 @@ export default function Markdown() {
                 value={markdownText}
                 onChange={(e) => setMarkdownText(e.target.value)}
             />
-            <ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkEmoji]}>
                 {markdownText}
             </ReactMarkdown>
         </>

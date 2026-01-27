@@ -39,7 +39,7 @@ const numberBrackets = 7;
 export default function WorstTaxes() {
     const [income, setIncome] = useState("");
     const [filingStatus, setFilingStatus] = useState("");
-    const [taxesTotal, setTaxesTotal] = useState("");
+    const [taxesTotal, setTaxesTotal] = useState(0);
 
     const handleIncomeChange = (e) => {
         setIncome(e.target.value);
@@ -95,6 +95,11 @@ export default function WorstTaxes() {
         }).format(value);
     };
 
+    const updateFilingStatus = (value) => {
+        setFilingStatus(value);
+        setTaxesTotal(0);
+    }
+
     return (
     <>
         <h3>This is to calculate worst case tax scenario (with only standard deduction)</h3>
@@ -120,7 +125,7 @@ export default function WorstTaxes() {
                     name="filingStatus"
                     value="single"
                     checked={filingStatus === "single"}
-                    onChange={(e) => setFilingStatus(e.target.value)}
+                    onChange={(e) => updateFilingStatus(e.target.value)}
                 />
             </label>
             <label>
@@ -130,7 +135,7 @@ export default function WorstTaxes() {
                     name="filingStatus"
                     value="joint"
                     checked={filingStatus === "joint"}
-                    onChange={(e) => setFilingStatus(e.target.value)}
+                    onChange={(e) => updateFilingStatus(e.target.value)}
                 />
             </label>
             <label>
@@ -140,13 +145,13 @@ export default function WorstTaxes() {
                     name="filingStatus"
                     value="headOfHousehold"
                     checked={filingStatus === "headOfHousehold"}
-                    onChange={(e) => setFilingStatus(e.target.value)}
+                    onChange={(e) => updateFilingStatus(e.target.value)}
                 />
             </label>
             <button className="submitButton" type="submit">Calculate</button>
         </form>
 
-        <h3>Total taxes (worst case) with annual income of ${income} filing as status: {filingStatus} comes out to: ${taxesTotal}</h3>
+        <h3>Total taxes (worst case) with annual income of {formatCurrency(income)} filing as status: {filingStatus} comes out to: {taxesTotal ? formatCurrency(taxesTotal) : ""}</h3>
     </>
     )
 }

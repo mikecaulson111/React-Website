@@ -15,7 +15,8 @@
     "react-dom": "^19.1.1",
     "react-markdown": "^10.1.0",
     "react-p5": "^1.4.1",
-    "react-router-dom": "^7.9.3"
+    "react-router-dom": "^7.9.3",
+    "remark-emoji": "^5.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

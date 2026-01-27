@@ -5,4 +5,4 @@ You will need to install some other dependencies if you wish to run on your own 
 2. react-p5
 3. gsap
 
-   
+you may also need to npm install react-markdown and remark-emoji
