@@ -1,14 +1,34 @@
 import { useState } from "react"
 import "./WorstTaxes.css"
 
-const taxValues = [
-    [0, 11925, 10],
-    [11925, 48475, 12],
-    [48475, 103350, 22],
-    [103350, 197300, 24],
-    [197300, 250525, 32],
-    [250525, 626350, 35],
-    [626350, 10000000000, 37]
+const taxValuesSingle = [
+    [0, 11600, 10],
+    [11601, 47150, 12],
+    [47151, 100525, 22],
+    [100526, 191950, 24],
+    [191951, 243725, 32],
+    [243726, 609350, 35],
+    [609351, 10000000000, 37]
+];
+
+const taxValuesJoint = [
+    [0, 23200, 10],
+    [23201, 94300, 12],
+    [94301, 201050, 22],
+    [201051, 383900, 24],
+    [383901, 487450, 32],
+    [487451, 731200, 35],
+    [731201, 10000000000, 37]
+];
+
+const taxValuesHoH = [
+    [0, 16550, 10],
+    [16551, 63100, 12],
+    [63101, 100500, 22],
+    [100501, 191950, 24],
+    [191951, 243700, 32],
+    [243701, 609350, 35],
+    [609351, 10000000000, 37]
 ];
 
 const standardDeductionSingle = 15750;
@@ -34,24 +54,23 @@ export default function WorstTaxes() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(income);
-        console.log(filingStatus);
 
         var incomeHere = parseFloat(income);
         var totalTaxes = 0;
         var tempValue = 0;
+        var taxValues = [];
         if (filingStatus === "single") {
             incomeHere -= standardDeductionSingle;
+            taxValues = [...taxValuesSingle];
         } else if (filingStatus === "joint") {
             incomeHere -= standardDeductionJoint;
+            taxValues = [...taxValuesJoint];
         } else {
             incomeHere -= standardDeductionHoH;
+            taxValues = [...taxValuesHoH];
         }
 
-        console.log(incomeHere);
-
         for (var i = 0; i < numberBrackets; i++) {
-            console.log(typeof taxValues[i][0]);
             if (incomeHere > taxValues[i][1]) {
                 tempValue = taxValues[i][1] - taxValues[i][0];
                 tempValue *= (taxValues[i][2] / 100.0);
