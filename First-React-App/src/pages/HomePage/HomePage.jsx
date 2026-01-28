@@ -63,6 +63,9 @@ function Home() {
         for large-scale embedded systems, with my work reaching millions of users. I enjoy transforming conceptual ideas
         into fully realized final products. Take a look around my portfolio and see how I have reimagined projects in
         JavaScript and React.
+        {/* MJC MJC MJC TODO add this blerb back in when you figure out all of what you want in the professional accomplishments */}
+        {/* If you are curious about more of my professional accomplishments, visit my "about me" page
+        linked down below. */}
       </p>
 
       <h3>Links:</h3>

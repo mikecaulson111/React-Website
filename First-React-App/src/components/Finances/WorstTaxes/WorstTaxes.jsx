@@ -1,5 +1,6 @@
-import { useState } from "react"
-import "./WorstTaxes.css"
+import { useState } from "react";
+import "./WorstTaxes.css";
+import { formatCurrency } from "../../../utils/currencyUtils";
 
 const taxValuesSingle = [
     [0, 11600, 10],
@@ -86,14 +87,6 @@ export default function WorstTaxes() {
         totalTaxes = (totalTaxes < 0) ? 0 : totalTaxes;
         setTaxesTotal(totalTaxes);
     }
-
-    const formatCurrency = (value) => {
-        return new Intl.NumberFormat('en-US', {
-            style: "currency",
-            currency: "USD",
-            minimumFractionDigits: 2,
-        }).format(value);
-    };
 
     const updateFilingStatus = (value) => {
         setFilingStatus(value);

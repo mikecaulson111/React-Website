@@ -1,5 +1,6 @@
-import { useState } from "react"
-import "./PayoffMinimum.css"
+import { useState } from "react";
+import "./PayoffMinimum.css";
+import { formatCurrency } from "../../../utils/currencyUtils";
 
 export default function PayoffMinimum() {
     // These are to be entered by the user
@@ -29,14 +30,6 @@ export default function PayoffMinimum() {
     const handleMonthsChange = (e) => {
         setMonths(e.target.value);
     }
-
-    const formatCurrency = (value) => {
-        return new Intl.NumberFormat('en-US', {
-            style: "currency",
-            currency: "USD",
-            minimumFractionDigits: 2,
-        }).format(value);
-    };
 
     return (
         <>

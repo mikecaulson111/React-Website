@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from "react"
+import { useRef, useLayoutEffect, useState } from "react"
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,6 +7,7 @@ import myImage from "../../assets/me_2.webp";
 import myImageCompressed from "../../assets/Compressed/me_2_compressed.webp";
 import Links from "../../components/Links/Links.jsx";
 import BlurUpImage from "../../components/BlurUpImage/BlurUpImage.jsx";
+import ProfessionalAccomplishments from "../../components/ProfessionalAccomplishments/ProfessionalAccomplishments.jsx";
 import "./AboutMe.css";
 
 export default function AboutMe() {
@@ -37,6 +38,19 @@ export default function AboutMe() {
         return () => ctx.revert();
     }, []);
 
+    const [professional, setProfessional] = useState(false);
+    const [profText, setProfText] = useState("Show Professional Accomplishments");
+
+    function updateProfessional() {
+        if (!professional) {
+            setProfText("Hide Professional Accomplishments");
+            setProfessional(true);
+        } else {
+            setProfText("Show Professional Accomplishments");
+            setProfessional(false);
+        }
+    }
+
     return (
         <>
             <p>
@@ -66,6 +80,8 @@ export default function AboutMe() {
                 around the US and the world.
             </p>
             <h3>Thanks again for visiting my page!</h3>
+            <button style={{backgroundColor: "#E5E4E2"}} onClick={updateProfessional}>{profText}</button>
+            {professional ? <ProfessionalAccomplishments /> : ""}
             <Links pageName="About Me" />
             <section style={{height: "45vh"}} />
         </>

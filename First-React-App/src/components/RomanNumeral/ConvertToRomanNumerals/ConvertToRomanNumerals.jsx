@@ -21,7 +21,6 @@ export default function ConvertToRomanNumerals() {
         var counter = 0;
     
         while (currVal > 0 && counter < 100) {
-            console.log(currVal, romanTot);
             if (currVal - romanVals[place] >= 0) {
                 romanTot += romanLetters[place];
                 currVal -= romanVals[place];
@@ -32,7 +31,6 @@ export default function ConvertToRomanNumerals() {
             }
             counter += 1;
         }
-        console.log("LAST", romanTot);
         setConvertedNumber(romanTot);
     }
 

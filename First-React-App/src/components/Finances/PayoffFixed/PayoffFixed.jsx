@@ -1,6 +1,7 @@
-import { useState } from "react"
-import "./PayoffFixed.css"
-import Schedule from "./Schedule.jsx"
+import { useState } from "react";
+import "./PayoffFixed.css";
+import Schedule from "./Schedule.jsx";
+import { formatCurrency } from "../../../utils/currencyUtils.js";
 
 
 // This is for calculating total payoff when you pay a fixed amount each montho
@@ -50,14 +51,6 @@ export default function PayoffFixed() {
         setInterestColor("");
         setAmtPerMonth(e.target.value);
     }
-
-    const formatCurrency = (value) => {
-        return new Intl.NumberFormat('en-US', {
-            style: "currency",
-            currency: "USD",
-            minimumFractionDigits: 2,
-        }).format(value);
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
