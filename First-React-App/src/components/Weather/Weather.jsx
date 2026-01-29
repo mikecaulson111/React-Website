@@ -14,7 +14,17 @@ export default function Weather() {
     const [loading, setLoading] = useState(false);
     const [unit, setUnit] = useState(1);
 
+    const [gmt, setGmt] = useState("");
+
     const weatherApiKey = import.meta.env.VITE_WEATHER_API_KEY;
+
+    const setVals = (data) => {
+        setWeather(data);
+
+        var gmtTime = 0;
+        gmtTime = data.timezone / 3600;
+        setGmt(gmtTime);
+    }
 
     const getWeather = async () => {
         if (!city) {
@@ -29,7 +39,7 @@ export default function Weather() {
             );
 
             const data = await response.json();
-            setWeather(data);
+            setVals(data);
         } catch (error) {
             console.error("Error getting weather:", error);
         } finally {
@@ -94,7 +104,7 @@ export default function Weather() {
 
                 {weather && weather.main && (
                   <div style={{marginTop: "30px"}}>
-                    <h3>Weather in {weather.name}:</h3>
+                    <h3>Weather in {weather.name} (GMT {gmt > 0 ? "+" : ""}{gmt}):</h3>
                     <p>Temperature: {weather.main.temp}{unitsDegrees[unit]}</p>
                     <p>Condition: {weather.weather[0].description}</p>
                   </div>

@@ -83,6 +83,7 @@ function OurInfo() {
                         <img src={boatItaly} className="new-me-image" />
                     </div>
                     <p>I may have broken my Maui Jimmies here by hitting my freaking head on a door frame in ITALY 2X</p>
+                    <h3 style={{color: "#f9adad", textDecoration: "underline"}}>But we got freakin Engaged!!</h3>
                 </li>
                 <li className="trip-item">
                     <p className="trip-title">Cruise 4 back to the bahamas (THIS WAS SHIT WE BOTH GOT THE FLU)(Quarantined)</p>
