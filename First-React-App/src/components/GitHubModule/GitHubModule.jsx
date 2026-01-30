@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./GitHubModule.css";
+import "./GithubModule.css";
 
 const filterLastWeek = (events, dayOfWeek) => {
     const lastWeek = new Date();
