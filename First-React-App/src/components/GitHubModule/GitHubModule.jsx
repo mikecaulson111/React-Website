@@ -50,7 +50,7 @@ export default function GitHubModule() {
 
     const tableStyle = {
         borderCollapse: "collapse",
-        width: "50%",
+        width: "10%",
         marginTop: "20px",
         fontSize: "24px",
         textAlign: "center",
@@ -100,6 +100,7 @@ export default function GitHubModule() {
         width: "100%" 
     }}>
       <h2>Github events from me over the last week or so</h2>
+      <p>To my personal account, not including my work account</p>
       <h3>legend</h3>
       <p className="light-grey-block">0 Contributions   </p>
       <p className="light-green-block">1-3 Contributions</p>
@@ -107,13 +108,13 @@ export default function GitHubModule() {
       <table style={tableStyle}>
         <thead>
             <tr>
-                <th style={{...cellStyle, width: 'auto'}}>Sun</th>
-                <th style={{...cellStyle, width: 'auto'}}>Mon</th>
-                <th style={{...cellStyle, width: 'auto'}}>Tue</th>
-                <th style={{...cellStyle, width: 'auto'}}>Wed</th>
-                <th style={{...cellStyle, width: 'auto'}}>Thu</th>
-                <th style={{...cellStyle, width: 'auto'}}>Fri</th>
-                <th style={{...cellStyle, width: 'auto'}}>Sat</th>
+                <th style={{...cellStyle, width: 'auto', height: 'auto'}}>Sun</th>
+                <th style={{...cellStyle, width: 'auto', height: 'auto'}}>Mon</th>
+                <th style={{...cellStyle, width: 'auto', height: 'auto'}}>Tue</th>
+                <th style={{...cellStyle, width: 'auto', height: 'auto'}}>Wed</th>
+                <th style={{...cellStyle, width: 'auto', height: 'auto'}}>Thu</th>
+                <th style={{...cellStyle, width: 'auto', height: 'auto'}}>Fri</th>
+                <th style={{...cellStyle, width: 'auto', height: 'auto'}}>Sat</th>
             </tr>
         </thead>
         <tbody>
