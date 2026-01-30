@@ -43,10 +43,12 @@ const getCountForEachDay = (events, dayOfWeek) => {
 
 export default function GitHubModule() {
     const [events, setEvents] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [dayOfWeek, setDayOfWeek] = useState(0);
     const [fully, setFully] = useState([]);
-    var username = "mikecaulson111";
+    const [userName, setUserName] = useState("mikecaulson111");
+    // var username = "mikecaulson111";
+    // var username = "";
 
     const tableStyle = {
         borderCollapse: "collapse",
@@ -75,8 +77,25 @@ export default function GitHubModule() {
         cursor: 'pointer'
     };
 
-    useEffect(() => {
-        fetch(`https://api.github.com/users/${username}/events`)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // useEffect(() => {
+        //     fetch(`https://api.github.com/users/${userName}/events`)
+        //         .then(res => res.json())
+        //         .then(data => {
+        //             const today = new Date().getDay();
+        //             const filtered = filterLastWeek(data, today);
+        //             setEvents(filtered);
+        //             setDayOfWeek(today);
+        //             const processedData = getCountForEachDay(filtered, today);
+        //             setFully(processedData);
+        //             setLoading(false);
+        //         })
+        //         .catch(err => console.error("GitHub API failed", err));
+        // }, [userName]);
+
+        fetch(`https://api.github.com/users/${userName}/events`)
             .then(res => res.json())
             .then(data => {
                 const today = new Date().getDay();
@@ -88,9 +107,14 @@ export default function GitHubModule() {
                 setLoading(false);
             })
             .catch(err => console.error("GitHub API failed", err));
-    }, [username]);
 
-  if (loading) return <div>Loading GitHub Activity...</div>;
+    }
+
+    const handleSetUserName = (e) => {
+        setUserName(e.target.value);
+    }
+
+//   if (loading) return <div>Loading GitHub Activity...</div>;
 
   return (
     <div style={{ 
@@ -105,6 +129,17 @@ export default function GitHubModule() {
       <p className="light-grey-block">0 Contributions   </p>
       <p className="light-green-block">1-3 Contributions</p>
       <p className="dark-green-block">3+ Contributions  </p>
+      <form onSubmit={handleSubmit}>
+        <label>
+            <p>Enter user name you would like to look up</p>
+            <input
+                type="text"
+                value={userName}
+                onChange={handleSetUserName}
+            />
+        </label>
+        <button className="submitButton">submit</button>
+      </form>
       <table style={tableStyle}>
         <thead>
             <tr>
