@@ -10,6 +10,7 @@ import PhysicsDemos from "../../components/PhysicsDemos/PhysicsDemos.jsx"
 import RomanNumeral from "../../components/RomanNumeral/RomanNumeral.jsx"
 import Links from "../../components/Links/Links.jsx"
 import Weather from "../../components/Weather/Weather.jsx"
+import GitHubModule from '../../components/GitHubModule/GitHubModule.jsx'
 
 function Home() {
   
@@ -110,6 +111,7 @@ function Home() {
       {options2[place2]}
       <Links pageName="Home" />
       <div style={{height: "25px"}} />
+      <GitHubModule />
     </>
   )
 }

@@ -1,0 +1,15 @@
+
+.light-grey-block {
+    background-color: #d3d3d3;
+    border: 1px solid black;
+}
+
+.light-green-block {
+    background-color: #00c04b;
+    border: 1px solid black;
+}
+
+.dark-green-block {
+    background-color: #008631;
+    border: 1px solid black;
+}
