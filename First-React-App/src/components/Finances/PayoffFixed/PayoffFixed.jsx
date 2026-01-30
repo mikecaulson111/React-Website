@@ -1,6 +1,7 @@
-import { useState } from "react"
-import "./PayoffFixed.css"
-import Schedule from "./Schedule.jsx"
+import { useState } from "react";
+import "./PayoffFixed.css";
+import Schedule from "./Schedule.jsx";
+import { formatCurrency } from "../../../utils/currencyUtils.js";
 
 
 // This is for calculating total payoff when you pay a fixed amount each montho
@@ -85,8 +86,6 @@ export default function PayoffFixed() {
             }
             month += 1;
 
-
-            // console.log("Month:", month, "Balance:", currAmt, "Interest Accrued:", totInterest, "Paid:", (currAmt+accumulatedInterest > amtPerMonth) ? currAmt+accumulatedInterest : holdingAmt);
             monthy.push(month);
             balance.push(currAmt);
             accruedInterest.push(totInterest);
@@ -138,7 +137,7 @@ export default function PayoffFixed() {
             </div>
 
             <h3 className="alertColors">{cantCompute}</h3>
-            <h3>Total Payoff Amount: ${currLoanAmt} will be paid off in {months} months, and you will pay $<span className={interestColor}>{totalInterest.toFixed(2)}</span> in interest</h3>
+            <h3>Total Payoff Amount: {formatCurrency(currLoanAmt)} will be paid off in {months} months, and you will pay <span className={interestColor}>{formatCurrency(totalInterest)}</span> in interest</h3>
             {months > 0 && (
                 <>
                     <button onClick={showSchedule} className="amortization-button">{schedule ? "Hide Amortization Schedule" : "Show Amortization Schedule"}</button>

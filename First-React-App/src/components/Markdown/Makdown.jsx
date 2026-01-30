@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactMarkdown from 'react-markdown';
+import remarkEmoji from 'remark-emoji';
 import "./Markdown.css"
 
 
@@ -15,10 +16,15 @@ export default function Markdown() {
                 className="markdown-textarea"
                 value={markdownText}
                 onChange={(e) => setMarkdownText(e.target.value)}
+                resize="both"
             />
-            <ReactMarkdown>
-                {markdownText}
-            </ReactMarkdown>
+            <div style={{justifyContent: "center", display: "flex"}}>
+                <div style={{width: "fit-content", maxWidth: "75ch"}}>
+                    <ReactMarkdown remarkPlugins={[remarkEmoji]}>
+                        {markdownText}
+                    </ReactMarkdown>
+                </div>
+            </div>
         </>
     );
 }

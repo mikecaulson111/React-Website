@@ -10,11 +10,12 @@ import PhysicsDemos from "../../components/PhysicsDemos/PhysicsDemos.jsx"
 import RomanNumeral from "../../components/RomanNumeral/RomanNumeral.jsx"
 import Links from "../../components/Links/Links.jsx"
 import Weather from "../../components/Weather/Weather.jsx"
+import GitHubModule from '../../components/GitHubModule/GitHubModule.jsx'
 
 function Home() {
   
-  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />, <Weather />];
-  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
+  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />, <Weather />, <GitHubModule />];
+  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
   const navigate = useNavigate();
   var lastThreeKeys = "";
@@ -63,6 +64,9 @@ function Home() {
         for large-scale embedded systems, with my work reaching millions of users. I enjoy transforming conceptual ideas
         into fully realized final products. Take a look around my portfolio and see how I have reimagined projects in
         JavaScript and React.
+        {/* MJC MJC MJC TODO add this blerb back in when you figure out all of what you want in the professional accomplishments */}
+        {/* If you are curious about more of my professional accomplishments, visit my "about me" page
+        linked down below. */}
       </p>
 
       <h3>Links:</h3>
@@ -102,6 +106,9 @@ function Home() {
         </button>
         <button className={classNames[6]} onClick={() => navigate("/kanban-board")}>
           Kanban Board
+        </button>
+        <button className={classNames[7]} onClick={() => secondButtonClicked(7)}>
+          My GitHub Contributions
         </button>
       </div>
       {options2[place2]}

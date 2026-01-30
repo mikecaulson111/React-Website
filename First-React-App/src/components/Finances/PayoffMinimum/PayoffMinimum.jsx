@@ -1,5 +1,6 @@
-import { useState } from "react"
-import "./PayoffMinimum.css"
+import { useState } from "react";
+import "./PayoffMinimum.css";
+import { formatCurrency } from "../../../utils/currencyUtils";
 
 export default function PayoffMinimum() {
     // These are to be entered by the user
@@ -62,7 +63,7 @@ export default function PayoffMinimum() {
                 <button className="submitButton" type="submit">Calculate</button>
             </form>
 
-            <h3>Minimum monthly payments to pay off ${loanAmt} at {interest}% in {months} months is: ${payoffAmt.toFixed(2)}</h3>
+            <h3>Minimum monthly payments to pay off {formatCurrency(loanAmt)} at {interest}% in {months} months is: {formatCurrency(payoffAmt)}</h3>
         </>
     )
 }
