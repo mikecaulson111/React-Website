@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import "./GitHubModule.css";
 
-const filterLastWeek = (events) => {
+const filterLastWeek = (events, dayOfWeek) => {
     const lastWeek = new Date();
-    lastWeek.setDate(lastWeek.getDate() - 7);
+    lastWeek.setDate(lastWeek.getDate() - 7 - dayOfWeek);
 
     return events.filter(event => {
         const eventDate = new Date(event.created_at);
@@ -79,8 +79,8 @@ export default function GitHubModule() {
         fetch(`https://api.github.com/users/${username}/events`)
             .then(res => res.json())
             .then(data => {
-                const filtered = filterLastWeek(data);
                 const today = new Date().getDay();
+                const filtered = filterLastWeek(data, today);
                 setEvents(filtered);
                 setDayOfWeek(today);
                 const processedData = getCountForEachDay(filtered, today);
@@ -99,7 +99,7 @@ export default function GitHubModule() {
         alignItems: "center",
         width: "100%" 
     }}>
-      <h1>Github events from me over the last week or so</h1>
+      <h2>Github events from me over the last week or so</h2>
       <h3>legend</h3>
       <p className="light-grey-block">0 Contributions   </p>
       <p className="light-green-block">1-3 Contributions</p>
@@ -121,7 +121,6 @@ export default function GitHubModule() {
                 <tr key={week.id}>
                     {week?.vals?.map((day) => (
                         <td key={day[0]} className={day[1] === 0 ? "light-grey-block" : day[1] < 4 ? "light-green-block" : "dark-green-block"}>
-                            {/* <p>{day[0]}, {day[1]}</p> */}
                             <p>{day[0]}</p>
                         </td>
                     ))}
