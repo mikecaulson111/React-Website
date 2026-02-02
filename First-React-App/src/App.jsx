@@ -1,6 +1,8 @@
 import "./App.css"
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { useEffect } from "react"
+import ReactGA from "react-ga4"
 
 // Pages:
 import HomePage from "./pages/HomePage/HomePage.jsx"
@@ -26,11 +28,26 @@ function Name({name}) {
   );
 }
 
+const MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+if (MEASUREMENT_ID) {
+  ReactGA.initialize(MEASUREMENT_ID,
+                    {gtagOptions:{ debug_mode: import.meta.env.DEV}});
+}
+
+const RouteChangeTracker = () => {
+  const location = useLocation();
+  useEffect(() => {
+    ReactGA.send({hitType: "pageview", page: location.pathname + location.search});
+  }, [location]);
+  return null;
+}
+
 function App() {
   return (
     <>
       <Router>
         <ScrollToTop />
+        <RouteChangeTracker />
         <main>
           <CornerImage />
           <Name name="Michael Caulson" />
