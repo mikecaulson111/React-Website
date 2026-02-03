@@ -31,7 +31,7 @@ function Name({name}) {
 const MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 if (MEASUREMENT_ID) {
   ReactGA.initialize(MEASUREMENT_ID,
-                    {gtagOptions:{ debug_mode: import.meta.env.DEV}});
+                    {gtagOptions:{ debug_mode: import.meta.env.DEV}, gaOptions: {send_page_view: false}});
 }
 
 const RouteChangeTracker = () => {
