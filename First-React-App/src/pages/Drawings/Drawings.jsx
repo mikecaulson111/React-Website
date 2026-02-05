@@ -23,6 +23,7 @@ const fetcher = async () => {
 export default function Drawings() {
     return (
         <>
+            <h3>My Drawings</h3>
             <img src={data.publicUrl} style={{width: "400px", height: "auto"}} />
             <img src={data2.publicUrl} style={{width: "400px", height: "auto"}} />
         </>
