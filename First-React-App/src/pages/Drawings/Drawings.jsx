@@ -24,8 +24,8 @@ export default function Drawings() {
     return (
         <>
             <h3>My Drawings</h3>
-            <img src={data.publicUrl} style={{width: "400px", height: "auto"}} />
-            <img src={data2.publicUrl} style={{width: "400px", height: "auto"}} />
+            <img src={data.publicUrl} style={{width: "45vw", height: "auto", paddingRight: "10px"}} />
+            <img src={data2.publicUrl} style={{width: "45vw", height: "auto"}} />
         </>
     )
 }
