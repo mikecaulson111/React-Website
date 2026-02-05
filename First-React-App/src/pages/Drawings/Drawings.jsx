@@ -21,7 +21,6 @@ const fetcher = async () => {
 }
 
 export default function Drawings() {
-    console.log("in here")
     return (
         <>
             <img src={data.publicUrl} style={{width: "400px", height: "auto"}} />
