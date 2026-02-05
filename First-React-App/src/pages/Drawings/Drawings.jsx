@@ -5,6 +5,8 @@ import Links from "../../components/Links/Links.jsx";
 import PrivateImage from "../../components/PrivateImage/PrivateImage.jsx";
 import PrivateGallery from "./PrivateGallery.jsx";
 
+import "./Login.css";
+
 const { data } = supabase
     .storage
     .from('Images')
@@ -46,12 +48,24 @@ function Login() {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      <button type="submit">Login</button>
-    </form>
-  )
+    <div className="login-container">
+      <h2>Welcome Back</h2>
+      <p>Enter Login Information to access Images</p>
+      <form className="login-form" onSubmit={handleLogin}>
+        <input 
+          type="email" 
+          placeholder="Email" 
+          onChange={(e) => setEmail(e.target.value)} 
+        />
+        <input 
+          type="password" 
+          placeholder="Password" 
+          onChange={(e) => setPassword(e.target.value)} 
+        />
+        <button type="submit" className="login-button">Login</button>
+      </form>
+    </div>
+  );
 }
 
 function LogOutButton() {
@@ -66,7 +80,7 @@ function LogOutButton() {
     }
 
     return (
-        <button onClick={handleLogout}>
+        <button onClick={handleLogout} className="login-button">
             Log Out
         </button>
     )
