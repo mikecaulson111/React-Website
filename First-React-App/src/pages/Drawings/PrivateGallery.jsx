@@ -107,7 +107,7 @@ export default function Gallery() {
           ))}
         </div>
         <div className="controls-container">
-          <button onClick={updateShowHidden}>{showHidden ? "Hide Hidden Images" : "Show Hidden Images"}</button>
+          <button onClick={updateShowHidden} style={{backgroundColor: "#fbbf77"}}>{showHidden ? "Hide Hidden Images" : "Show Hidden Images"}</button>
           {showHidden ? hiddenLoading ? <p className="loading-text">Loading Images</p>:
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '20px' }}>
             {hiddenImages.map((url, index) => (
