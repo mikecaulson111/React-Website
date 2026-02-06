@@ -158,6 +158,7 @@ export default function GitHubModule() {
                     {week?.vals?.map((day) => (
                         <td key={day[0]} className={day[1] === 0 ? "light-grey-block" : day[1] < 4 ? "light-green-block" : "dark-green-block"}>
                             <p>{day[0]}</p>
+                            {(new Date().getMonth()+1 + "/" + new Date().getDate() === day[0]) && <p>Today</p>}
                         </td>
                     ))}
                 </tr>

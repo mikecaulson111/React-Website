@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 // Components
 import Links from "../../components/Links/Links.jsx"
@@ -18,6 +18,8 @@ import californiaWedding from "../../assets/CaliforniaWedding.jpg"
 import cruise4 from "../../assets/cruise4.jpeg"
 import fluCruise from "../../assets/with_the_flu.jpeg"
 
+import { supabase } from "../../utils/supabase.js"
+
 //Compressed Images
 import hawaiiImageCompressed from "../../assets/Compressed/hawaiiImage_compressed.webp"
 import cruise1Compressed from "../../assets/Compressed/cruise1_compressed.webp"
@@ -31,8 +33,6 @@ import mexicoCompressed from "../../assets/Compressed/mexico_compressed.webp"
 // import californiaWeddingCompressed from "../../assets/Compressed/CaliforniaWedding_compressed.webp"
 // import cruise4Compressed from "../../assets/Compressed/cruise4_compressed.webp"
 // import fluCruiseCompressed from "../../assets/Compressed/with_the_flu_compressed.webp"
-
-
 
 import "./MiaAndMe.css"
 
