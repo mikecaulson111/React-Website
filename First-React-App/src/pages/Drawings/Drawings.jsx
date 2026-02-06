@@ -10,12 +10,7 @@ import "./Login.css";
 const { data } = supabase
     .storage
     .from('Images')
-    .getPublicUrl("drawings/Initial woman.jpg");
-
-const { data: data2 } = supabase
-    .storage
-    .from('Images')
-    .getPublicUrl("drawings/Tall skinny woman.jpg");
+    .getPublicUrl("drawings/me_1.jpg");
 
     // not working
 // const fetcher = async () => {
@@ -109,11 +104,8 @@ export default function Drawings() {
         <>
             <h3>My Drawings</h3>
             <img src={data.publicUrl} style={{width: "35vw", height: "auto", paddingRight: "10px"}} />
-            <img src={data2.publicUrl} style={{width: "35vw", height: "auto"}} />
-            {/* <PrivateImage path="test.jpg" /> */}
-
             {/* {!session ? <Login /> : <PrivateImage path="test.jpg" />} */}
-            <PrivateGallery />
+            {/* <PrivateGallery /> */}
             {!session ? <Login /> : <PrivateGallery />}
             {session ? <LogOutButton /> : ""}
             <Links />

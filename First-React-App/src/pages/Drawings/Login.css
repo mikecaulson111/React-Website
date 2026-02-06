@@ -46,3 +46,18 @@
 .login-button:hover {
   background-color: #2563eb;
 }
+
+.controls-container {
+  display: flex;
+  flex-direction: column; /* This forces the stack */
+  align-items: center;    /* This centers them horizontally */
+  margin-top: 2rem;       /* Adds space between the grid and the button */
+  gap: 10px;              /* Adds space between the button and the loading text */
+}
+
+.loading-text {
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;             /* Removes default p-tag spacing for tighter control */
+}
