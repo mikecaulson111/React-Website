@@ -86,5 +86,5 @@ export default function NewExpense({callbackFunction}) {
                 </div>
             </form>
         </>
-    )
+    );
 }
