@@ -16,6 +16,7 @@ import ScrollingTestingPage from "./pages/ScrollingTestingPage/ScrollingTestingP
 import BlockGamePage from "./pages/PhysicsDemos/BlockGame.jsx"
 import KanbanBoard from "./pages/KanbanBoard/KanbanBoard.jsx"
 import Drawings from "./pages/Drawings/Drawings.jsx"
+import ExpenseTracker from "./pages/ExpenseTracker/ExpenseTracker.jsx"
 
 // Images:
 import CornerImage from "./components/CornerImage/CornerImage.jsx"
@@ -65,6 +66,7 @@ function App() {
           <Route path="/scrolling-testing" element={<ScrollingTestingPage />} />
           <Route path="/kanban-board" element={<KanbanBoard />} />
           <Route path="/drawings" element={<Drawings />} />
+          <Route path="/expense-tracker" element={<ExpenseTracker />} />
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>
       </Router>
