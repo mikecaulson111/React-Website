@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./ExpenseTracker.css";
 
 export default function NewExpense({callbackFunction}) {
     const [description, setDescription] = useState("");
@@ -39,7 +40,7 @@ export default function NewExpense({callbackFunction}) {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="expense-form">
                 <label>
                     Date 
                     <input
@@ -79,7 +80,10 @@ export default function NewExpense({callbackFunction}) {
                         ))}
                     </select>
                 </label>
-                <button type="submit">Add Expense</button>
+                <div className="button-group">
+                    <span className="label-spacer"></span>
+                    <button type="submit">Add Expense</button>
+                </div>
             </form>
         </>
     )

@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../utils/supabase";
+import { formatCurrency } from "../../utils/currencyUtils";
 
 import NewExpense from "./NewExpense";
+import "./ExpenseTracker.css";
 
 export default function ExpenseTracker() {
     const [expenseData, setExpenseData] = useState([]);
+    const [showNewExpense, setShowNewExpense] = useState(false);
+
+    const updateNewExpense = () => {
+        setShowNewExpense(!showNewExpense);
+    }
 
     const handleAddExpense = async (vals) => {
         const {data, error} = await supabase
@@ -23,6 +30,7 @@ export default function ExpenseTracker() {
             console.error("Error:", error)
         } else if (data) {
             setExpenseData((prev) => [...prev, data[0]]);
+            setShowNewExpense(false);
         }
     }
 
@@ -43,40 +51,53 @@ export default function ExpenseTracker() {
         handleAddExpense(vals);
     }
 
-    getInitialData();
+    useEffect(() => {
+        getInitialData();
+    }, []);
+
 
     return (
         <>
             <h2>Expense Tracker</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date:</th>
-                        <th>Description:</th>
-                        <th>Amount:</th>
-                        <th>Category:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {expenseData && expenseData.map((element) => (
-                        <tr key={element.id}>
-                            <td>
-                                <p>{element.date}</p>
-                            </td>
-                            <td>
-                                <p>{element.description}</p>
-                            </td>
-                            <td>
-                                <p>{element.amount}</p>
-                            </td>
-                            <td>
-                                <p>{element.category}</p>
-                            </td>
+            <div className="table-container">
+                <table className="modern-table">
+                    <thead>
+                        <tr>
+                            <th>Date:</th>
+                            <th>Description:</th>
+                            <th>Amount:</th>
+                            <th>Category:</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            <NewExpense callbackFunction={callbacker}/>
+                    </thead>
+                    <tbody>
+                        {expenseData && expenseData.map((element) => (
+                            <tr key={element.id}>
+                                <td>
+                                    {element.date}
+                                </td>
+                                <td>
+                                    {element.description}
+                                </td>
+                                <td className="amount-cell">
+                                    {formatCurrency(element.amount)}
+                                </td>
+                                <td>
+                                    <span className={`badge-${element.category.toLowerCase()}`}>
+                                        {element.category}
+                                    </span>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <button
+                onClick={updateNewExpense}
+                style={{marginTop: "20px", marginBottom: "15px", backgroundColor: "#b9c9c1"}}
+            >
+                {showNewExpense ? "Hide new expense" : "Add new expense"}
+            </button>
+            {showNewExpense && <NewExpense callbackFunction={callbacker}/>}
         </>
     );
 }
