@@ -14,8 +14,8 @@ import GitHubModule from '../../components/GitHubModule/GitHubModule.jsx'
 
 function Home() {
   
-  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />, <Weather />, <GitHubModule />];
-  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
+  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />, <Weather />, "", <GitHubModule />];
+  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
   const navigate = useNavigate();
   var lastThreeKeys = "";
@@ -107,7 +107,7 @@ function Home() {
         <button className={classNames[6]} onClick={() => navigate("/kanban-board")}>
           Kanban Board
         </button>
-        <button className={classNames[7]} onClick={() => secondButtonClicked(7)}>
+        <button className={classNames[7]} onClick={() => secondButtonClicked(8)}>
           My GitHub Contributions
         </button>
       </div>
