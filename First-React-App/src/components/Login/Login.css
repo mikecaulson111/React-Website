@@ -62,3 +62,19 @@
   font-style: italic;
   margin: 0;             /* Removes default p-tag spacing for tighter control */
 }
+
+.new-user {
+  margin-top: 20px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+}
+
+.new-user:hover {
+  font-style: italic;
+}
+
+.new-user:focus {
+  outline: none;
+  border: none;
+}
