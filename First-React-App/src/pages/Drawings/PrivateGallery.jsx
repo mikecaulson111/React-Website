@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../../utils/supabase.js"
 
-import "./Login.css"
+import "../../components/Login/Login.css"
 
 export default function Gallery() {
   const [images, setImages] = useState([])

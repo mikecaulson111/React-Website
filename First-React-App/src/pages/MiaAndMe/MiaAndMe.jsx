@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { supabase } from "../../utils/supabase.js"
 
 // Components
 import Links from "../../components/Links/Links.jsx"
@@ -17,8 +18,6 @@ import margaritaville2 from "../../assets/Margaritaville2.jpg"
 import californiaWedding from "../../assets/CaliforniaWedding.jpg"
 import cruise4 from "../../assets/cruise4.jpeg"
 import fluCruise from "../../assets/with_the_flu.jpeg"
-
-import { supabase } from "../../utils/supabase.js"
 
 //Compressed Images
 import hawaiiImageCompressed from "../../assets/Compressed/hawaiiImage_compressed.webp"

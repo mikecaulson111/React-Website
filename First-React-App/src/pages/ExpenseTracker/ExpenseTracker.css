@@ -1,0 +1,136 @@
+/* Container for the table to allow for rounded corners and shadow */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse; /* Essential for clean lines */
+    font-family: 'Inter', sans-serif; /* A clean font helps significantly */
+    font-size: 14px;
+}
+
+/* Header styling */
+.modern-table thead {
+    background-color: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.modern-table th {
+    text-align: left;
+    padding: 12px 16px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Row styling - This is what separates them */
+.modern-table tbody tr {
+    border-bottom: 1px solid #f1f5f9; /* Subtle separator line */
+    transition: background-color 0.2s ease;
+}
+
+/* Zebra Striping (Optional but great for bookkeeping) */
+.modern-table tbody tr:nth-child(even) {
+    background-color: #fdfdfd;
+}
+
+/* Highlight row on hover */
+.modern-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.modern-table td {
+    padding: 16px;
+    color: #334155;
+    vertical-align: middle;
+}
+
+/* Special styling for the Amount column (usually aligned right) */
+.amount-cell {
+    text-align: right;
+    font-family: 'Courier New', Courier, monospace; /* Monospace keeps numbers aligned */
+    font-weight: 600;
+}
+
+/* Container for the form */
+.expense-form {
+    display: flex;
+    flex-wrap: wrap; /* Allows fields to wrap on smaller screens */
+    gap: 20px;
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 30px;
+    align-items: flex-end; /* Aligns the button with the inputs */
+}
+
+/* Individual label/input groups */
+.expense-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    flex: 1; /* Makes inputs expand equally */
+    min-width: 150px;
+}
+
+/* Styling for all input types and the select dropdown */
+.expense-form input, 
+.expense-form select {
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Focus state for a "high-end" feel */
+.expense-form input:focus, 
+.expense-form select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Submit Button */
+.expense-form button {
+    background-color: #0f172a; /* Dark slate */
+    color: white;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+    height: 42px; /* Matches input height */
+}
+
+.expense-form button:hover {
+    background-color: #334155;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Match the gap used in your labels */
+}
+
+.label-spacer {
+    height: 17px; /* Adjust this to match your label's font-size + line-height */
+    visibility: hidden; /* It takes up space but stays invisible */
+}
+
+.expense-form button {
+    height: 42px; /* Ensure this matches your input height exactly */
+    align-self: flex-start;
+}
