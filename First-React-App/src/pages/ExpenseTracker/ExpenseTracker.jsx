@@ -4,10 +4,15 @@ import { formatCurrency } from "../../utils/currencyUtils";
 
 import NewExpense from "./NewExpense";
 import "./ExpenseTracker.css";
+import { useAuth } from "../../components/AuthContext/AuthContext";
+import Login from "../../components/Login/Login.jsx";
+import Links from "../../components/Links/Links.jsx";
 
 export default function ExpenseTracker() {
     const [expenseData, setExpenseData] = useState([]);
     const [showNewExpense, setShowNewExpense] = useState(false);
+
+    const {user, loading} = useAuth();
 
     const updateNewExpense = () => {
         setShowNewExpense(!showNewExpense);
@@ -55,10 +60,18 @@ export default function ExpenseTracker() {
         getInitialData();
     }, []);
 
+    useEffect(() => {
+        if (!loading && user) {
+            getInitialData();
+        }
+    }, [user, loading])
+
 
     return (
         <>
             <h2>Expense Tracker</h2>
+            {user &&
+            <div>
             <div className="table-container">
                 <table className="modern-table">
                     <thead>
@@ -98,6 +111,14 @@ export default function ExpenseTracker() {
                 {showNewExpense ? "Hide new expense" : "Add new expense"}
             </button>
             {showNewExpense && <NewExpense callbackFunction={callbacker}/>}
+            </div>
+            }
+            {!user && 
+            <div>
+                <h3>Please sign in</h3>
+                <Login />
+            </div>}
+            <Links />
         </>
     );
 }

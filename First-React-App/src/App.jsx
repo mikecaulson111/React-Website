@@ -23,12 +23,8 @@ import CornerImage from "./components/CornerImage/CornerImage.jsx"
 
 // Components:
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx"
-
-function Name({name}) {
-  return (
-    <h1>{name}</h1>
-  );
-}
+import ConstHeader from "./ConstHeader.jsx"
+import { AuthProvider } from "./components/AuthContext/AuthContext.jsx"
 
 const MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 if (MEASUREMENT_ID) {
@@ -47,13 +43,11 @@ const RouteChangeTracker = () => {
 function App() {
   return (
     <>
+      <AuthProvider>
       <Router>
         <ScrollToTop />
         <RouteChangeTracker />
-        <main>
-          <CornerImage />
-          <Name name="Michael Caulson" />
-        </main>
+        <ConstHeader />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/help" element={<HelpPage />} />
@@ -70,6 +64,7 @@ function App() {
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>
       </Router>
+      </AuthProvider>
     </>
   )
 }
