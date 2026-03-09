@@ -108,7 +108,7 @@ function Home() {
           Kanban Board
         </button>
         <button className={classNames[7]} onClick={() => secondButtonClicked(8)}>
-          My GitHub Contributions
+          GitHub Contributions
         </button>
       </div>
       {options2[place2]}
