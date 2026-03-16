@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import './Home.css'
 
 import AddCount from "../../components/AddCount/AddCount.jsx"
@@ -17,8 +19,21 @@ function Home() {
   let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />, <Weather />, "", <GitHubModule />];
   const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
+  const [showItems, setShowItems] = useState(false);
   const navigate = useNavigate();
   var lastThreeKeys = "";
+
+  const container = useRef();
+
+  useGSAP(() => {
+    if (!container.current) return;
+    gsap.from(".box", {
+      x: -400,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+  }, {scope: container, dependencies: [showItems]});
 
   function secondButtonClicked(place) {
     let setClass = true;
@@ -47,6 +62,15 @@ function Home() {
     }
   }
 
+  const handleShowItemClick = () => {
+    if (!showItems) {
+      setShowItems(true);
+    } else {
+      secondButtonClicked(0);
+      setShowItems(false);
+    }
+  }
+
   useEffect(() => {
       window.addEventListener('keydown', handleKeyDown);
 
@@ -72,45 +96,62 @@ function Home() {
       <h3>Links:</h3>
       <SocialLinks />
 
-      <h2 className="intro-h2">
-        Below are some mini projects that I have created with more to come:
-      </h2>
+      
 
-      <p className="note-paragraph">
-        I have only added a couple projects below, the first one is just testing functionality in React, the second created
-        to help me do some financial calculations that were needed at the time and continue to be helpful today. The third
-        is a markdown editor/creator, and the next is some of the javascript/p5JS physics projects that I have worked on.
-        After that is a converter for roman numberals.
-        I am still working on adding other projects to this portfolio and will update as time goes on.
-      </p>
-
-      <div className="button-menu">
-        <button className={classNames[0]} onClick={() => secondButtonClicked(1)}>
-          Counter 
+      <div className="button-menu" style={{marginTop: "100px"}}>
+        <button onClick={() => navigate("/about-me")} className="over-button">
+          More about me
         </button>
-        <button className={classNames[1]} onClick={() => secondButtonClicked(2)}>
-          Finance Tools
-        </button>
-        <button className={classNames[2]} onClick={() => secondButtonClicked(3)}>
-          Markdown Preview
-        </button>
-        <button className={classNames[3]} onClick={() => secondButtonClicked(4)}>
-          Physics Demos
-        </button>
-        <button className={classNames[4]} onClick={() => secondButtonClicked(5)}>
-          Roman Numeral converter
-        </button>
-        {/* TODO: change the below button to be "other" and redirect to another page */}
-        <button className={classNames[5]} onClick={() => secondButtonClicked(6)}>
-          Weather
-        </button>
-        <button className={classNames[6]} onClick={() => navigate("/kanban-board")}>
-          Kanban Board
-        </button>
-        <button className={classNames[7]} onClick={() => secondButtonClicked(8)}>
-          GitHub Contributions
+        <button onClick={handleShowItemClick} className="over-button">
+          See Mini Projects and Components
         </button>
       </div>
+
+      {showItems &&
+        <div ref={container}>
+          <div className="box">
+            <h2 className="intro-h2">
+              Below are some mini projects that I have created with more to come:
+            </h2>
+
+            <p className="note-paragraph">
+              I have only added a couple projects below, the first one is just testing functionality in React, the second created
+              to help me do some financial calculations that were needed at the time and continue to be helpful today. The third
+              is a markdown editor/creator, and the next is some of the javascript/p5JS physics projects that I have worked on.
+              After that is a converter for roman numberals.
+              I am still working on adding other projects to this portfolio and will update as time goes on.
+            </p>
+
+            <div className="button-menu">
+              <button className={classNames[0]} onClick={() => secondButtonClicked(1)}>
+                Counter 
+              </button>
+              <button className={classNames[1]} onClick={() => secondButtonClicked(2)}>
+                Finance Tools
+              </button>
+              <button className={classNames[2]} onClick={() => secondButtonClicked(3)}>
+                Markdown Preview
+              </button>
+              <button className={classNames[3]} onClick={() => secondButtonClicked(4)}>
+                Physics Demos
+              </button>
+              <button className={classNames[4]} onClick={() => secondButtonClicked(5)}>
+                Roman Numeral converter
+              </button>
+              {/* TODO: change the below button to be "other" and redirect to another page */}
+              <button className={classNames[5]} onClick={() => secondButtonClicked(6)}>
+                Weather
+              </button>
+              <button className={classNames[6]} onClick={() => navigate("/kanban-board")}>
+                Kanban Board
+              </button>
+              <button className={classNames[7]} onClick={() => secondButtonClicked(8)}>
+                GitHub Contributions
+              </button>
+            </div>
+          </div>
+        </div>
+      }
       {options2[place2]}
       <Links pageName="Home" />
       <div style={{height: "25px"}} />
