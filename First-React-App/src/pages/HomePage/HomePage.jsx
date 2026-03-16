@@ -26,13 +26,17 @@ function Home() {
   const container = useRef();
 
   useGSAP(() => {
-    if (!container.current) return;
-    gsap.from(".box", {
-      x: -400,
+    if (!showItems || !container.current) return;
+
+    const tl = gsap.timeline();
+
+    tl.from(".box", {x:-50, opacity: 0, duration: 0.5});
+    tl.from(".top-button", {
+      y: 20,
       opacity: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    });
+      stagger: 0.05,
+      duration: 0.4
+    }, "-=0.3");
   }, {scope: container, dependencies: [showItems]});
 
   function secondButtonClicked(place) {
