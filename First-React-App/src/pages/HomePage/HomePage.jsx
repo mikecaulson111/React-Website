@@ -103,11 +103,11 @@ function Home() {
       
 
       <div className="button-menu" style={{marginTop: "100px"}}>
-        <button onClick={() => navigate("/about-me")} className="over-button">
-          More about me
-        </button>
         <button onClick={handleShowItemClick} className="over-button">
           See Mini Projects and Components
+        </button>
+        <button onClick={() => navigate("/about-me")} className="over-button">
+          More about me
         </button>
       </div>
 
