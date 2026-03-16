@@ -119,10 +119,8 @@ function Home() {
             </h2>
 
             <p className="note-paragraph">
-              I have only added a couple projects below, the first one is just testing functionality in React, the second created
-              to help me do some financial calculations that were needed at the time and continue to be helpful today. The third
-              is a markdown editor/creator, and the next is some of the javascript/p5JS physics projects that I have worked on.
-              After that is a converter for roman numberals.
+              I have only added a couple projects below, to show off what I have been learning and adding helpful tools
+              that I feel could be helpful for everyday life.
               I am still working on adding other projects to this portfolio and will update as time goes on.
             </p>
 
