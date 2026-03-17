@@ -8,6 +8,7 @@ import myImageCompressed from "../../assets/Compressed/me_2_compressed.webp";
 import Links from "../../components/Links/Links.jsx";
 import BlurUpImage from "../../components/BlurUpImage/BlurUpImage.jsx";
 import ProfessionalAccomplishments from "../../components/ProfessionalAccomplishments/ProfessionalAccomplishments.jsx";
+import EducationalAccomplishments from "../../components/ProfessionalAccomplishments/EducationalAccomplisments.jsx";
 import "./AboutMe.css";
 
 export default function AboutMe() {
@@ -104,9 +105,10 @@ export default function AboutMe() {
                 <button style={{backgroundColor: "#E5E4E2"}} onClick={updateSchool}>{schoolText}</button>
             </div>
             {professional ? <ProfessionalAccomplishments /> : ""}
-            {/* {school ? <SchoolAccomplisments /> : ""} */}
+            {school ? <EducationalAccomplishments /> : ""}
             <Links pageName="About Me" />
-            <section style={{height: "45vh"}} />
+            {/* <section style={{height: "45vh"}} /> */}
+            <section style={{height: "10vh"}} />
         </>
     );
 }

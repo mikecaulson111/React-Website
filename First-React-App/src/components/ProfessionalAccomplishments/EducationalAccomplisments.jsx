@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 
 import "./Professional.css"
 
-export default function ProfessionalAccomplishments() {
+export default function EducationalAccomplishments() {
     
     const container = useRef();
 
@@ -15,7 +15,7 @@ export default function ProfessionalAccomplishments() {
 
       // tl.from(".box", {x:-50, opacity: 0, duration: 0.5});
       tl.from(".li-item", {
-        x: -100,
+        x: 100,
         scale: 0.75,
         opacity: 0,
         stagger: 0.1,
@@ -25,14 +25,14 @@ export default function ProfessionalAccomplishments() {
 
     return (
         <div ref={container}>
-            <h3>Professional Accomplishments</h3>
-            <h4 style={{fontWeight: "bold", marginTop: "30px"}}>Dish/Echostar:</h4>
+            <h3>Educational Accomplishments</h3>
+            <h4 style={{fontWeight: "bold", marginTop: "30px"}} className="right-side">University of Colorado Boulder:</h4>
             <ul>
                 <li className="li-item">
-                    I am one of three inventors on a patent related to singal protection for broadcast satellite service
+                    For 4th year Lab, my lab partner and I performed the Cavendish Experiment
                 </li>
                 <li className="li-item">
-                    I have aided in reducing api calls by over 20% for certain calls by optimizing code
+                    Completed both Quantum Mechanics 1&2 as well as Quantum Computing
                 </li>
             </ul>
             {/* <p>I am one of three inventors on a patent related to signal protection for broadcast satellite service</p> */}

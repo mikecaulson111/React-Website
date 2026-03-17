@@ -6,3 +6,29 @@ ul {
     padding: 0;
     display: inline-block;
 }
+
+li {
+    margin-top: 10px;
+}
+
+.right-side {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-li {
+  display: flex;
+  flex-direction: row-reverse; /* Flips the dot to the right */
+  align-items: center;
+  gap: 10px; /* Space between the text and the dot */
+}
+
+/* Create the new dot on the right */
+.right-li::before {
+  content: "•";
+  color: #D97757; /* Using your orange theme */
+  font-size: 1.5rem;
+}
