@@ -8,6 +8,7 @@ import myImageCompressed from "../../assets/Compressed/me_2_compressed.webp";
 import Links from "../../components/Links/Links.jsx";
 import BlurUpImage from "../../components/BlurUpImage/BlurUpImage.jsx";
 import ProfessionalAccomplishments from "../../components/ProfessionalAccomplishments/ProfessionalAccomplishments.jsx";
+import EducationalAccomplishments from "../../components/ProfessionalAccomplishments/EducationalAccomplisments.jsx";
 import "./AboutMe.css";
 
 export default function AboutMe() {
@@ -41,13 +42,32 @@ export default function AboutMe() {
     const [professional, setProfessional] = useState(false);
     const [profText, setProfText] = useState("Show Professional Accomplishments");
 
+    const [school, setSchool] = useState(false);
+    const [schoolText, setSchoolText] = useState("Show Education Accomplisments");
+
     function updateProfessional() {
+        setSchoolText("Show Education Accomplishments");
+        setSchool(false);
+
         if (!professional) {
             setProfText("Hide Professional Accomplishments");
             setProfessional(true);
         } else {
             setProfText("Show Professional Accomplishments");
             setProfessional(false);
+        }
+    }
+
+    function updateSchool() {
+        setProfText("Show Professional Accomplisments");
+        setProfessional(false);
+
+        if (!school) {
+            setSchoolText("Hide Education Achievements");
+            setSchool(true);
+        } else {
+            setSchoolText("Show Education Accomplishments");
+            setSchool(false);
         }
     }
 
@@ -80,10 +100,15 @@ export default function AboutMe() {
                 around the US and the world.
             </p>
             <h3>Thanks again for visiting my page!</h3>
-            <button style={{backgroundColor: "#E5E4E2"}} onClick={updateProfessional}>{profText}</button>
+            <div className="button-menu">
+                <button style={{backgroundColor: "#E5E4E2"}} onClick={updateProfessional}>{profText}</button>
+                <button style={{backgroundColor: "#E5E4E2"}} onClick={updateSchool}>{schoolText}</button>
+            </div>
             {professional ? <ProfessionalAccomplishments /> : ""}
+            {school ? <EducationalAccomplishments /> : ""}
             <Links pageName="About Me" />
-            <section style={{height: "45vh"}} />
+            {/* <section style={{height: "45vh"}} /> */}
+            <section style={{height: "10vh"}} />
         </>
     );
 }

@@ -248,20 +248,14 @@ export default function KanbanBoard() {
                 <table style={tableStyle}>
                     <thead>
                         <tr>
-                            <th style={headerStyle}>
-                                <div onDragEnter={handleDragEnterP} onDragLeave={handleDragLeaveP} onDragOver={handleDragOver} onDrop={handleDropP}>
-                                    In Progress
-                                </div>
+                            <th style={headerStyle} onDragEnter={handleDragEnterP} onDragLeave={handleDragLeaveP} onDragOver={handleDragOver} onDrop={handleDropP}>
+                                In Progress
                             </th>
-                            <th style={headerStyle}>
-                                <div onDragEnter={handleDragEnterC} onDragLeave={handleDragLeaveC} onDragOver={handleDragOver} onDrop={handleDropC}>
-                                    Code Review
-                                </div>
+                            <th style={headerStyle} onDragEnter={handleDragEnterC} onDragLeave={handleDragLeaveC} onDragOver={handleDragOver} onDrop={handleDropC}>
+                                Code Review
                             </th>
-                            <th style={headerStyle}>
-                                <div onDragEnter={handleDragEnterD} onDragLeave={handleDragLeaveD} onDragOver={handleDragOver} onDrop={handleDropD}>
-                                    Done
-                                </div>
+                            <th style={headerStyle} onDragEnter={handleDragEnterD} onDragLeave={handleDragLeaveD} onDragOver={handleDragOver} onDrop={handleDropD}>
+                                Done
                             </th>
                         </tr>
                     </thead>
