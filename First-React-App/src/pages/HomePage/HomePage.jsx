@@ -150,6 +150,9 @@ function Home() {
               <button className={classNames[7]} onClick={() => secondButtonClicked(8)}>
                 GitHub Contributions
               </button>
+              <button className={classNames[8]} onClick={() => navigate("/recipes")}>
+                Recipes
+              </button>
             </div>
           </div>
         </div>
