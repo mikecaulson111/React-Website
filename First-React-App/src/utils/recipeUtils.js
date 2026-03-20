@@ -25,11 +25,28 @@ export const recipes = [
   },
   {
     id: 2,
-    title: "Mushroom Risotto",
-    time: "45 mins",
-    difficulty: "Intermediate",
-    image: "https://therecipecritic.com/wp-content/uploads/2016/10/brownbuttergarlicshrimp3.jpg",
-    slug: "mushroom-risotto"
+    title: "Dill Pickles",
+    time: "10 mins",
+    difficulty: "Easy",
+    image: "https://www.browneyedbaker.com/wp-content/uploads/2014/08/refrigerator-dill-pickles-22-550.jpg",
+    description: "This was the first kind of dill pickles I made, they are great, refreshing but can taste on the vinegary side",
+    ingredients: [
+        "8-10 pickling cucumbers",
+        "4 cloves of garlic halved",
+        "2 teaspoons peppercorn",
+        "fresh dill sprigs/dill seasoning",
+        "2 cups water",
+        "2 cups distilled white vinegar",
+        "1/4 cup cane sugar",
+        "2 tablespoons sea salt",
+        "canning equiptment (I use usually 2 mason jars)"
+    ],
+    instructions: [
+        "Slice cucumbers in the manner you wish",
+        "Add cucumbers to jars, and divide and add in garlic, peppercorn, and dill to each jar",
+        "Heat water, vinegar, sugar and salt over medium heat, stir until salt and sugar dissolve"
+    ],
+    slug: "dill-pickle"
   },
   {
     id: 3,

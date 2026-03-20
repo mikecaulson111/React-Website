@@ -1,5 +1,6 @@
 import { useState } from "react"
 import RecipeOverview from "../../components/RecipeOverview/RecipeOverview"
+import Links from "../../components/Links/Links.jsx";
 import { recipes } from "../../utils/recipeUtils";
 
 export default function RecipePage() {
@@ -19,6 +20,7 @@ export default function RecipePage() {
             {recipes.map(recipe => (
                 <RecipeOverview key={recipe.id} {...recipe} callback={recipeCallback} />
             ))}
+            <Links />
         </>
     )
 }

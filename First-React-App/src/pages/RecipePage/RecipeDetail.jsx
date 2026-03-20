@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom"
 import { recipes } from "../../utils/recipeUtils"
 import backImage from "../../assets/back-arrow.svg"
+import Links from "../../components/Links/Links.jsx"
 import "./RecipeDetail.css"
 
 export default function RecipeDetail() {
@@ -14,7 +15,7 @@ export default function RecipeDetail() {
             <hr />
             <Link to={"/recipes"}><img src={backImage} style={{width: "30px", height: "auto", marginTop: "10px"}} /></Link>
             <h1>{recipe.title}</h1>
-            <img src={recipe.image} style={{width: "25%", height: "auto"}}/>
+            <img src={recipe.image} style={{width: "45%", maxWidth: "350px", height: "auto"}}/>
             <h3>Description:</h3>
             <p>{recipe.description}</p>
             <p style={{textDecoration: "underline"}}>Total Time: {recipe.time}</p>
@@ -34,6 +35,7 @@ export default function RecipeDetail() {
                     ))}
                 </ol>
             </div>
+            <Links />
         </div>
     )
 }
