@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { recipes } from "../../utils/recipeUtils"
+import backImage from "../../assets/back-arrow.svg"
 import "./RecipeDetail.css"
 
 export default function RecipeDetail() {
@@ -11,14 +12,16 @@ export default function RecipeDetail() {
     return (
         <div className="recipe-div-v2">
             <hr />
+            <Link to={"/recipes"}><img src={backImage} style={{width: "30px", height: "auto", marginTop: "10px"}} /></Link>
             <h1>{recipe.title}</h1>
             <img src={recipe.image} style={{width: "25%", height: "auto"}}/>
             <h3>Description:</h3>
             <p>{recipe.description}</p>
+            <p style={{textDecoration: "underline"}}>Total Time: {recipe.time}</p>
             <div className="ingredients">
                 <h3>Ingredients:</h3>
                 <ul>
-                    {recipe.ingredients.map((item) => (
+                    {recipe.ingredients && recipe.ingredients.map((item) => (
                         <li key={item}>{item}</li>
                     ))}
                 </ul>
@@ -26,7 +29,7 @@ export default function RecipeDetail() {
             <div className="directions">
                 <h3>Directions:</h3>
                 <ol>
-                    {recipe.instructions.map((instruction) => (
+                    {recipe.instructions && recipe.instructions.map((instruction) => (
                         <li key={instruction}>{instruction}</li>
                     ))}
                 </ol>
