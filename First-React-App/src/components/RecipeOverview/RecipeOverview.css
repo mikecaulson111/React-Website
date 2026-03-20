@@ -27,6 +27,7 @@
 .recipe-details {
   padding: 15px;
   flex-grow: 1;
+  margin-left: 20px;
 }
 
 .recipe-details h3 {
@@ -41,7 +42,9 @@
 }
 
 .view-button {
-  background-color: #ff6347; /* Tomato color */
+  /*background-color: #ff6347; /* Tomato color */
+  /* background-color: #6b4e71; */
+  background-color: #8E44AD;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -51,6 +54,7 @@
 }
 
 .view-button:hover {
-  background-color: #e5533d;
+  /* background-color: #e5533d; */
+  background-color: #7D3C98;
   color: rgb(200,200,200);
 }
