@@ -1,0 +1,54 @@
+.recipe-div {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  border: 1px solid #eee;
+  max-width: 95%;
+  margin-bottom: 15px;
+}
+
+.recipe-div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-left: 5px;
+}
+
+.recipe-details {
+  padding: 15px;
+  flex-grow: 1;
+}
+
+.recipe-details h3 {
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.recipe-details p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.view-button {
+  background-color: #ff6347; /* Tomato color */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.view-button:hover {
+  background-color: #e5533d;
+}
