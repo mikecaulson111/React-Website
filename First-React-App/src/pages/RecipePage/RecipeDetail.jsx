@@ -1,3 +1,5 @@
+import { useState, useEffect} from "react"
+import { supabase } from "../../utils/supabase.js"
 import { useParams, Link } from "react-router-dom"
 import { recipes } from "../../utils/recipeUtils"
 import backImage from "../../assets/back-arrow.svg"
@@ -6,7 +8,27 @@ import "./RecipeDetail.css"
 
 export default function RecipeDetail() {
     const { recipeSlug } = useParams();
-    const recipe = recipes.find((r) => r.slug === recipeSlug);
+
+    // var recipe;
+
+    const [recipe, setRecipe] = useState();
+    const getRecipeData = async () => {
+        const {data, error} = await supabase
+            .from("Recipes")
+            .select("*")
+            .eq("slug", recipeSlug);
+
+        if (error) {
+            console.error("failed to get recipe:", recipeSlug, error);
+        } else {
+            setRecipe(data[0]);
+        }
+    }
+    // const recipe = recipes.find((r) => r.slug === recipeSlug);
+
+    useEffect(() => {
+        getRecipeData();
+    }, []);
 
     if (!recipe) return <h2>Recipe Not Found!</h2>
 
