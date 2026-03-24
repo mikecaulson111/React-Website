@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../utils/supabase.js";
 import RecipeOverview from "../../components/RecipeOverview/RecipeOverview";
+import CreateRecipe from "../../components/CreateRecipe/CreateRecipe.jsx";
 import Links from "../../components/Links/Links.jsx";
+import { useAuth } from "../../components/AuthContext/AuthContext.jsx";
+import Login from "../../components/Login/Login.jsx";
 import { recipes } from "../../utils/recipeUtils";
 
 export default function RecipePage() {
 
-    const [showingRecipe, setShowingRecipe] = useState(-1);
+    const [showingRecipe, setShowingRecipe] = useState(false);
     const [recipeData, setRecipeData] = useState();
+
+    const {user, loading} = useAuth();
 
     const getInitialData = async () => {
         const {data, error} = await supabase
@@ -19,6 +24,10 @@ export default function RecipePage() {
         } else {
             setRecipeData(data);
         }
+    }
+
+    const callbacker = () => {
+        setShowingRecipe(!showingRecipe)
     }
 
     function recipeCallback(id) {
@@ -41,6 +50,17 @@ export default function RecipePage() {
             {recipeData && recipeData.map(recipe => (
                 <RecipeOverview key={recipe.id} {...recipe} callback={recipeCallback} />
             ))}
+            <div style={{paddingTop: "80px"}}>
+                <hr />
+                {!user && 
+                <>
+                    <h3>Please Sign In</h3>
+                    <Login />
+                </>
+                }
+                {user &&
+                <CreateRecipe callbackFunc={callbacker}/>}
+            </div>
             <Links />
         </>
     )
