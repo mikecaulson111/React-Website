@@ -12,6 +12,7 @@
 .modern-table {
     width: 100%;
     border-collapse: collapse; /* Essential for clean lines */
+    min-width: 600px;
     font-family: 'Inter', sans-serif; /* A clean font helps significantly */
     font-size: 14px;
 }
