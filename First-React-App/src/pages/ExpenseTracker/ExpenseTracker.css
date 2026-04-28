@@ -9,6 +9,15 @@
     margin-top: 20px;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  /* This ensures the background covers the 'extra' width created by the table */
+  display: table; 
+  width: 100%;
+}
+
 .modern-table {
     width: 100%;
     border-collapse: collapse; /* Essential for clean lines */
