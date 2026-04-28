@@ -28,6 +28,7 @@ export default function RecipePage() {
 
     const callbacker = () => {
         setShowingRecipe(!showingRecipe)
+        getInitialData();
     }
 
     function recipeCallback(id) {
