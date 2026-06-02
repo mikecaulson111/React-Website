@@ -2,6 +2,7 @@ import { useState } from "react";
 import PayoffFixed from './PayoffFixed/PayoffFixed.jsx'
 import PayoffMinimum from './PayoffMinimum/PayoffMinimum.jsx'
 import WorstTaxes from './WorstTaxes/WorstTaxes.jsx'
+import StockTracker from "./StockTracker/StockTracker.jsx";
 import { useNavigate } from "react-router-dom";
 
 import "./Finances.css"
@@ -9,11 +10,11 @@ import "./Finances.css"
 
 export default function() {
     const [place, setPlace] = useState(0);
-    const [thisClassName, setThisClassName] = useState(["myButton","myButton","myButton", "myButton"]);
+    const [thisClassName, setThisClassName] = useState(["myButton","myButton","myButton", "myButton", "myButton"]);
 
     const navigate = useNavigate();
 
-    let options = ["", <PayoffFixed />, <PayoffMinimum />, <WorstTaxes />, ""];
+    let options = ["", <PayoffFixed />, <PayoffMinimum />, <WorstTaxes />, "", <StockTracker />];
 
     function buttonClicked(tempPlace) {
       setPlace(tempPlace);
@@ -34,6 +35,9 @@ export default function() {
           </button>
           <button className={thisClassName[3]} onClick={() => navigate("/expense-tracker")}>
             Expense Tracker
+          </button>
+          <button className={thisClassName[4]} onClick={() => buttonClicked(5)}>
+            Stock Tracker
           </button>
         </div>
       {options[place]}
