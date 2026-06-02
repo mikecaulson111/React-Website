@@ -24,11 +24,7 @@ export default function StockTracker() {
                 change: parseFloat(data["Global Quote"]["09. change"]).toFixed(2),
               });
             } else {
-                if (data["Information"]) {
-                    setError("Most likely you have hit the limir for API, try again in 1 min")
-                } else {
-                    setError('Ticker not found or API limit reached.');
-                }
+                setError('Ticker not found or API limit reached.');
             }
         } catch (err) {
             setError("Failed to fetch data");
