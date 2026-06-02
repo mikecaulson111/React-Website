@@ -7,10 +7,27 @@ import { useAuth } from "../../components/AuthContext/AuthContext.jsx";
 import Login from "../../components/Login/Login.jsx";
 import { recipes } from "../../utils/recipeUtils";
 
+function ShowSuccess({ isFadingOut }) {
+    return (
+    <div style={{
+        padding: '15px',
+        backgroundColor: '#d4edda',
+        color: '#155724',
+        borderRadius: '5px',
+        textAlign: 'center',
+        transition: 'opacity 0.5s ease-out',
+        opacity: isFadingOut ? 0 : 1
+    }}>
+        <h3>Successfully added Recipe!!!</h3>
+    </div>
+    );
+}
+
 export default function RecipePage() {
 
-    const [showingRecipe, setShowingRecipe] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
     const [recipeData, setRecipeData] = useState();
+    const [isFadingOut, setIsFadingOut] = useState(false);
 
     const {user, loading} = useAuth();
 
@@ -27,7 +44,17 @@ export default function RecipePage() {
     }
 
     const callbacker = () => {
-        setShowingRecipe(!showingRecipe)
+        setShowSuccess(true);
+        getInitialData();
+
+        setTimeout(() => {
+            setIsFadingOut(true);
+        }, 2500);
+
+        setTimeout(() => {
+            setShowSuccess(false);
+            setIsFadingOut(false);
+        }, 3000);
     }
 
     function recipeCallback(id) {
@@ -58,8 +85,8 @@ export default function RecipePage() {
                     <Login />
                 </>
                 }
-                {user &&
-                <CreateRecipe callbackFunc={callbacker}/>}
+                {user && ( !showSuccess ?
+                <CreateRecipe callbackFunc={callbacker}/> : <ShowSuccess  isFadingOut={isFadingOut}/>)}
             </div>
             <Links />
         </>

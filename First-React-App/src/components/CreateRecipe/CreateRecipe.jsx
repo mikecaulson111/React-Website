@@ -137,7 +137,7 @@ export default function CreateRecipe({callbackFunc}) {
                 </label>
                 <div className="button-group">
                     <span className="label-spacer"></span>
-                    <button type="submit">Add Expense</button>
+                    <button type="submit">Add Recipe</button>
                 </div>
             </form>
         </>

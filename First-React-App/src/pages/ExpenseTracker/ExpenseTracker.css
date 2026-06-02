@@ -3,13 +3,25 @@
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin-top: 20px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  /* This ensures the background covers the 'extra' width created by the table */
+  display: table; 
+  width: 100%;
 }
 
 .modern-table {
     width: 100%;
     border-collapse: collapse; /* Essential for clean lines */
+    min-width: 600px;
     font-family: 'Inter', sans-serif; /* A clean font helps significantly */
     font-size: 14px;
 }

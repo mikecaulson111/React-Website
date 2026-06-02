@@ -2,6 +2,7 @@
 .recipe-div-v2 {
     max-width: 100ch;
     width: 95%;
+    margin: 0 auto;
 }
 
 /* .recipe-div-v2 p { */
