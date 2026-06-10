@@ -1,7 +1,7 @@
 import "./App.css"
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import ReactGA from "react-ga4"
 
 // Pages:
@@ -27,7 +27,11 @@ import CornerImage from "./components/CornerImage/CornerImage.jsx"
 // Components:
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx"
 import ConstHeader from "./ConstHeader.jsx"
+import CustomAlert from "./components/CustomMessage/CustomMessage.jsx"
 import { AuthProvider } from "./components/AuthContext/AuthContext.jsx"
+
+// Hooks:
+import { useIdleTimeout } from "./hooks/AutoLogout.jsx"
 
 const MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 if (MEASUREMENT_ID) {
@@ -43,7 +47,25 @@ const RouteChangeTracker = () => {
   return null;
 }
 
+const TempChecker = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  const setter = (val) => {
+    setShowAlert(val);
+  }
+  useIdleTimeout(1, setter);
+
+  if (!showAlert) return;
+
+  return (
+  <CustomAlert
+    message="You will be logged out in 2 mins."
+    onClose={() => setShowAlert(false)}
+  />
+  );
+}
+
 function App() {
+  
   return (
     <>
       <AuthProvider>
@@ -51,6 +73,7 @@ function App() {
         <ScrollToTop />
         <RouteChangeTracker />
         <ConstHeader />
+        <TempChecker />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/help" element={<HelpPage />} />

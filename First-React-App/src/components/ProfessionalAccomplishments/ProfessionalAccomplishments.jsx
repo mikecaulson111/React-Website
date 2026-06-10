@@ -29,7 +29,7 @@ export default function ProfessionalAccomplishments() {
             <h4 style={{fontWeight: "bold", marginTop: "30px"}}>Dish/Echostar:</h4>
             <ul>
                 <li className="li-item">
-                    I am one of three inventors on a patent related to singal protection for broadcast satellite service
+                    I am one of three inventors on a patent related to signal protection for broadcast satellite service
                 </li>
                 <li className="li-item">
                     I have aided in reducing api calls by over 20% for certain calls by optimizing code
