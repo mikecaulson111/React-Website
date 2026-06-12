@@ -8,10 +8,15 @@ export default function CodingExamples() {
         navigate("/selection-sort");
     }
 
+    const handleBubble = () => {
+        navigate("/bubble-sort");
+    }
+
     return (
         <>
             <h3>Coding Examples:</h3>
             <button className="physics-button" onClick={handleSelection}>Selection Sort</button>
+            <button className="physics-button" onClick={handleBubble}>Bubble Sort</button>
         </>
     )
 }
