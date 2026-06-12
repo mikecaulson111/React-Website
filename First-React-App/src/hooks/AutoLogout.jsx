@@ -23,7 +23,7 @@ export function useIdleTimeout(timeoutInMins = 15, callback) {
     const resetTimer = () => {
         if (timerRef.current) clearTimeout(timerRef.current);
         if (alertRef.current) clearTimeout(alertRef.current);
-        console.log("resetting timer");
+        // console.log("resetting timer");
 
         timerRef.current = setTimeout(logout, timeoutInMins * 60 * 1000);
         alertRef.current = setTimeout(alertSoon, (timeoutInMins * 0.8) * 60 * 1000);
