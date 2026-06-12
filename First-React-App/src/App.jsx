@@ -21,6 +21,7 @@ import RecipePage from "./pages/RecipePage/RecipePage.jsx"
 import RecipeDetail from "./pages/RecipePage/RecipeDetail.jsx"
 import SelectionSort from "./pages/CodingExamples/SelectionSort.jsx"
 import BubbleSort from "./pages/CodingExamples/BubbleSort.jsx"
+import InsertionSort from "./pages/CodingExamples/InsertionSort.jsx"
 
 // Images:
 import CornerImage from "./components/CornerImage/CornerImage.jsx"
@@ -86,6 +87,7 @@ function App() {
           <Route path="/spring-wave" element={<SpringWave />} />
           <Route path="/selection-sort" element={<SelectionSort />} />
           <Route path="/bubble-sort" element={<BubbleSort />} />
+          <Route path="/insertion-sort" element={<InsertionSort />} />
           <Route path="/scrolling-testing" element={<ScrollingTestingPage />} />
           <Route path="/kanban-board" element={<KanbanBoard />} />
           <Route path="/drawings" element={<Drawings />} />
