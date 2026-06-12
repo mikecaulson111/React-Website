@@ -1,0 +1,27 @@
+import { useNavigate } from "react-router-dom";
+import "../PhysicsDemos/PhysicsDemos.css";
+
+export default function CodingExamples() {
+    const navigate = useNavigate();
+
+    const handleSelection = () => {
+        navigate("/selection-sort");
+    }
+
+    const handleBubble = () => {
+        navigate("/bubble-sort");
+    }
+
+    const handleInsertion = () => {
+        navigate("/insertion-sort");
+    }
+
+    return (
+        <>
+            <h3>Coding Examples:</h3>
+            <button className="physics-button" onClick={handleSelection}>Selection Sort</button>
+            <button className="physics-button" onClick={handleBubble}>Bubble Sort</button>
+            <button className="physics-button" onClick={handleInsertion}>Insertion Sort</button>
+        </>
+    )
+}

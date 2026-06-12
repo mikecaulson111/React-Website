@@ -1,7 +1,7 @@
 import "./App.css"
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import ReactGA from "react-ga4"
 
 // Pages:
@@ -19,6 +19,9 @@ import Drawings from "./pages/Drawings/Drawings.jsx"
 import ExpenseTracker from "./pages/ExpenseTracker/ExpenseTracker.jsx"
 import RecipePage from "./pages/RecipePage/RecipePage.jsx"
 import RecipeDetail from "./pages/RecipePage/RecipeDetail.jsx"
+import SelectionSort from "./pages/CodingExamples/SelectionSort.jsx"
+import BubbleSort from "./pages/CodingExamples/BubbleSort.jsx"
+import InsertionSort from "./pages/CodingExamples/InsertionSort.jsx"
 
 // Images:
 import CornerImage from "./components/CornerImage/CornerImage.jsx"
@@ -26,7 +29,11 @@ import CornerImage from "./components/CornerImage/CornerImage.jsx"
 // Components:
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx"
 import ConstHeader from "./ConstHeader.jsx"
+import CustomAlert from "./components/CustomMessage/CustomMessage.jsx"
 import { AuthProvider } from "./components/AuthContext/AuthContext.jsx"
+
+// Hooks:
+import { useIdleTimeout } from "./hooks/AutoLogout.jsx"
 
 const MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 if (MEASUREMENT_ID) {
@@ -42,7 +49,25 @@ const RouteChangeTracker = () => {
   return null;
 }
 
+const TempChecker = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  const setter = (val) => {
+    setShowAlert(val);
+  }
+  useIdleTimeout(1, setter);
+
+  if (!showAlert) return;
+
+  return (
+  <CustomAlert
+    message="You will be logged out in 2 mins."
+    onClose={() => setShowAlert(false)}
+  />
+  );
+}
+
 function App() {
+  
   return (
     <>
       <AuthProvider>
@@ -50,6 +75,7 @@ function App() {
         <ScrollToTop />
         <RouteChangeTracker />
         <ConstHeader />
+        <TempChecker />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/help" element={<HelpPage />} />
@@ -59,6 +85,9 @@ function App() {
           <Route path="/standing-waves" element={<StandingWaves />} />
           <Route path="/block-game" element={<BlockGamePage />} />
           <Route path="/spring-wave" element={<SpringWave />} />
+          <Route path="/selection-sort" element={<SelectionSort />} />
+          <Route path="/bubble-sort" element={<BubbleSort />} />
+          <Route path="/insertion-sort" element={<InsertionSort />} />
           <Route path="/scrolling-testing" element={<ScrollingTestingPage />} />
           <Route path="/kanban-board" element={<KanbanBoard />} />
           <Route path="/drawings" element={<Drawings />} />
