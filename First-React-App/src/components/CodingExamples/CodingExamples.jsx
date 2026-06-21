@@ -23,10 +23,10 @@ export default function CodingExamples() {
     return (
         <>
             <h3>Coding Examples:</h3>
-            <button className="physics-button" onClick={handleSelection}>Selection Sort</button>
-            <button className="physics-button" onClick={handleBubble}>Bubble Sort</button>
-            <button className="physics-button" onClick={handleInsertion}>Insertion Sort</button>
-            <button className="physics-button" onClick={handleBinary}>Binary Tree</button>
+            <button className="physics-button" style={{marginTop: "10px"}} onClick={handleSelection}>Selection Sort</button>
+            <button className="physics-button" style={{marginTop: "10px"}} onClick={handleBubble}>Bubble Sort</button>
+            <button className="physics-button" style={{marginTop: "10px"}} onClick={handleInsertion}>Insertion Sort</button>
+            <button className="physics-button" style={{marginTop: "10px"}} onClick={handleBinary}>Binary Tree</button>
         </>
     )
 }
