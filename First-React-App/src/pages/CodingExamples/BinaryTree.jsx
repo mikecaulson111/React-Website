@@ -198,6 +198,7 @@ export default function BinaryTreeSorter() {
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif", textAlign: "center" }}>
       <h2>Binary Search Tree Sort Visualizer</h2>
+      <h3>NOTE: Written with the help of an AI agent</h3>
 
       {/* Control Panel */}
       <div style={{ marginBottom: "20px" }}>
