@@ -11,11 +11,12 @@ export default function InsertionSort() {
     colors: [],
     n: 20,
     time: 0,
-    minIndex: 1,
     completed: false,
-    placer: 0,
     begin: false,
     swapped: false,
+    i: 1,
+    j: 0,
+    key: 0,
   });
 
   let begin = false;
@@ -56,17 +57,19 @@ export default function InsertionSort() {
     state.lines = [];
     state.colors = [];
     state.time = 0;
-    state.minIndex = 0;
     state.completed = false;
-    state.placer = 0;
-
+    
     for (let i = 0; i < state.n; i++) {
       let mapped = p5.map(i, 0, 19, 0, 1);
       state.lines.push(300 * mapped);
       state.colors.push(0);
     }
 
+    state.i = 1;
+    state.j = state.i -1;
     state.lines = p5.shuffle(state.lines);
+
+    state.key = state.lines[state.i];
   };
 
   const draw = (p5) => {
@@ -78,33 +81,27 @@ export default function InsertionSort() {
     if (state.begin) {
 
         // Sorting Step Logic
-        if (state.time % 5 === 0) {
+        // if (state.time % 5 === 0) {
+        if (state.time % 8 === 0) {
             state.time = 0;
+            if (state.i < state.n) {
+                if (state.j >= 0 && state.lines[state.j] > state.key) {
+                    state.lines[state.j+1] = state.lines[state.j];
+                    state.j = state.j - 1;
+                    state.colors[state.j+1] = 1;
+                    state.colors[state.j] = 1;
+                } else {
+                    state.lines[state.j+1] = state.key;
+                    state.colors[state.j+1] = 1;
+                    state.colors[state.j] = 1;
+                    state.i += 1;
+                    state.j = state.i - 1;
+                    state.key = state.lines[state.i];
+                }
+            } else {
+                state.completed = true;
+            }
         }
-        // Old code that would make multiple swaps per second, instead of only one swap per 5 frames
-        // if (state.time % 20 === 0) {
-        //   state.time = 0;
-        //   if (state.minIndex < state.n) {
-        //     var swapped = false;
-        //     for (var i = 0; i < state.n - 1; i++) {
-        //         if (state.lines[i] > state.lines[i+1]) {
-        //             [state.lines[i], state.lines[i+1]] = [
-        //                 state.lines[i+1],
-        //                 state.lines[i]
-        //             ];
-        //             state.colors[i] = 1;
-        //             state.colors[i+1] = 1;
-        //             swapped = true;
-        //         }
-        //     }
-        //     state.minIndex += 1;
-
-        //     if (!swapped) {
-        //         console.log("COMPLETED!!");
-        //         state.completed = true;
-        //     }
-        //   }
-        // }
 
         // Completion Animation Logic
         if (state.completed && state.time % 4 === 0 && state.placer < state.n) {
@@ -117,7 +114,7 @@ export default function InsertionSort() {
     for (let i = 0; i < state.n; i++) {
       if (state.colors[i] === 1) {
         p5.fill(255, 255, 0);
-        if (state.time >= 4) {
+        if (state.time >= 6) {
           state.colors[i] = 0;
         }
       } else {
