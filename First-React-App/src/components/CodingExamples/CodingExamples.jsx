@@ -16,12 +16,17 @@ export default function CodingExamples() {
         navigate("/insertion-sort");
     }
 
+    const handleBinary = () => {
+        navigate("/binary-tree");
+    }
+
     return (
         <>
             <h3>Coding Examples:</h3>
             <button className="physics-button" onClick={handleSelection}>Selection Sort</button>
             <button className="physics-button" onClick={handleBubble}>Bubble Sort</button>
             <button className="physics-button" onClick={handleInsertion}>Insertion Sort</button>
+            <button className="physics-button" onClick={handleBinary}>Binary Tree</button>
         </>
     )
 }
