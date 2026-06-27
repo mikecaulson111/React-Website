@@ -14,11 +14,12 @@ import Links from "../../components/Links/Links.jsx"
 import Weather from "../../components/Weather/Weather.jsx"
 import GitHubModule from '../../components/GitHubModule/GitHubModule.jsx'
 import CodingExamples from '../../components/CodingExamples/CodingExamples.jsx';
+import AudioVisualizer from '../AudioVisualizer/AudioVisualizer.jsx';
 
 function Home() {
   
-  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />, <Weather />, "", <GitHubModule />, <CodingExamples />, ""];
-  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
+  let options2 = ["", <AddCount />, <Finances />, <Markdown />, <PhysicsDemos />, <RomanNumeral />, <Weather />, "", <GitHubModule />, <CodingExamples />, "", <AudioVisualizer />];
+  const [classNames, setClassNames] = useState(["top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button", "top-button"]);
   const [place2, setPlace2] = useState(0);
   const [showItems, setShowItems] = useState(false);
   const navigate = useNavigate();
@@ -156,6 +157,9 @@ function Home() {
               </button>
               <button className={classNames[9]} onClick={() => navigate("/recipes")}>
                 Recipes
+              </button>
+              <button className={classNames[10]} onClick={() => secondButtonClicked(11)}>
+                Audio Visualizer
               </button>
             </div>
           </div>
