@@ -139,7 +139,8 @@ const AudioVisualizer = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>
-      <h3>{names[songToPlay]}</h3>
+      <h1 style={{color:"red"}}>NOTE: this will play music out loud if your volume is up</h1>
+      <h3>Song title: {names[songToPlay]}</h3>
       <canvas 
         ref={canvasRef} 
         width={500} 
