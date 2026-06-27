@@ -1,6 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 import GravyRainbow from "../../assets/audio/Gravy_Rainbow.mp3";
+import Lotus from "../../assets/audio/Lotus.mp3";
+
+const playables = [GravyRainbow, Lotus];
+const names = ["Gravy Rainbow", "Lotus"];
 
 const AudioVisualizer = () => {
   const audioRef = useRef(null);
@@ -13,6 +17,10 @@ const AudioVisualizer = () => {
   const sourceRef = useRef(null);
 
   const [isInitialized, setIsInitialized] = useState(false);
+  const [songToPlay, setSongToPlay] = useState(0);
+  const [graphStyle, setGraphStyle] = useState("circle"); // can be "circle" or "wave"
+
+  const graphStyleRef = useRef(graphStyle);
 
   // 1. Initialize the Audio Context on first user interaction
   const initAudio = () => {
@@ -37,6 +45,10 @@ const AudioVisualizer = () => {
 
     setIsInitialized(true);
   };
+  
+  useEffect(() => {
+    graphStyleRef.current = graphStyle;
+  }, [graphStyle]);
 
   // 2. Start the Canvas Animation Loop once initialized
   useEffect(() => {
@@ -68,30 +80,52 @@ const AudioVisualizer = () => {
       const centerY = canvas.height / 2;
       const baseRadius = 80;
 
-      for (let i = 0; i < bufferLength; i++) {
-        const amplitude = dataArray[i]; // Value between 0 and 255
+      if ("circle" === graphStyleRef.current) {
+        for (let i = 0; i < bufferLength; i++) {
+          const amplitude = dataArray[i]; // Value between 0 and 255
+      
+          // Map frequency index to a full circle (360 degrees in radians)
+          const angle = (i / bufferLength) * Math.PI * 2;
+      
+          // Dynamic push distance based on sound intensity
+          const push = (amplitude / 255) * 70; 
+          const r = baseRadius + push;
+
+          // Calculate coordinates
+          const x = centerX + Math.cos(angle) * r;
+          const y = centerY + Math.sin(angle) * r;
+
+          // Procedural styling: Lower frequencies (bass) get deeper colors, highs get bright neon
+          const hue = (i / bufferLength) * 120 + 260; // Shifts from Deep Purple to Neon Cyan
+          ctx.fillStyle = `hsla(${hue}, 100%, 60%, ${amplitude / 255})`;
+
+          // Draw a particle at that node
+          ctx.beginPath();
+          // Particle size scales with volume amplitude
+          const size = Math.max(2, (amplitude / 255) * 6);
+          ctx.arc(x, y, size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      } else {
+        const barWidth = canvas.width / bufferLength;
+
+        for (let i = 0; i < bufferLength; i++) {
+          const amplitude = dataArray[i];
+          // Scale the height to fit nicely on screen
+          const barHeight = (amplitude / 255) * (canvas.height / 3); 
         
-        // Map frequency index to a full circle (360 degrees in radians)
-        const angle = (i / bufferLength) * Math.PI * 2;
+          const x = i * barWidth;
+          // Center of the canvas vertically
+          const centerY = canvas.height / 2; 
         
-        // Dynamic push distance based on sound intensity
-        const push = (amplitude / 255) * 70; 
-        const r = baseRadius + push;
-
-        // Calculate coordinates
-        const x = centerX + Math.cos(angle) * r;
-        const y = centerY + Math.sin(angle) * r;
-
-        // Procedural styling: Lower frequencies (bass) get deeper colors, highs get bright neon
-        const hue = (i / bufferLength) * 120 + 260; // Shifts from Deep Purple to Neon Cyan
-        ctx.fillStyle = `hsla(${hue}, 100%, 60%, ${amplitude / 255})`;
-
-        // Draw a particle at that node
-        ctx.beginPath();
-        // Particle size scales with volume amplitude
-        const size = Math.max(2, (amplitude / 255) * 6);
-        ctx.arc(x, y, size, 0, Math.PI * 2);
-        ctx.fill();
+          const hue = (i / bufferLength) * 120 + 200; // Electric blue to magenta tint
+          ctx.fillStyle = `hsla(${hue}, 100%, 60%, 0.8)`;
+        
+          // Draw upper half
+          ctx.fillRect(x, centerY - barHeight, barWidth - 1, barHeight);
+          // Draw mirrored lower half
+          ctx.fillRect(x, centerY, barWidth - 1, barHeight);
+        }
       }
     };
 
@@ -105,6 +139,7 @@ const AudioVisualizer = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>
+      <h3>{names[songToPlay]}</h3>
       <canvas 
         ref={canvasRef} 
         width={500} 
@@ -117,10 +152,29 @@ const AudioVisualizer = () => {
         controls 
         onPlay={initAudio} // Context must unlock on a user gesture
         // src="YOUR_AUDIO_FILE_URL.mp3" // Toss an MP3 file in your public folder or a Supabase storage bucket
-        src={GravyRainbow}
+        // src={GravyRainbow}
+        src={playables[songToPlay]}
       />
       
       {!isInitialized && <p style={{ color: '#888' }}>Click Play to initialize the visualizer core.</p>}
+      <button onClick={() => {
+        if (songToPlay != 0) {
+            setSongToPlay(0);
+        } else {
+            setSongToPlay(1);
+        }
+      }}>
+        Change Song
+      </button>
+      <button onClick={() => {
+        if ("circle" === graphStyle) {
+            setGraphStyle("wave");
+        } else {
+            setGraphStyle("circle");
+        }
+      }}>
+        Change display type
+      </button>
     </div>
   );
 };
