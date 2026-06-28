@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-import GravyRainbow from "../../assets/audio/Gravy_Rainbow.mp3";
-import Lotus from "../../assets/audio/Lotus.mp3";
+import { tracks } from './AudioTracks';
 
-const playables = [GravyRainbow, Lotus];
-const names = ["Gravy Rainbow", "Lotus"];
+// const playables = [GravyRainbow, Lotus];
+// const names = ["Gravy Rainbow", "Lotus"];
+// const artists = ["Disasteradio", "Dhalius"];
 
 const AudioVisualizer = () => {
   const audioRef = useRef(null);
@@ -22,6 +22,12 @@ const AudioVisualizer = () => {
 
   const graphStyleRef = useRef(graphStyle);
 
+  const currentTrack = tracks[songToPlay];
+
+  const handleChange = (event) => {
+    setSongToPlay(Number(event.target.value));
+  }
+
   // 1. Initialize the Audio Context on first user interaction
   const initAudio = () => {
     if (audioContextRef.current) return; // Already initialized
@@ -36,6 +42,7 @@ const AudioVisualizer = () => {
     // fftSize must be a power of 2. 256 gives us 128 frequency bins to play with.
     analyser.fftSize = 256; 
     analyserRef.current = analyser;
+
 
     // Connect the HTML5 <audio> element to the Web Audio graph
     const source = ctx.createMediaElementSource(audioRef.current);
@@ -140,7 +147,8 @@ const AudioVisualizer = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>
       <h1 style={{color:"red"}}>NOTE: this will play music out loud if your volume is up</h1>
-      <h3>Song title: {names[songToPlay]}</h3>
+      <h3>Song title: {currentTrack.name}</h3>
+      <p>Credit: {currentTrack.artist}</p>
       <canvas 
         ref={canvasRef} 
         width={500} 
@@ -154,11 +162,12 @@ const AudioVisualizer = () => {
         onPlay={initAudio} // Context must unlock on a user gesture
         // src="YOUR_AUDIO_FILE_URL.mp3" // Toss an MP3 file in your public folder or a Supabase storage bucket
         // src={GravyRainbow}
-        src={playables[songToPlay]}
+        src={currentTrack.source}
       />
       
       {!isInitialized && <p style={{ color: '#888' }}>Click Play to initialize the visualizer core.</p>}
-      <button onClick={() => {
+      {/* <button onClick={() => {
+        console.log(tracks[3]);
         if (songToPlay != 0) {
             setSongToPlay(0);
         } else {
@@ -166,7 +175,21 @@ const AudioVisualizer = () => {
         }
       }}>
         Change Song
-      </button>
+      </button> */}
+      <label>
+        Select a track
+      </label>
+      <select
+        id="track-select"
+        value={songToPlay}
+        onChange={handleChange}
+      >
+        {tracks.map((track, index) => (
+          <option key={track.name} value={index}>
+            {track.name} — {track.artist}
+          </option>
+        ))}
+      </select>
       <button onClick={() => {
         if ("circle" === graphStyle) {
             setGraphStyle("wave");
