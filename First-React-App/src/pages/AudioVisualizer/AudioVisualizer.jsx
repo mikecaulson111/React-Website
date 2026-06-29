@@ -2,10 +2,6 @@ import React, { useRef, useEffect, useState } from 'react';
 
 import { tracks } from './AudioTracks';
 
-// const playables = [GravyRainbow, Lotus];
-// const names = ["Gravy Rainbow", "Lotus"];
-// const artists = ["Disasteradio", "Dhalius"];
-
 const AudioVisualizer = () => {
   const audioRef = useRef(null);
   const canvasRef = useRef(null);
@@ -166,16 +162,6 @@ const AudioVisualizer = () => {
       />
       
       {!isInitialized && <p style={{ color: '#888' }}>Click Play to initialize the visualizer core.</p>}
-      {/* <button onClick={() => {
-        console.log(tracks[3]);
-        if (songToPlay != 0) {
-            setSongToPlay(0);
-        } else {
-            setSongToPlay(1);
-        }
-      }}>
-        Change Song
-      </button> */}
       <label>
         Select a track
       </label>
