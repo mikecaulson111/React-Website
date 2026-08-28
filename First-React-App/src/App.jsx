@@ -24,6 +24,7 @@ import BubbleSort from "./pages/CodingExamples/BubbleSort.jsx"
 import InsertionSort from "./pages/CodingExamples/InsertionSort.jsx"
 import BinaryTree from "./pages/CodingExamples/BinaryTree.jsx"
 import MathFunctions from "./components/MathFunctions/MathFunctions.jsx"
+import Mandelbrot from "./pages/Mandelbrot/Mandelbrot.jsx"
 
 // Images:
 import CornerImage from "./components/CornerImage/CornerImage.jsx"
@@ -98,6 +99,7 @@ function App() {
           <Route path="/recipes" element={<RecipePage />} />
           <Route path="/recipes/:recipeSlug" element={<RecipeDetail />} />
           <Route path="/math-functions" element={<MathFunctions />} />
+          <Route path="/mandelbrot" element={<Mandelbrot />} />
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>
       </Router>
