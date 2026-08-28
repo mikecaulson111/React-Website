@@ -11,6 +11,7 @@
 export function mandelbrotCalc(cReal, cImaginary, maxIterations) {
     var zReal = 0;
     var zImaginary = 0;
+
     for (var i = 0; i < maxIterations; i++) {
         var realSquare = (zReal * zReal) - (zImaginary * zImaginary);
         var imaginarySquare = 2 * zReal * zImaginary;
