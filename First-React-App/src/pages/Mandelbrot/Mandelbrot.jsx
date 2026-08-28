@@ -16,6 +16,7 @@ const VIEWER_INTITAL = {
 export default function Mandelbrot() {
     const canvasRef = useRef(null);
     const [viewer, setViewer] = useState(VIEWER_INTITAL);
+    const [maxIterations, setMaxIterations] = useState(50);
 
     const handleCanvasClick = (event) => {
         const canvas = canvasRef.current;
@@ -31,6 +32,8 @@ export default function Mandelbrot() {
     
         const newWidth = (viewer.maxReal - viewer.minReal) / 2;
         const newHeight = (viewer.maxImaginary - viewer.minImaginary) / 2;
+
+        setMaxIterations(prev => prev + 25);
 
         setViewer({
             minReal: clickedReal - newWidth / 2,
@@ -48,7 +51,7 @@ export default function Mandelbrot() {
         // const pixels = imageData.data;
         const newImageData = MandelbrotUtils.totalPlace(width, height, viewer.minReal,      viewer.maxReal,
                                                                        viewer.minImaginary, viewer.maxImaginary,
-                                                                       imageData);
+                                                                       imageData, maxIterations);
 
         // Draw the mandebrot set here
         ctx.putImageData(newImageData, 0, 0);
