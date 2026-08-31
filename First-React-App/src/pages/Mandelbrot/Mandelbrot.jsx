@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as MandelbrotUtils from "./MandelbrotUtils";
+import Links from "../../components/Links/Links";
 
 // We will use a canvas 500w x 300 h -> -2.5x to 1x and -1y to 1y
 
@@ -61,6 +62,7 @@ export default function Mandelbrot() {
         <>
             <h2>Mandelbrot Set</h2>
             <canvas ref={canvasRef} width={500} height={300} style={{border: '1px solid #ccc'}} onClick={handleCanvasClick} />
+            <Links />
         </>
     )
 }
