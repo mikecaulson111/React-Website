@@ -58,10 +58,18 @@ export default function Mandelbrot() {
         ctx.putImageData(newImageData, 0, 0);
     }, [viewer]);
 
+    const resetPage = () => {
+        setViewer(VIEWER_INTITAL);
+        setMaxIterations(50);
+    }
+
     return (
         <>
             <h2>Mandelbrot Set</h2>
-            <canvas ref={canvasRef} width={500} height={300} style={{border: '1px solid #ccc'}} onClick={handleCanvasClick} />
+            <div>
+                <canvas ref={canvasRef} width={500} height={300} style={{border: '1px solid #ccc'}} onClick={handleCanvasClick} />
+            </div>
+            <button onClick={resetPage}>Reset Mandelbrot Set</button>
             <Links />
         </>
     )

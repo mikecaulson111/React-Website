@@ -40,6 +40,8 @@ function OurInfo() {
         <>
             <h2>Our Anniversary:</h2>
             <p>06/25/2020</p>
+            <h2>Our Wedding Anniversary:</h2>
+            <p>06/26/2026</p>
             <h2>All of our trips</h2>
             <ul className="trip-list">
                 <li className="trip-item">
