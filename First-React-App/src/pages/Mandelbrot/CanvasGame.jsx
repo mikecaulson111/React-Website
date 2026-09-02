@@ -16,7 +16,9 @@ export default function CanvasGame() {
         const speed = 5;
 
         const accy = 2;
+        const accx = 0.3;
         var vely = 0;
+        var velx = 0;
         const jumpVel = -20;
 
         var jumped = false;
@@ -39,16 +41,48 @@ export default function CanvasGame() {
         const render = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            if (keysPressed["arrowup"] || keysPressed["w"]) y -= speed;
-            if (keysPressed["arrowdown"] || keysPressed["s"]) y += speed;
-            if (keysPressed["arrowleft"] || keysPressed["a"]) x -= speed;
-            if (keysPressed["arrowright"] || keysPressed["d"]) x += speed;
+            // if (keysPressed["arrowup"] || keysPressed["w"]) y -= speed;
+            // if (keysPressed["arrowdown"] || keysPressed["s"]) y += speed;
+            // if (keysPressed["arrowleft"] || keysPressed["a"]) x -= speed;
+            // if (keysPressed["arrowright"] || keysPressed["d"]) x += speed;
+            if (keysPressed["arrowup"] || keysPressed["w"]) {
+                y -= speed;
+            }
+            if (keysPressed["arrowdown"] || keysPressed["s"]) {
+                y += speed;
+            }
+            if (keysPressed["arrowleft"] || keysPressed["a"]) {
+                // x -= speed;
+                if (velx >= -8) {
+                    velx -= accx;
+                }
+            } else if (velx < 0 && (!keysPressed["arrowleft"] && !keysPressed["a"])) {
+                if (velx < 0 && Math.abs(velx) < 0.05) {
+                    velx = 0;
+                } else {
+                    velx += accx;
+                }
+            }
+            if (keysPressed["arrowright"] || keysPressed["d"]) {
+                // x += speed;
+                if (velx <= 8) {
+                    velx += accx;
+                }
+            } else if (velx > 0 && !keysPressed["arrowright"] && !keysPressed["d"]) {
+                if (velx > 0 && Math.abs(velx) < 0.05) {
+                    velx = 0;
+                } else {
+                    velx -= accx;
+                }
+            }
             if (keysPressed[" "] && !jumped) {
                 vely = jumpVel;
                 jumped = true;
             }
             vely += accy;
             y += vely;
+
+            x += velx;
 
             x = Math.max(radius, Math.min(canvas.width - radius, x));
             y = Math.max(radius, Math.min(canvas.height - radius, y));
