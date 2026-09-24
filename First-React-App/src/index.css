@@ -73,3 +73,10 @@ button:focus-visible {
   flex-direction: row;
   justify-content: flex-end;
 }
+
+@font-face {
+  font-family: "SpaceBetween";
+  src: url('./assets/fonts/Spacebetween-Regular.ttf');
+  font-weight: 'normal';
+  font-style: 'normal';
+}

@@ -19,9 +19,10 @@ export default function CanvasGame() {
         const accx = 0.3;
         var vely = 0;
         var velx = 0;
-        const jumpVel = -20;
+        const jumpVel = -26;
 
         var jumped = false;
+        var jumps = 0;
 
         const keysPressed = {};
 
@@ -75,6 +76,7 @@ export default function CanvasGame() {
                     velx -= accx;
                 }
             }
+            // if (keysPressed[" "] && !jumped) {
             if (keysPressed[" "] && !jumped) {
                 vely = jumpVel;
                 jumped = true;

@@ -8,7 +8,9 @@ import "./components/Login/Login.css";
 
 function Name({name}) {
   return (
+    <div style={{fontFamily: 'SpaceBetween'}}>
     <h1>{name}</h1>
+    </div>
   );
 }
 
