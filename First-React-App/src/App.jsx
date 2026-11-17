@@ -11,6 +11,7 @@ import AboutMePage from "./pages/AboutMe/AboutMe.jsx"
 import MiaAndMe from "./pages/MiaAndMe/MiaAndMe.jsx"
 import BouncingBlock from "./pages/PhysicsDemos/BouncingBlock.jsx"
 import StandingWaves from "./pages/PhysicsDemos/StandingWaves.jsx"
+import StandingWavesNew from "./pages/PhysicsDemos/StandingWavesNew.jsx"
 import SpringWave from "./pages/PhysicsDemos/SpringWave.jsx"
 import ScrollingTestingPage from "./pages/ScrollingTestingPage/ScrollingTestingPage.jsx"
 import BlockGamePage from "./pages/PhysicsDemos/BlockGame.jsx"
@@ -87,7 +88,7 @@ function App() {
           <Route path="/about-me" element={<AboutMePage />} />
           <Route path="/mia-and-me" element={<MiaAndMe />} />
           <Route path="/bouncing-blocks" element={<BouncingBlock />} />
-          <Route path="/standing-waves" element={<StandingWaves />} />
+          <Route path="/standing-waves" element={<StandingWavesNew />} />
           <Route path="/block-game" element={<BlockGamePage />} />
           <Route path="/spring-wave" element={<SpringWave />} />
           <Route path="/selection-sort" element={<SelectionSort />} />
