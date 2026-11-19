@@ -6,14 +6,14 @@ import Links from "../../components/Links/Links.jsx";
 
 import "./PhysicsDemos.css";
 
-let k = 0.08;
-let g = 0.1;
+let k = 0.38;
+let g = 0.3;
 
 
 let n = 10;
 
 
-let grav = false;
+let grav = true;
 let siner = true;
 
 var moveX = false;
@@ -84,12 +84,12 @@ class Dot {
       this.acc = -1 * k * del_y;
     }
     this.velocity += this.acc;
-    this.velocity *= 0.85;
+    this.velocity *= 0.95;
     this.y += this.velocity;
 
     this.accx = -1 * k * del_x;
     this.velocityx += this.accx;
-    this.velocityx *= 0.85;
+    this.velocityx *= 0.95;
     this.x += this.velocityx;
   }
   
