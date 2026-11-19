@@ -7,13 +7,13 @@ import Links from "../../components/Links/Links.jsx";
 import "./PhysicsDemos.css";
 
 let k = 0.38;
-let g = 0.3;
+let g = 0.7;
 
 
 let n = 10;
 
 
-let grav = true;
+let grav = false;
 let siner = true;
 
 var moveX = false;
@@ -171,6 +171,8 @@ export default function SpringWaveNew() {
             keyTyped();
         } else if (event.key === 'x') {
             moveX = !moveX;
+        } else if (event.key === 'g') {
+          grav = !grav;
         }
 
         if (lastThreeKeys.length === 3) {
