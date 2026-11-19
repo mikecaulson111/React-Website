@@ -13,6 +13,7 @@ import BouncingBlock from "./pages/PhysicsDemos/BouncingBlock.jsx"
 import StandingWaves from "./pages/PhysicsDemos/StandingWaves.jsx"
 import StandingWavesNew from "./pages/PhysicsDemos/StandingWavesNew.jsx"
 import SpringWave from "./pages/PhysicsDemos/SpringWave.jsx"
+import SpringWaveNew from "./pages/PhysicsDemos/SpringWaveNew.jsx"
 import ScrollingTestingPage from "./pages/ScrollingTestingPage/ScrollingTestingPage.jsx"
 import BlockGamePage from "./pages/PhysicsDemos/BlockGame.jsx"
 import KanbanBoard from "./pages/KanbanBoard/KanbanBoard.jsx"
@@ -90,7 +91,8 @@ function App() {
           <Route path="/bouncing-blocks" element={<BouncingBlock />} />
           <Route path="/standing-waves" element={<StandingWavesNew />} />
           <Route path="/block-game" element={<BlockGamePage />} />
-          <Route path="/spring-wave" element={<SpringWave />} />
+          {/* <Route path="/spring-wave" element={<SpringWave />} /> */}
+          <Route path="/spring-wave" element={<SpringWaveNew />} />
           <Route path="/selection-sort" element={<SelectionSort />} />
           <Route path="/bubble-sort" element={<BubbleSort />} />
           <Route path="/insertion-sort" element={<InsertionSort />} />
